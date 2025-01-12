@@ -1,0 +1,41 @@
+:root {
+  --button-size: 2.65em;
+}
+
+.btn {
+  --transition: 300ms ease;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: var(--btn-background, transparent);
+  border: var(--btn-border, 1px solid var(--btn-border-color, var(--color-dark)));
+  border-radius: var(--btn-radius, 2em);
+  display: inline-flex;
+  gap: var(--btn-gap, 0.5em);
+  padding: var(--btn-padding, 0.5em 1em);
+  color: var(--btn-color, var(--color-accent));
+  width: fit-content;
+  pointer-events: auto;
+  transition:
+    background-color var(--transition),
+    color var(--transition),
+    filter var(--transition),
+    opacity var(--transition);
+
+  &:hover {
+    opacity: 0.8;
+    filter: brightness(1.1);
+  }
+}
+
+.btn-primary {
+  --btn-background: var(--color-positive);
+  --btn-color: var(--color-ink);
+  --btn-border-color: var(--color-positive);
+}
+
+.btn-secondary {
+  --btn-background: var(--color-accent);
+  --btn-color: var(--color-ink);
+  --btn-border-color: var(--color-accent);
+}

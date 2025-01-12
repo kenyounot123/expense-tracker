@@ -1,0 +1,26 @@
+<% content_for :title, "Track New Expense" %>
+
+<h1 class="text-xx-large"><b>New Expense</b></h1>
+
+<%= form_with model: @expense, class: "expense__form" do |form| %>
+  <%= form.label :amount, class: "text-positive text-label" %>
+  <div class="position-relative">
+    <span class="amount-unit">$</span>
+    <%= form.number_field :amount, placeholder: "0.00", class: "margin-block pad-inline-double pad-block", step: "0.01" %>
+  </div>
+
+  <%= form.label :description, class: "text-positive text-label" %>
+  <%= form.text_field :description, class: "margin-block pad-block" %>
+
+  <%= form.label :date, class: "text-positive text-label" %>
+  <%= form.date_field :date, value: Date.today, class: "margin-block pad-block" %>
+
+  <%= form.label :category, class: "text-positive text-label" %>
+  <%= form.text_field :category, class: "margin-block pad-block" %>
+
+  <%= form.label :expense_type, class: "text-positive text-label" %>
+  <%= form.select :expense_type, ["One-Time", "Monthly", "Yearly"], { selected: "One-Time" }, { class: "margin-block pad-block" } %>
+
+  <div class="margin-block"><%= form.submit "Add Expense", class: "btn btn-secondary btn--submit" %></div>
+<% end %>
+

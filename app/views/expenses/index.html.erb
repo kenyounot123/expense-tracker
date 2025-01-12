@@ -1,0 +1,12 @@
+<% content_for :title, "Expense Dashboard" %>
+
+<% content_for :header do %>
+  <h1><b>Hello, World</b></h1>
+<% end %>
+
+<div class="flex justify-between">
+  <h2>Activity</h2>
+  <%= link_to "Add Expense", new_expense_path, class: "btn btn-primary" %>
+</div>
+<%= render(@expenses) || "You currently have no expenses" %>
+

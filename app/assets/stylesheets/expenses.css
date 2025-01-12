@@ -1,0 +1,72 @@
+:root {
+  --expense-card-width: 300px;
+  --expense-form-width: 900px;
+}
+
+.expense__form {
+  width: var(--expense-form-width);
+}
+
+.expense__card {
+  background-color: var(--color-dark);
+  border-radius: 0.75em;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 1.5em;
+  width: var(--expense-card-width);
+  margin-bottom: 1em;
+}
+
+.expense__title {
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-bottom: 1em;
+  color: var(--color-positive);
+}
+
+.expense__amount-value {
+  font-size: 2em;
+  font-weight: bold;
+  color: var(--color-accent);
+}
+
+.expense__amount-symbol {
+  font-weight: bold;
+  font-size: 1.2em;
+  width: 2em;
+  height: 2em;
+}
+
+.expense-gain {
+  color: var(--color-gain);
+}
+.expense-loss {
+  color: var(--color-loss);
+}
+
+.expense__details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875em;
+  color: var(--color-ink);
+  opacity: 0.8;
+  margin: 1em 0;
+}
+
+.expense__category {
+  background-color: var(--color-positive);
+  color: var(--color-ink-reversed);
+  padding: 0.375em 0.75em;
+  border-radius: 1.25em;
+  font-size: 0.875em;
+  font-weight: bold;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.03125em;
+}
+
+.amount-unit {
+  position: absolute;
+  left: 0.5em;
+  top: 50%;
+  transform: translateY(-50%);
+}

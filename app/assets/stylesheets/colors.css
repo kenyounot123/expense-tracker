@@ -1,0 +1,14 @@
+:root {
+
+  /* Abstractions */
+  --color-bg: #302D43;
+  --color-positive: #8e7ff5;
+  --color-accent: #CD4FF7;
+  --color-dark: #171421;
+  --color-gain: #7ff58e;
+  --color-loss: #f54f4f;
+
+  /* Text */
+  --color-ink: white;
+  --color-ink-reversed: black;
+}
