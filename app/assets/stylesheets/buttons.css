@@ -83,6 +83,12 @@
   --btn-padding: 0.75em 1em;
 }
 
+.btn-danger {
+  --btn-background: var(--color-red);
+  --btn-color: var(--color-ink);
+  --btn-border-color: var(--color-red);
+}
+
 .btn-secondary {
   --btn-background: var(--color-accent);
   --btn-color: var(--color-ink);

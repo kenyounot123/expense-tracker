@@ -14,8 +14,8 @@ a {
 
   svg {
     color: var(--color-ink);
-    width: 1.4em;
-    height: 1.4em;
+    width: 2em;
+    height: 2em;
     font-weight: 600;
   }
 }

@@ -7,15 +7,14 @@
   --accent: #CD4FF7;
   --dark: #171421;
   --green: #7ff58e;
-  --red: #f54f4f;
-
+  --red: #d40f0f;
   /* Abstractions */
   --color-bg: var(--bg);
   --color-positive: var(--positive);
   --color-accent: var(--accent);
   --color-dark: var(--dark);
-  --color-gain: var(--green);
-  --color-loss: var(--red);
+  --color-green: var(--green);
+  --color-red: var(--red);
 
   /* Text */
   --color-ink: var(--white);

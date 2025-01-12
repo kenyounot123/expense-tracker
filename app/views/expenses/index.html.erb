@@ -4,10 +4,10 @@
   <h1><b>Hello, Ken</b></h1>
 <% end %>
 
-<%# TODO: Keep business logic in the models %>
 <% content_for :analytics do %>
-  <h2 class="margin-block">Total Expenses: <span class="text-accent text-xx-large">$<%= Expense.total_expenses %></span></h2>
-  <%= pie_chart Expense.expenses.group_by_month(:date).sum(:amount) %>
+  <h2 class="margin-block">Total Expenses: <span class="text-accent text-xx-large">$<%= @total_expenses %></span></h2>
+  <%# TODO: use separate api for fetching large data %>
+  <%= pie_chart @spendings_by_month, colors: ["#F8AF6A", "#6953F5"] %>
 <% end %>
 
 <div class="flex justify-between items-center margin-block">
@@ -19,5 +19,6 @@
     <p>Add Expense</p>
   <% end %>
 </div>
+
 <%= render(@expenses) || "You currently have no expenses" %>
 

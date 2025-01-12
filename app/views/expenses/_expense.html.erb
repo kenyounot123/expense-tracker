@@ -1,25 +1,26 @@
-<div class="expense__card">
-  <div class="expense__title"><%= expense.description %></div>
-  <div class="flex justify-between">
-    <span class="expense__amount-value">$<%= expense.amount %></span>
-    <% if expense.income? %>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="expense__amount-symbol expense-gain">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-      </svg>
-    <% else %>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="expense__amount-symbol expense-loss">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
-      </svg>
-    <% end %>
+<%= link_to expense_path(expense)do %>
+  <div class="expense__card">
+    <div class="expense__title"><%= expense.description.truncate(20) %></div>
+    <div class="flex justify-between">
+      <span class="expense__amount-value">$<%= expense.amount %></span>
+      <% if expense.income? %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="expense__amount-symbol expense-gain">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+        </svg>
+      <% else %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="expense__amount-symbol expense-loss">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+        </svg>
+      <% end %>
+    </div>
+    <div class="expense__details">
+      <span><%= expense.date.strftime("%b %d, %Y") %></span>
+      <span><%= expense.expense_type %> Payment</span>
+    </div>
+    <div>
+      <% expense.categories.each do |category| %>
+        <span class="expense__category"><%= category.name %></span>
+      <% end %>
+    </div>
   </div>
-  <div class="expense__details">
-    <span><%= expense.date.strftime("%b %d, %Y") %></span>
-    <span><%= expense.expense_type %> Payment</span>
-  </div>
-  <div>
-    <% expense.categories.each do |category| %>
-      <span class="expense__category"><%= category.name %></span>
-    <% end %>
-  </div>
-</div>
-
+<% end %>

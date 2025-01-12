@@ -32,6 +32,7 @@
 /* Flexbox and grid */
 .flex { display: flex; }
 .justify-between { justify-content: space-between; }
+.justify-end { justify-content: flex-end; }
 .items-center { align-items: center; }
 .gap-inline { gap: var(--inline-space); }
 .gap-inline-double { gap: var(--inline-space-double); }
