@@ -1,7 +1,18 @@
 <% content_for :title, "Expense Dashboard" %>
 
 <% content_for :header do %>
-  <h1><b>Hello, Ken</b></h1>
+  <nav class="flex justify-between items-center">
+    <h1>
+      <b>Hello, <%= Current.user.email_address || "Ken" %></b>
+    </h1>
+    <button class="btn btn-primary">
+      <% if authenticated? %>
+        Log Out
+      <% else %>
+        Log In
+      <% end %>
+    </button>
+  </nav>
 <% end %>
 
 <% content_for :analytics do %>

@@ -1,5 +1,4 @@
 class ExpensesController < ApplicationController
-  allow_unauthenticated_access
   before_action :set_expense, only: %i[ show edit update destroy ]
   before_action :set_total_expenses, only: %i[ index show ]
 

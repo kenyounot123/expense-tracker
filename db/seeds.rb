@@ -23,6 +23,7 @@ categories = [
 # Create sample expenses
 expenses = [
   {
+    user_id: User.find_by(email_address: "bob@gmail.com").id,
     amount: 1200.00,
     description: "Monthly Rent",
     categories: [ "Housing" ],
@@ -30,6 +31,7 @@ expenses = [
     expense_type: "Monthly"
   },
   {
+    user_id: User.find_by(email_address: "bob@gmail.com").id,
     amount: 85.50,
     description: "Grocery Shopping",
     categories: [ "Food" ],
@@ -37,6 +39,7 @@ expenses = [
     expense_type: "One-Time"
   },
   {
+    user_id: User.find_by(email_address: "bob@gmail.com").id,
     amount: 45.00,
     description: "Netflix Subscription",
     categories: [ "Entertainment" ],
@@ -44,6 +47,7 @@ expenses = [
     expense_type: "Monthly"
   },
   {
+    user_id: User.find_by(email_address: "bob@gmail.com").id,
     amount: 120.00,
     description: "Electricity Bill",
     categories: [ "Utilities" ],
@@ -51,6 +55,7 @@ expenses = [
     expense_type: "Monthly"
   },
   {
+    user_id: User.find_by(email_address: "bob@gmail.com").id,
     amount: 60.00,
     description: "Internet Service",
     categories: [ "Utilities" ],
@@ -58,6 +63,7 @@ expenses = [
     expense_type: "Monthly"
   },
   {
+    user_id: User.find_by(email_address: "bob@gmail.com").id,
     amount: 25.99,
     description: "Book Purchase",
     categories: [ "Education" ],
@@ -65,6 +71,7 @@ expenses = [
     expense_type: "One-Time"
   },
   {
+    user_id: User.find_by(email_address: "bob@gmail.com").id,
     amount: 499.99,
     description: "New Phone",
     categories: [ "Electronics" ],
@@ -72,6 +79,7 @@ expenses = [
     expense_type: "One-Time"
   },
   {
+    user_id: User.find_by(email_address: "bob@gmail.com").id,
     amount: 150.00,
     description: "Car Insurance",
     categories: [ "Insurance" ],
