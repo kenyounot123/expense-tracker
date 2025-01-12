@@ -29,6 +29,7 @@ class ExpensesController < ApplicationController
 
   def destroy
     @expense.destroy!
+    redirect_to expenses_path, notice: "Expense deleted successfully"
   end
 
   private
