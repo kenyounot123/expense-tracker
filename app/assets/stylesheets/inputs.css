@@ -1,8 +1,9 @@
 /* Text Inputs */
-input {
-  border: 1px solid var(--color-bg);
+input, select {
+  margin: var(--input-margin, 1.2em 0);
+  padding: var(--input-padding, 1em 1.5em);
+  border: none;
   border-radius: var(--input-radius, 0.25em);
-  padding: var(--input-padding, 0.5em 1em);
-  width: var(--input-width, 100%);
-  font-size: max(16px, 1em);
+  background-color: var(--color-bg);
+  color: var(--color-ink);
 }

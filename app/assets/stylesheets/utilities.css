@@ -25,6 +25,7 @@
 /* Flexbox and grid */
 .flex { display: flex; }
 .justify-between { justify-content: space-between; }
+.items-center { align-items: center; }
 
 /* Margins */
 .margin { margin: var(--block-space) var(--inline-space); }

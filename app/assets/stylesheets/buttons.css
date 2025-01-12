@@ -32,6 +32,7 @@
   --btn-background: var(--color-positive);
   --btn-color: var(--color-ink);
   --btn-border-color: var(--color-positive);
+  --btn-padding: 0.75em 1em;
 }
 
 .btn-secondary {

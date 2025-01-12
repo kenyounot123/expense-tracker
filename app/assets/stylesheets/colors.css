@@ -1,14 +1,36 @@
 :root {
+  /* Named color values */
+  --black: #000000;
+  --white: #FFFFFF;
+  --bg: #302D43;
+  --positive: #8e7ff5;
+  --accent: #CD4FF7;
+  --dark: #171421;
+  --green: #7ff58e;
+  --red: #f54f4f;
 
   /* Abstractions */
-  --color-bg: #302D43;
-  --color-positive: #8e7ff5;
-  --color-accent: #CD4FF7;
-  --color-dark: #171421;
-  --color-gain: #7ff58e;
-  --color-loss: #f54f4f;
+  --color-bg: var(--bg);
+  --color-positive: var(--positive);
+  --color-accent: var(--accent);
+  --color-dark: var(--dark);
+  --color-gain: var(--green);
+  --color-loss: var(--red);
 
   /* Text */
-  --color-ink: white;
-  --color-ink-reversed: black;
+  --color-ink: var(--white);
+  --color-ink-reversed: var(--black);
+
+  @media (prefers-color-scheme: light) {
+    --bg: #e5dbfc;
+    --positive: #6B4EE6;
+    --accent: #9B30BD;
+    --dark: #FFFFFF;
+    --green: #2E9D4E;
+    --red: #D32F2F;
+  
+    /* Text */
+    --white: #302D43;
+    --black: #FFFFFF;
+  }
 }

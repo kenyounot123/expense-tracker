@@ -1,10 +1,14 @@
 :root {
   --expense-card-width: 300px;
-  --expense-form-width: 900px;
+  --expense-form-width: 100%;
 }
 
 .expense__form {
   width: var(--expense-form-width);
+  background-color: var(--color-dark);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5em;
 }
 
 .expense__card {
@@ -69,4 +73,5 @@
   left: 0.5em;
   top: 50%;
   transform: translateY(-50%);
+  color: var(--color-ink);
 }
