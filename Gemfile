@@ -61,3 +61,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# Data visualization gems
+gem "chartkick"
+gem "groupdate"

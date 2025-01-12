@@ -1,7 +1,12 @@
 <% content_for :title, "Expense Dashboard" %>
 
 <% content_for :header do %>
-  <h1><b>Hello, World</b></h1>
+  <h1><b>Hello, Ken</b></h1>
+  <h2>Total Expenses: $<%= @expenses.sum(:amount) %></h2>
+<% end %>
+
+<% content_for :analytics do %>
+  <%= pie_chart @expenses.group_by_month(:date).sum(:amount) %>
 <% end %>
 
 <div class="flex justify-between items-center margin-block">
