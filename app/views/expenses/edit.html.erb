@@ -1,0 +1,7 @@
+<% content_for :title, "Edit Expense" %>
+
+<%= content_for :header do %>
+  <%= render "shared/header", title: "Edit Expense", back_path: expenses_path %>
+<% end %>
+
+<%= render "form", expense: @expense %>

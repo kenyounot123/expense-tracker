@@ -7,8 +7,6 @@ class ExpensesControllerTest < ActionDispatch::IntegrationTest
 
     @new_expense.categories << categories(:food)
     @current_expense.categories << categories(:housing)
-    @new_expense.save
-    @current_expense.save
   end
 
   test "should get index" do
@@ -29,20 +27,20 @@ class ExpensesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to expenses_url
   end
 
-  # test "should show expense" do
-  #   get expense_url(@expense)
-  #   assert_response :success
-  # end
+  test "should show expense" do
+    get expense_url(@current_expense)
+    assert_response :success
+  end
 
-  # test "should get edit" do
-  #   get edit_expense_url(@expense)
-  #   assert_response :success
-  # end
+  test "should get edit" do
+    get edit_expense_url(@current_expense)
+    assert_response :success
+  end
 
-  # test "should update expense" do
-  #   patch expense_url(@expense), params: { expense: {} }
-  #   assert_redirected_to expense_url(@expense)
-  # end
+  test "should update expense" do
+    patch expense_url(@current_expense), params: { expense: @new_expense.attributes }
+    assert_redirected_to expense_url(@current_expense)
+  end
 
   test "should destroy expense" do
     assert_difference("Expense.count", -1) do

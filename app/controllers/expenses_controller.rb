@@ -1,6 +1,6 @@
 class ExpensesController < ApplicationController
+  allow_unauthenticated_access
   before_action :set_expense, only: %i[ show edit update destroy ]
-  before_action :set_categories, only: %i[ create ]
   before_action :set_total_expenses, only: %i[ index show ]
 
   def index
@@ -10,7 +10,6 @@ class ExpensesController < ApplicationController
   end
 
   def show
-    @expense = Expense.find(params[:id])
   end
 
   def new
@@ -30,6 +29,11 @@ class ExpensesController < ApplicationController
   end
 
   def update
+    if @expense.update(expense_params)
+      redirect_to expense_path(@expense), notice: "Expense updated successfully"
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -39,7 +43,7 @@ class ExpensesController < ApplicationController
 
   private
     def set_expense
-      @expense = Expense.find(params.expect(:id))
+      @expense = Expense.find(params[:id])
     end
 
     def set_total_expenses
