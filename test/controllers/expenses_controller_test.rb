@@ -4,6 +4,11 @@ class ExpensesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @current_expense = expenses(:cursor_expense)
     @new_expense = expenses(:shopping_expense)
+
+    @new_expense.categories << categories(:food)
+    @current_expense.categories << categories(:housing)
+    @new_expense.save
+    @current_expense.save
   end
 
   test "should get index" do

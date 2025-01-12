@@ -25,72 +25,81 @@ expenses = [
   {
     amount: 1200.00,
     description: "Monthly Rent",
-    category: "Housing",
+    categories: [ "Housing" ],
     date: Date.today,
     expense_type: "Monthly"
   },
   {
     amount: 85.50,
     description: "Grocery Shopping",
-    category: "Food",
+    categories: [ "Food" ],
     date: Date.today - 2.days,
     expense_type: "One-Time"
   },
   {
     amount: 45.00,
     description: "Netflix Subscription",
-    category: "Entertainment",
+    categories: [ "Entertainment" ],
     date: Date.today - 5.days,
     expense_type: "Monthly"
   },
   {
     amount: 120.00,
     description: "Electricity Bill",
-    category: "Utilities",
+    categories: [ "Utilities" ],
     date: Date.today - 1.week,
     expense_type: "Monthly"
   },
   {
     amount: 60.00,
     description: "Internet Service",
-    category: "Utilities",
+    categories: [ "Utilities" ],
     date: Date.today - 3.days,
     expense_type: "Monthly"
   },
   {
     amount: 25.99,
     description: "Book Purchase",
-    category: "Education",
+    categories: [ "Education" ],
     date: Date.today - 1.day,
     expense_type: "One-Time"
   },
   {
     amount: 499.99,
     description: "New Phone",
-    category: "Electronics",
+    categories: [ "Electronics" ],
     date: Date.today - 2.weeks,
     expense_type: "One-Time"
   },
   {
     amount: 150.00,
     description: "Car Insurance",
-    category: "Insurance",
+    categories: [ "Insurance" ],
     date: Date.today,
     expense_type: "Monthly"
   }
 ]
-
-# Create each expense
-expenses.each do |expense_data|
-  expense = Expense.create!(expense_data)
-  puts "Created expense: #{expense.description}"
-end
 
 # Create each category
 categories.each do |category_data|
   category = Category.create!(category_data)
   puts "Created category: #{category.name}"
 end
+# Create each expense
+expenses.each do |expense_data|
+  # Extract categories before creating expense
+  categories_names = expense_data.delete(:categories)
+  expense = Expense.create!(expense_data)
+
+  # Find and associate categories
+  categories_names.each do |category_name|
+    category = Category.find_by!(name: category_name)
+    expense.categories << category
+  end
+
+  puts "Created expense: #{expense.description}"
+end
+
 
 puts "Created #{Expense.count} expenses"
 puts "Created #{Category.count} categories"

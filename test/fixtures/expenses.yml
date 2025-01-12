@@ -7,7 +7,6 @@
 cursor_expense: {
   amount: 20,
   description: "Cursor Pro",
-  category: "Software",
   date: "2025-01-01",
   expense_type: "Monthly"
 }
@@ -15,7 +14,6 @@ cursor_expense: {
 shopping_expense: {
   amount: 100,
   description: "Shopping",
-  category: "Food",
   date: "2025-01-01",
   expense_type: "One-time"
 }

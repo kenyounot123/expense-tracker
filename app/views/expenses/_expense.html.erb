@@ -16,5 +16,10 @@
     <span><%= expense.date.strftime("%b %d, %Y") %></span>
     <span><%= expense.expense_type %> Payment</span>
   </div>
-  <div class="expense__category"><%= expense.category %></div>
+  <div>
+    <% expense.categories.each do |category| %>
+      <span class="expense__category"><%= category.name %></span>
+    <% end %>
+  </div>
 </div>
+

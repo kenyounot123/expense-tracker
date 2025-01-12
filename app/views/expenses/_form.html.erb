@@ -20,8 +20,12 @@
   <%= form.label :date, class: "text-positive text-label" %>
   <%= form.date_field :date, value: Date.today, class: "margin-block" %>
 
-  <%= form.label :category, class: "text-positive text-label" %>
-  <%= form.text_field :category, class: "margin-block" %>
+  <%# TODO: Add form validation to not allow empty category %>
+  <%= form.label :category_ids, "Categories", class: "text-positive text-label" %>
+  <%= form.select :category_ids, 
+                  Category.all.map { |category| [category.name, category.id] },
+                  { prompt: "Select categories" }, 
+                  { class: "margin-block" } %>
 
   <%= form.label :expense_type, class: "text-positive text-label" %>
   <%= form.select :expense_type, ["One-Time", "Monthly", "Yearly"], { selected: "One-Time" }, { class: "margin-block" } %>
