@@ -9,7 +9,17 @@
 #   end
 
 Expense.destroy_all
-
+Category.destroy_all
+# Create sample categories
+categories = [
+  { name: "Housing" },
+  { name: "Food" },
+  { name: "Entertainment" },
+  { name: "Utilities" },
+  { name: "Education" },
+  { name: "Electronics" },
+  { name: "Insurance" }
+]
 # Create sample expenses
 expenses = [
   {
@@ -76,4 +86,11 @@ expenses.each do |expense_data|
   puts "Created expense: #{expense.description}"
 end
 
+# Create each category
+categories.each do |category_data|
+  category = Category.create!(category_data)
+  puts "Created category: #{category.name}"
+end
+
 puts "Created #{Expense.count} expenses"
+puts "Created #{Category.count} categories"

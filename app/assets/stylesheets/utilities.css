@@ -1,10 +1,13 @@
 :root {
   --block-space: 1em;
   --inline-space: 1ch;
+
+  --block-space-double: calc(var(--block-space) * 2);
   --inline-space-double: calc(var(--inline-space) * 2);
 }
 
 /* Text */
+.text-x-small { font-size: 0.6em; }
 .text-small { font-size: 0.83em; }
 .text-medium { font-size: 1em; }
 .text-large { font-size: 1.4em; }
@@ -21,16 +24,23 @@
   font-size: 1em;
   font-weight: 600;
 }
+.text-small-icon { 
+  font-size: 0.6em;
+  font-weight: 600;
+}
 
 /* Flexbox and grid */
 .flex { display: flex; }
 .justify-between { justify-content: space-between; }
 .items-center { align-items: center; }
+.gap-inline { gap: var(--inline-space); }
+.gap-inline-double { gap: var(--inline-space-double); }
 
 /* Margins */
 .margin { margin: var(--block-space) var(--inline-space); }
 .margin-block { margin-block: var(--block-space); }
 .margin-inline { margin-inline: var(--inline-space); }
+.margin-block-double { margin-block: var(--block-space-double); }
 
 /* Padding */
 .pad { padding: var(--block-space) var(--inline-space); }

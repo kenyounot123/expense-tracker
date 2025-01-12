@@ -1,0 +1,33 @@
+<%= form_with model: @expense, class: "expense__form" do |form| %>
+  <%= form.label :amount, class: "text-positive text-label" %>
+  <div class="flex justify-between items-center">
+    <div class="position-relative">
+      <span class="amount-unit">$</span>
+      <%= form.number_field :amount, placeholder: "0.00", class: "margin-block", step: "0.01" %>
+    </div>
+    <%# TODO: Update styling of checkbox %>
+    <div>
+      <%= form.label :income, class: "text-positive text-label" %>
+      <button type="button" class="btn btn-primary">
+        <%= form.check_box :income %>
+      </button>
+    </div>
+  </div>
+
+  <%= form.label :description, class: "text-positive text-label" %>
+  <%= form.text_field :description, class: "margin-block" %>
+
+  <%= form.label :date, class: "text-positive text-label" %>
+  <%= form.date_field :date, value: Date.today, class: "margin-block" %>
+
+  <%= form.label :category, class: "text-positive text-label" %>
+  <%= form.text_field :category, class: "margin-block" %>
+
+  <%= form.label :expense_type, class: "text-positive text-label" %>
+  <%= form.select :expense_type, ["One-Time", "Monthly", "Yearly"], { selected: "One-Time" }, { class: "margin-block" } %>
+
+  <div class="margin-block">
+    <%= form.submit "Add Expense", class: "btn btn-secondary btn--submit" %>
+  </div>
+<% end %>
+

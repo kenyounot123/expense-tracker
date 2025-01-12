@@ -10,14 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_11_173522) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_12_172256) do
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_categories_on_name", unique: true
+  end
+
+  create_table "categories_expenses", id: false, force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "expense_id"
+    t.index ["category_id"], name: "index_categories_expenses_on_category_id"
+    t.index ["expense_id"], name: "index_categories_expenses_on_expense_id"
+  end
+
   create_table "expenses", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "amount", null: false
     t.string "description"
-    t.string "category"
     t.string "expense_type"
     t.date "date"
+    t.boolean "income", default: false
   end
 end

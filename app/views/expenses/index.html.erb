@@ -2,16 +2,22 @@
 
 <% content_for :header do %>
   <h1><b>Hello, Ken</b></h1>
-  <h2>Total Expenses: $<%= @expenses.sum(:amount) %></h2>
 <% end %>
 
+<%# TODO: Keep business logic in the models %>
 <% content_for :analytics do %>
-  <%= pie_chart @expenses.group_by_month(:date).sum(:amount) %>
+  <h2 class="margin-block">Total Expenses: <span class="text-accent text-xx-large">$<%= Expense.total_expenses %></span></h2>
+  <%= pie_chart Expense.expenses.group_by_month(:date).sum(:amount) %>
 <% end %>
 
 <div class="flex justify-between items-center margin-block">
   <h2>Activity</h2>
-  <%= link_to "Add Expense", new_expense_path, class: "btn btn-primary" %>
+  <%= link_to new_expense_path, class: "btn btn-primary flex items-center justify-center" do %>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+    </svg> 
+    <p>Add Expense</p>
+  <% end %>
 </div>
 <%= render(@expenses) || "You currently have no expenses" %>
 

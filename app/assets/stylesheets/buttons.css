@@ -26,6 +26,54 @@
     opacity: 0.8;
     filter: brightness(1.1);
   }
+
+  &:has(a) {
+    color: var(--btn-color);
+  }
+
+  &:has(svg) {
+    color: var(--btn-color);
+
+    img {
+      font-size: 0.6em;
+    }
+  }
+  
+  &:has(input[type=radio], input[type=checkbox]) {
+    :is(input[type=radio], input[type=checkbox]) {
+      block-size: calc(var(--btn-size));
+      border-radius: var(--btn-border-radius);
+      cursor: pointer;
+      display: flex;
+      inline-size: calc(var(--btn-size));
+      margin: 0;
+      padding: 0;
+    }
+
+    img.checked {
+      display: none;
+    }
+  }
+
+  &:has(input:checked)  {
+    --btn-background: var(--color-accent);
+    --btn-color: var(--color-ink);
+    --outline-color: var(--color-ink);
+
+    img {
+      filter: invert(1);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      img {
+        filter: invert(0);
+      }
+    }
+
+    img.checked {
+      display: block;
+    }
+  }
 }
 
 .btn-primary {
