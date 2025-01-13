@@ -2,16 +2,16 @@ require "test_helper"
 
 class ExpensesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @current_expense = expenses(:cursor_expense)
+    @user = users(:john)
+    sign_in_as(@user)
+    @current_expense = expenses(:fried_rice)
     @new_expense = expenses(:shopping_expense)
-
-    @new_expense.categories << categories(:food)
-    @current_expense.categories << categories(:housing)
   end
 
   test "should get index" do
     get expenses_url
     assert_response :success
+    assert_equal @user.expenses.count, Expense.where(user_id: @user.id).count
   end
 
   test "should get new" do
@@ -21,7 +21,17 @@ class ExpensesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create expense" do
     assert_difference("Expense.count") do
-      post expenses_url, params: { expense: @new_expense.attributes }
+      post expenses_url, params: {
+        expense: {
+          amount: 75.0,
+          description: "Utilities",
+          date: "2023-10-03",
+          expense_type: "Utilities",
+          income: false,
+          user_id: @user.id,
+          category_ids: [ categories(:food).id ]
+        }
+      }
     end
 
     assert_redirected_to expenses_url
@@ -38,7 +48,12 @@ class ExpensesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update expense" do
-    patch expense_url(@current_expense), params: { expense: @new_expense.attributes }
+    patch expense_url(@current_expense), params: {
+      expense: {
+        description: "Updated Rent",
+        category_ids: [ categories(:housing).id ]
+      }
+    }
     assert_redirected_to expense_url(@current_expense)
   end
 
