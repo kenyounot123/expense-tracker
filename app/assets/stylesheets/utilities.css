@@ -28,6 +28,7 @@
   font-size: 0.6em;
   font-weight: 600;
 }
+.text-underline { text-decoration: underline; }
 
 /* Flexbox and grid */
 .flex { display: flex; }

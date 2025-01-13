@@ -19,3 +19,18 @@ a {
     font-weight: 600;
   }
 }
+
+.form {
+  width: clamp(5rem, 100%, 800px);
+  background-color: var(--color-dark);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5em;
+}
+
+hr {
+  width: 100%;
+  border: none;
+  border-top: 2px solid var(--color-positive);
+  opacity: 0.5;
+}

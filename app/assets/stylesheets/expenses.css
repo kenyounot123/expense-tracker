@@ -1,16 +1,6 @@
 :root {
   --expense-card-width: 100%;
-  --expense-form-width: 100%;
-
   --responsive-card-width: clamp(5rem, 100%, 800px);
-}
-
-.expense__form {
-  width: var(--expense-form-width);
-  background-color: var(--color-dark);
-  display: flex;
-  flex-direction: column;
-  padding: 1.5em;
 }
 
 .expense__card {

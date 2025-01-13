@@ -3,32 +3,49 @@
 <% content_for :header do %>
   <nav class="flex justify-between items-center">
     <h1>
-      <b>Hello, <%= Current.user.email_address || "Ken" %></b>
+      <b>Welcome Back</b>
     </h1>
     <button class="btn btn-primary">
       <% if authenticated? %>
-        Log Out
+        <%= link_to "Log Out", session_url, method: :delete, data: { turbo_method: :delete } %>
       <% else %>
-        Log In
+        <%= link_to "Log In", new_session_path %>
       <% end %>
     </button>
   </nav>
 <% end %>
 
 <% content_for :analytics do %>
-  <h2 class="margin-block">Total Expenses: <span class="text-accent text-xx-large">$<%= @total_expenses %></span></h2>
-  <%# TODO: use separate api for fetching large data %>
-  <%= pie_chart @spendings_by_month, colors: ["#F8AF6A", "#6953F5"] %>
+  <h2 class="margin-block">Total Spent: <span class="text-accent text-large">$<%= @total_expenses %></span></h2>
+  <%# Add Dropdown to select chart view by spending or income %>
+  <%= line_chart @spendings_by_month, 
+      thousands: ",",
+      library: {
+        scales: {
+          x: {
+            grid: { color: chart_color_for_scheme },
+            border: { color: chart_color_for_scheme },
+            ticks: { color: chart_color_for_scheme, fontFamily: "Poppins" }
+          },
+          y: {
+            grid: { color: chart_color_for_scheme },
+            border: { color: chart_color_for_scheme },
+            ticks: { color: chart_color_for_scheme, fontFamily: "Poppins" }
+          }
+        }
+      } %>
 <% end %>
 
 <div class="flex justify-between items-center margin-block">
   <h2>Activity</h2>
-  <%= link_to new_expense_path, class: "btn btn-primary flex items-center justify-center" do %>
+
+  <%= link_to new_expense_path, class: "btn btn-secondary flex items-center justify-center" do %>
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
       <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
     </svg> 
     <p>Add Expense</p>
   <% end %>
+
 </div>
 
 <%= render(@expenses) || "You currently have no expenses" %>
