@@ -5,7 +5,7 @@
   Sign in
 <% end %>
 
-<%= form_with url: session_path, class: "margin-block-double card flex-column" do |form| %>
+<%= form_with url: session_path, class: "margin-block-double card flex flex-column" do |form| %>
   <h1 class="text-xx-large text-center"><b>Welcome Back</b></h1>
   <%= form.label :email_address, "Email Address", class: "text-positive text-label" %>
   <%= form.email_field :email_address, 
