@@ -8,6 +8,7 @@
   --dark: #171421;
   --green: #7ff58e;
   --red: #d40f0f;
+  --light-positive: #aba1f0;
   /* Abstractions */
   --color-bg: var(--bg);
   --color-positive: var(--positive);
@@ -15,6 +16,7 @@
   --color-dark: var(--dark);
   --color-green: var(--green);
   --color-red: var(--red);
+  --color-light-positive: var(--light-positive);
 
   /* Text */
   --color-ink: var(--white);

@@ -11,6 +11,7 @@
   border: var(--btn-border, 1px solid var(--btn-border-color, var(--color-dark)));
   border-radius: var(--btn-radius, 2em);
   display: inline-flex;
+  align-items: center;
   gap: var(--btn-gap, 0.5em);
   padding: var(--btn-padding, 0.5em 1em);
   color: var(--btn-color, var(--color-accent));
@@ -34,8 +35,10 @@
   &:has(svg) {
     color: var(--btn-color);
 
-    img {
-      font-size: 0.6em;
+    svg {
+      width: 1.2em;
+      height: 1.2em;
+      font-weight: 600;
     }
   }
   
@@ -101,4 +104,10 @@
   --btn-background: var(--color-accent);
   --btn-color: var(--color-ink);
   --btn-border-color: var(--color-accent);
+}
+.btn-dropdown {
+  --btn-background: var(--color-positive);
+  --btn-color: var(--color-ink);
+  --btn-border-color: var(--color-positive);
+  --btn-radius: 0.25em;
 }

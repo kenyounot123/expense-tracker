@@ -32,6 +32,7 @@
 
 /* Flexbox and grid */
 .flex { display: flex; }
+.flex-column { flex-direction: column; }
 .justify-between { justify-content: space-between; }
 .justify-end { justify-content: flex-end; }
 .items-center { align-items: center; }
@@ -41,7 +42,11 @@
 /* Margins */
 .margin { margin: var(--block-space) var(--inline-space); }
 .margin-block { margin-block: var(--block-space); }
+.margin-block-start { margin-block-start: var(--block-space); }
+.margin-block-end { margin-block-end: var(--block-space); }
 .margin-inline { margin-inline: var(--inline-space); }
+.margin-inline-start { margin-inline-start: var(--inline-space); }
+.margin-inline-end { margin-inline-end: var(--inline-space); }
 .margin-block-double { margin-block: var(--block-space-double); }
 
 /* Padding */
@@ -59,3 +64,11 @@
 .position-sticky { position: sticky; }
 .position-static { position: static; }
 .position-relative { position: relative; }
+
+/* Card */
+.card {
+  width: clamp(5rem, 100%, 800px);
+  background-color: var(--color-dark);
+  padding: 1.5em;
+  border-radius: 1em;
+}
