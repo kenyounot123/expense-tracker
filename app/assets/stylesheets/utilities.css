@@ -52,6 +52,8 @@
 /* Padding */
 .pad { padding: var(--block-space) var(--inline-space); }
 .pad-block { padding-block: var(--block-space); }
+.pad-block-double { padding-block: var(--block-space-double); }
+.pad-block-end-double { padding-block-end: var(--block-space-double); }
 .pad-inline { padding-inline: var(--inline-space); }
 .pad-inline-start { padding-inline-start: var(--inline-space); }
 .pad-inline-end { padding-inline-end: var(--inline-space); }
