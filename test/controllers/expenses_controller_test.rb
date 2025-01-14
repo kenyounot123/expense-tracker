@@ -28,7 +28,6 @@ class ExpensesControllerTest < ActionDispatch::IntegrationTest
           date: "2023-10-03",
           expense_type: "Utilities",
           income: false,
-          user_id: @user.id,
           category_ids: [ categories(:food).id ]
         }
       }

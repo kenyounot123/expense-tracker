@@ -1,12 +1,6 @@
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
-
-<% content_for :title do %>
-  Sign in
-<% end %>
-
-<%= form_with url: session_path, class: "margin-block-double card flex flex-column" do |form| %>
-  <h1 class="text-xx-large text-center"><b>Welcome Back</b></h1>
+<%# Add form validation %>
+<%= form_with url: registrations_path, class: "margin-block-double card flex flex-column" do |form| %>
+  <h1 class="text-xx-large text-center"><b>Create an Account</b></h1>
   <%= form.label :email_address, "Email Address", class: "text-positive text-label" %>
   <%= form.email_field :email_address, 
                       required: true, 
@@ -22,11 +16,16 @@
                          placeholder: "Enter your password", 
                          maxlength: 72 %><br>
 
-  <p class="text-right"><%= link_to "Forgot your password?", new_password_path, class: "text-positive" %></p>
+  <%= form.label :password_confirmation, "Confirm Password", class: "text-positive text-label" %>
+  <%= form.password_field :password_confirmation, 
+                         required: true, 
+                         autocomplete: "new-password", 
+                         placeholder: "Confirm your password", 
+                         maxlength: 72 %><br>
 
-  <%= form.submit "Sign in", class: "btn btn-login" %>
+  <%= form.submit "Create Account", class: "btn btn-login" %>
 
   <hr class="margin-block">
 
-  <p class="text-center">Don't have an account? <%= link_to "Sign up", signup_path, class: "text-positive" %></p>
+  <p class="text-center">Already have an account? <%= link_to "Sign in", login_path, class: "text-positive" %></p>
 <% end %>

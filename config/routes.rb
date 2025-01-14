@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  resource :session
+  root "expenses#index"
+  # Authentication
+  resource :session, only: [ :create ]
+  get "/login", to: "sessions#new", as: :login
+  delete "/logout", to: "sessions#destroy", as: :logout
+  resources :registrations, only: [ :new, :create ]
+  get "/signup", to: "registrations#new", as: :signup
   resources :passwords, param: :token
+  # Expenses
   resources :expenses
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -14,5 +21,4 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  root "expenses#index"
 end

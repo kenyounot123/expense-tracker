@@ -1,11 +1,11 @@
 class ExpensesController < ApplicationController
   before_action :set_expense, only: %i[ show edit update destroy ]
   before_action :set_total_expenses, only: %i[ index show ]
-  before_action :set_user
+
   def index
-    @expenses = @user.expenses.includes(:categories).all
-    @total_income = @user.expenses.total_income
-    @spendings_by_month = @user.expenses.expenses.group_by_month(:date).sum(:amount)
+    @expenses = expenses.includes(:categories).all
+    @total_income = expenses.total_income
+    @spendings_by_month = expenses.group_by_month(:date).sum(:amount)
   end
 
   def show
@@ -19,8 +19,7 @@ class ExpensesController < ApplicationController
   end
 
   def create
-    @expense = Expense.new(expense_params)
-    @expense.user_id = @user.id
+    @expense = expenses.build(expense_params)
     if @expense.save
       redirect_to expenses_path, notice: "Expense created successfully"
     else
@@ -29,7 +28,6 @@ class ExpensesController < ApplicationController
   end
 
   def update
-    @expense.user_id = @user.id
     if @expense.update(expense_params)
       redirect_to expense_path(@expense), notice: "Expense updated successfully"
     else
@@ -44,18 +42,18 @@ class ExpensesController < ApplicationController
 
   private
     def set_expense
-      @expense = Expense.find(params[:id])
-    end
-
-    def set_user
-      @user = Current.user
+      @expense = expenses.find(params[:id])
     end
 
     def set_total_expenses
-      @total_expenses = Expense.total_expenses
+      @total_expenses = expenses.total_expenses
+    end
+
+    def expenses
+      Current.user.expenses
     end
 
     def expense_params
-      params.require(:expense).permit(:amount, :description, :date, :expense_type, :income, :category_ids, :user_id)
+      params.require(:expense).permit(:amount, :description, :date, :expense_type, :income, :category_ids)
     end
 end
