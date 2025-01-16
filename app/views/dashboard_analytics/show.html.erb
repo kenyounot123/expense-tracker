@@ -29,7 +29,7 @@
       </ul>
     </div>
   </div>
-  <%= column_chart send("charts_#{@type}_path"),
+  <%= column_chart chart_path_for(params[:type]),
     thousands: ",",
       library: {
         scales: {
