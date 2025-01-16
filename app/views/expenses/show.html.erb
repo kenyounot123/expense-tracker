@@ -9,7 +9,7 @@
 <% content_for :analytics do %>
    <%= pie_chart [
          ["This Expense", @expense.amount],
-         ["Other Expenses", @total_expenses - @expense.amount]
+         ["Other Expenses", @total_spendings - @expense.amount]
        ],
        donut: true,
        colors: ["#CD4FF7", "#8e7ff5"]

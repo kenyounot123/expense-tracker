@@ -1,18 +1,18 @@
 class ExpensesController < ApplicationController
   before_action :set_expense, only: %i[ show edit update destroy ]
-  before_action :set_total_expenses, only: %i[ index show ]
+  before_action :set_total_spendings, only: %i[ index show ]
 
   def index
     @expenses = expenses.includes(:categories).all
     @total_income = expenses.total_income
-    @spendings_by_month = expenses.group_by_month(:date).sum(:amount)
+    @spendings_by_month = expenses.spendings.group_by_month(:date).sum(:amount)
   end
 
   def show
   end
 
   def new
-    @expense = Expense.new
+    @expense = expenses.build
   end
 
   def edit
@@ -45,8 +45,8 @@ class ExpensesController < ApplicationController
       @expense = expenses.find(params[:id])
     end
 
-    def set_total_expenses
-      @total_expenses = expenses.total_expenses
+    def set_total_spendings
+      @total_spendings = expenses.total_spendings
     end
 
     def expenses

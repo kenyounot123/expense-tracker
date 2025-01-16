@@ -16,10 +16,10 @@
 <% content_for :analytics do %>
   <section class="card margin-block-double">
     <div class="flex justify-between items-center">
-      <h2 class="margin-block-end">Total Spent: <span class="text-accent text-large">$<%= @total_expenses %></span></h2>
+      <h2 class="margin-block-end">Total Spent: <span class="text-accent text-large">$<%= @total_spendings %></span></h2>
       <div data-controller="dropdown" class="position-relative">
         <button type="button" class="btn btn-dropdown" data-action="click->dropdown#toggle">
-          Options
+          View
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="">
             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
           </svg>
@@ -29,14 +29,14 @@
           class="dropdown-menu"
           data-action="click@window->dropdown#hide"
         >
-          <li class="dropdown-item" data-action="">Account settings</li>
-          <li class="dropdown-item" data-action="">Support</li>
-          <li class="dropdown-item" data-action="">License</li>
+          <li class="dropdown-item" data-action="">Income</li>
+          <li class="dropdown-item" data-action="">Spent</li>
+          <li class="dropdown-item" data-action="">Profits</li>
         </ul>
       </div>
     </div>
 
-    <%= line_chart @spendings_by_month,
+    <%= column_chart charts_spendings_path(Current.user.id),
         thousands: ",",
         library: {
           scales: {
