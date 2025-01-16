@@ -10,11 +10,13 @@ Rails.application.routes.draw do
   # Expenses
   resources :expenses
   # Charts
-  namespace :charts do
-    get "income/:user_id", to: "charts#income", as: :income
-    get "spendings/:user_id", to: "charts#spendings", as: :spendings
-    get "profits/:user_id", to: "charts#profits", as: :profits
+  scope :charts do
+    get "income", to: "charts#income", as: :charts_income
+    get "spendings", to: "charts#spendings", as: :charts_spendings
+    get "profits", to: "charts#profits", as: :charts_profits
   end
+  # Dashboard Analytics
+  resource :dashboard_analytics, only: [ :show ]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

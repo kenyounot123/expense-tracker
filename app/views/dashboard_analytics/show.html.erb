@@ -1,0 +1,48 @@
+<%= turbo_frame_tag "analytics_content" do %>
+  <div class="flex justify-between items-center">
+    <h2 class="margin-block-end">
+      Total <%= format_analytics_type(@type) %>:
+      <span class="text-accent text-large">$<%= @total %></span>
+    </h2>
+
+    <div data-controller="dropdown" class="position-relative">
+      <button type="button" class="btn btn-dropdown" data-action="click->dropdown#toggle">
+        View
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+        </svg>
+      </button>
+      <ul
+        data-dropdown-target="menu"
+        class="dropdown-menu"
+        data-action="click@window->dropdown#hide"
+      >
+        <%= link_to "Income", dashboard_analytics_path(type: :income),
+            class: "dropdown-item",
+            data: { turbo_frame: "analytics_content" } %>
+        <%= link_to "Spent", dashboard_analytics_path(type: :spendings),
+            class: "dropdown-item",
+            data: { turbo_frame: "analytics_content" } %>
+        <%= link_to "Profits", dashboard_analytics_path(type: :profits),
+            class: "dropdown-item",
+            data: { turbo_frame: "analytics_content" } %>
+      </ul>
+    </div>
+  </div>
+  <%= column_chart send("charts_#{@type}_path"),
+    thousands: ",",
+      library: {
+        scales: {
+          x: {
+            grid: { color: chart_color_for_scheme },
+            border: { color: chart_color_for_scheme },
+            ticks: { color: chart_color_for_scheme, fontFamily: "Poppins" }
+          },
+          y: {
+            grid: { color: chart_color_for_scheme },
+            border: { color: chart_color_for_scheme },
+            ticks: { color: chart_color_for_scheme, fontFamily: "Poppins" }
+          }
+        }
+      } %>
+<% end %> 
