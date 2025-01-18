@@ -25,23 +25,24 @@
   </head>
 
   <body>
-    
-    <header id="header">
-      <%= yield :header %>
-    </header>
-    
-    <div id="analytics">
-      <%= yield :analytics %>
+    <%= tag.div(flash[:alert], class: "alert alert-error") if flash[:alert] %>
+    <%= tag.div(flash[:notice], class: "alert alert-success") if flash[:notice] %>
+
+    <div class="container">
+      <header id="header">
+        <%= yield :header %>
+      </header>
+      
+      <div id="analytics">
+        <%= yield :analytics %>
+      </div>
+      <main id="main" class="pad-block-end-double">
+        <%= yield %>
+      </main>
+      <footer id="footer">
+        <%= yield :footer %>
+      </footer>
     </div>
-
-    <main id="main" class="pad-block-end-double">
-      <%= yield %>
-    </main>
-
-    <footer id="footer">
-      <%= yield :footer %>
-    </footer>
-
 
   </body>
 </html>

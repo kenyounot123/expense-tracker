@@ -17,14 +17,14 @@
         class="dropdown-menu"
         data-action="click@window->dropdown#hide"
       >
-        <%= link_to "Income", dashboard_analytics_path(type: :income),
-            class: "dropdown-item",
+        <%= link_to "Income", dashboard_analytics_path(type: :income), 
+            class: "dropdown-item #{params[:type].to_s == 'income' ? 'disabled' : ''}", 
             data: { turbo_frame: "analytics_content" } %>
-        <%= link_to "Spent", dashboard_analytics_path(type: :spendings),
-            class: "dropdown-item",
+        <%= link_to "Spent", dashboard_analytics_path(type: :spendings), 
+            class: "dropdown-item #{params[:type].to_s == 'spendings' ? 'disabled' : ''}", 
             data: { turbo_frame: "analytics_content" } %>
-        <%= link_to "Profits", dashboard_analytics_path(type: :profits),
-            class: "dropdown-item",
+        <%= link_to "Profits", dashboard_analytics_path(type: :profits), 
+            class: "dropdown-item #{params[:type].to_s == 'profits' ? 'disabled' : ''}", 
             data: { turbo_frame: "analytics_content" } %>
       </ul>
     </div>

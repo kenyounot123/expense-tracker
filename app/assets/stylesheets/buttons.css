@@ -85,6 +85,17 @@
   --btn-border-color: var(--color-positive);
 }
 
+.btn-gap-less {
+  --btn-gap: 0.25em;
+}
+
+.btn-transparent {
+  --btn-background: none;
+  --btn-color: var(--color-ink);
+  --btn-border: none;
+  --btn-radius: 0;
+}
+
 .btn-login {
   --btn-background: var(--color-positive);
   --btn-color: var(--color-ink);

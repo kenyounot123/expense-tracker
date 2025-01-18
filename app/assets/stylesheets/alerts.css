@@ -1,0 +1,22 @@
+.alert {
+  padding: var(--alert-padding, 0.5em);
+  border-radius: var(--alert-border-radius, 0.25em);
+  color: var(--alert-color, var(--color-ink-reversed));
+  background-color: var(--alert-background-color, var(--color-background));
+  border: var(--alert-border, none);
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  margin: 0;
+  text-align: center;
+}
+
+.alert-error {
+  --alert-color: var(--color-ink-reversed);
+  --alert-background-color: var(--color-red);
+}
+
+.alert-success {
+  --alert-color: var(--color-ink-reversed);
+  --alert-background-color: var(--color-green);
+}

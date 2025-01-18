@@ -22,6 +22,12 @@
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
+.dropdown-item.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 .dropdown-item:not(:first-child) {
   border-top: 1px solid color-mix(in srgb, var(--color-ink-reversed) 20%, transparent);
 }

@@ -3,23 +3,22 @@ class ExpensesController < ApplicationController
   before_action :set_total_spendings, only: %i[ index show ]
 
   def index
-    @expenses = expenses.includes(:categories).all
-    @total_income = expenses.total_income
-    @spendings_by_month = expenses.spendings.group_by_month(:date).sum(:amount)
+    @expenses = current_user_expenses.includes(:categories).order(created_at: sort_direction).all
+    @total_income = current_user_expenses.total_income
   end
 
   def show
   end
 
   def new
-    @expense = expenses.build
+    @expense = current_user_expenses.build
   end
 
   def edit
   end
 
   def create
-    @expense = expenses.build(expense_params)
+    @expense = current_user_expenses.build(expense_params)
     if @expense.save
       redirect_to expenses_path, notice: "Expense created successfully"
     else
@@ -42,15 +41,19 @@ class ExpensesController < ApplicationController
 
   private
     def set_expense
-      @expense = expenses.find(params[:id])
+      @expense = current_user_expenses.find(params[:id])
     end
 
     def set_total_spendings
-      @total_spendings = expenses.total_spendings
+      @total_spendings = current_user_expenses.total_spendings
     end
 
-    def expenses
+    def current_user_expenses
       Current.user.expenses
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:sort]) ? params[:sort] : 'desc'
     end
 
     def expense_params

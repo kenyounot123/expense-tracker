@@ -5,7 +5,6 @@
 html, body {
   background-color: var(--color-bg);
   font-family: 'Poppins', sans-serif;
-  margin: 0 1em;
 }
 
 a {
@@ -25,4 +24,8 @@ hr {
   border: none;
   border-top: 2px solid var(--color-positive);
   opacity: 0.5;
+}
+
+.container {
+  margin: 0 1em;
 }
