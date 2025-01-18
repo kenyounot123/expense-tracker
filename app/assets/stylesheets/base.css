@@ -25,7 +25,3 @@ hr {
   border-top: 2px solid var(--color-positive);
   opacity: 0.5;
 }
-
-.container {
-  margin: 0 1em;
-}

@@ -1,8 +1,9 @@
-<h1>Forgot your password?</h1>
+<% content_for :header do %>
+  <%= render "shared/header", title: "Forgot your password?", back_path: login_path %>
+<% end %>
 
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-
-<%= form_with url: passwords_path do |form| %>
+<%= form_with url: passwords_path, class: "card flex flex-column" do |form| %>
+  <%= form.label :email_address, "Email Address", class: "text-positive text-label" %>
   <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
-  <%= form.submit "Email reset instructions" %>
+  <%= form.submit "Email reset instructions", class: "btn btn-login" %>
 <% end %>

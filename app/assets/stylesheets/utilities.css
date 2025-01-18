@@ -69,7 +69,6 @@
 
 /* Card */
 .card {
-  width: clamp(5rem, 100%, 800px);
   background-color: var(--color-dark);
   padding: 1.5em;
   border-radius: 1em;

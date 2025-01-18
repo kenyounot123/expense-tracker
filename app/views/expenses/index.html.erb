@@ -14,7 +14,7 @@
 <% end %>
 
 <% content_for :analytics do %>
-  <section class="card margin-block-double">
+  <section class="card">
     <%= turbo_frame_tag "analytics_content" do %>
       <div class="flex justify-between items-center">
         <h2 class="margin-block-end">Total Spent: <span class="text-accent text-large">$<%= @total_spendings %></span></h2>

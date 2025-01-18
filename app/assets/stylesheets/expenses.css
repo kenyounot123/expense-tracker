@@ -1,14 +1,8 @@
-:root {
-  --expense-card-width: 100%;
-  --responsive-card-width: clamp(5rem, 100%, 800px);
-}
-
 .expense__card {
   background-color: var(--color-dark);
   border-radius: 0.75em;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
   padding: 1.5em;
-  width: var(--responsive-card-width);
   margin-bottom: 1em;
 }
 
