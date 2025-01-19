@@ -10,9 +10,9 @@ module ExpensesHelper
 
     case params[:sort]
     when SORT_DIRECTIONS.first
-      "Oldest"
-    else
       "Recent"
+    else
+      "Oldest"
     end
   end
 end

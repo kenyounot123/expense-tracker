@@ -2,9 +2,20 @@
   box-sizing: border-box;
 }
 
-html, body {
+html {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
   background-color: var(--color-bg);
   font-family: 'Poppins', sans-serif;
+}
+
+body.landings {
+  background-color: var(--color-landings-bg);
+  overflow-x: hidden;
+  position: relative;
 }
 
 a {

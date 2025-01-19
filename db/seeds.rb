@@ -11,22 +11,12 @@
 Expense.destroy_all
 Category.destroy_all
 # Create sample categories
-categories = [
-  { name: "Housing" },
-  { name: "Food" },
-  { name: "Entertainment" },
-  { name: "Utilities" },
-  { name: "Education" },
-  { name: "Electronics" },
-  { name: "Insurance" }
-]
 # Create sample expenses
 expenses = [
   {
     user_id: User.find_by(email_address: "bob@gmail.com").id,
     amount: 1200.00,
     description: "Monthly Rent",
-    categories: [ "Housing" ],
     date: Date.today,
     expense_type: "Monthly"
   },
@@ -34,7 +24,6 @@ expenses = [
     user_id: User.find_by(email_address: "bob@gmail.com").id,
     amount: 85.50,
     description: "Grocery Shopping",
-    categories: [ "Food" ],
     date: Date.today - 2.days,
     expense_type: "One-Time"
   },
@@ -42,7 +31,6 @@ expenses = [
     user_id: User.find_by(email_address: "bob@gmail.com").id,
     amount: 45.00,
     description: "Netflix Subscription",
-    categories: [ "Entertainment" ],
     date: Date.today - 5.days,
     expense_type: "Monthly"
   },
@@ -50,7 +38,6 @@ expenses = [
     user_id: User.find_by(email_address: "bob@gmail.com").id,
     amount: 120.00,
     description: "Electricity Bill",
-    categories: [ "Utilities" ],
     date: Date.today - 1.week,
     expense_type: "Monthly"
   },
@@ -58,7 +45,6 @@ expenses = [
     user_id: User.find_by(email_address: "bob@gmail.com").id,
     amount: 60.00,
     description: "Internet Service",
-    categories: [ "Utilities" ],
     date: Date.today - 3.days,
     expense_type: "Monthly"
   },
@@ -66,7 +52,6 @@ expenses = [
     user_id: User.find_by(email_address: "bob@gmail.com").id,
     amount: 25.99,
     description: "Book Purchase",
-    categories: [ "Education" ],
     date: Date.today - 1.day,
     expense_type: "One-Time"
   },
@@ -74,7 +59,6 @@ expenses = [
     user_id: User.find_by(email_address: "bob@gmail.com").id,
     amount: 499.99,
     description: "New Phone",
-    categories: [ "Electronics" ],
     date: Date.today - 2.weeks,
     expense_type: "One-Time"
   },
@@ -82,7 +66,6 @@ expenses = [
     user_id: User.find_by(email_address: "bob@gmail.com").id,
     amount: 150.00,
     description: "Car Insurance",
-    categories: [ "Insurance" ],
     date: Date.today,
     expense_type: "Monthly"
   }

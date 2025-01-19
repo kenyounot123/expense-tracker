@@ -53,7 +53,7 @@ class ExpensesController < ApplicationController
     end
 
     def sort_direction
-      %w[asc desc].include?(params[:sort]) ? params[:sort] : 'desc'
+      %w[asc desc].include?(params[:sort]) ? params[:sort] : "asc"
     end
 
     def expense_params

@@ -20,6 +20,8 @@
 .text-ink-reversed { color: var(--color-ink-reversed); }
 .text-positive { color: var(--color-positive); }
 .text-accent { color: var(--color-accent); }
+.text-secondary-accent { color: var(--color-secondary-accent); }
+.text-semibold { font-weight: 600; }
 .text-label { 
   font-size: 1em;
   font-weight: 600;
@@ -34,10 +36,12 @@
 .flex { display: flex; }
 .flex-column { flex-direction: column; }
 .justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
 .justify-end { justify-content: flex-end; }
 .items-center { align-items: center; }
 .gap-inline { gap: var(--inline-space); }
 .gap-inline-double { gap: var(--inline-space-double); }
+.flex-grow { flex-grow: 1; }
 
 /* Margins */
 .margin { margin: var(--block-space) var(--inline-space); }

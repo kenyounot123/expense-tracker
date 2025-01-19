@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "expenses#index"
+  root "landings#index"
   # Authentication
   resource :session, only: [ :create ]
   get "/login", to: "sessions#new", as: :login

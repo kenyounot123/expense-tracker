@@ -1,0 +1,61 @@
+<%= content_for :title do %>
+  Easy Expenses
+<% end %>
+
+
+<nav class="nav">
+  <div class="nav__logo">
+    Trackit
+  </div>
+  <ul class="nav__links">
+    <div class="nav__responsive-menu-links">
+      <li><%= link_to "Results", "#results" %></li>
+      <li><%= link_to "Features", "#features" %></li>
+      <li><%= link_to "Pricing", "#pricing" %></li>
+    </div>
+    <li><%= link_to "Sign in", login_path, class: "btn btn-outline btn-hero" %></li>
+    <li><%= link_to "Sign up", signup_path, class: "btn btn-primary btn-hero" %></li>
+  </ul>
+  <div data-controller="dropdown" class="nav__hamburger">
+    <div class="flex items-center">
+      <svg tabindex="0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="nav__menu" data-action="click->dropdown#toggle">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+    </div>
+    <ul
+      data-dropdown-target="menu"
+      class="dropdown-menu"
+      data-action="click@window->dropdown#hide"
+    >
+      <%= link_to "Results", "#results", class: "dropdown-item" %>
+      <%= link_to "Features", "#features", class: "dropdown-item" %>
+      <%= link_to "Pricing", "#pricing", class: "dropdown-item" %>
+    </ul>
+  </div>
+</nav>
+
+<main class="hero">
+  <div class="hero__content">
+    <h1 class="hero__title">Finally, an <span class="text-accent">expense tracker</span> that's actually easy to use.</h1>
+    <p class="hero__description">Too many complicated features? Hard to use? We've got you covered.</p>
+    <div class="flex items-center gap-inline-double">
+      <h2 class="hero__subtitle">Your finances need <span class="text-accent">Trackit</span></h2>
+      <div class="hero__button-container">
+        <button class="btn btn-call-to-action">Get started</button>
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center justify-center margin-block-double">
+    <div class="hero__image-container">
+      <%= image_tag "trackit.png", alt: "Trackit", class: "hero__image image_stacked_first" %>
+      <%= image_tag "trackit_form.png", alt: "Trackit", class: "hero__image image_stacked_second" %>
+    </div>
+  </div>
+</main>
+
+<div class="image-container">
+  <div class="image-container__images">
+    <%= image_tag "trackit.png", alt: "Trackit", class: "image image_stacked_first" %>
+    <%= image_tag "trackit_form.png", alt: "Trackit", class: "image image_stacked_second" %>
+  </div>
+</div>
