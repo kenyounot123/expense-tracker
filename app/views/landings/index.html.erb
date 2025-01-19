@@ -36,19 +36,52 @@
 
 <main class="hero">
   <div class="hero__content">
-    <h1 class="hero__title">Finally, an <span class="text-accent">expense tracker</span> that's actually easy to use.</h1>
-    <p class="hero__description">Too many complicated features? Hard to use? We've got you covered.</p>
-    <div class="flex items-center gap-inline-double">
-      <h2 class="hero__subtitle">Your finances need <span class="text-accent">Trackit</span></h2>
+    <div class="hero__title">Finally, an <span class="text-accent">expense tracker</span> that's actually easy to use.</div>
+
+    <p class="hero__description margin-block">Too many complicated features? Hard to use? We've got you covered.</p>
+
+    <div class="hero__container">
+      <div class="hero__subtitle">Your finances need <span class="text-accent">Trackit</span>.</div>
       <div class="hero__button-container">
         <button class="btn btn-call-to-action">Get started</button>
       </div>
     </div>
   </div>
-  <div class="flex items-center justify-center margin-block-double">
-    <div class="hero__image-container">
+
+  <div class="hero__image-container">
+    <div class="position-relative">
       <%= image_tag "trackit.png", alt: "Trackit", class: "hero__image image_stacked_first" %>
       <%= image_tag "trackit_form.png", alt: "Trackit", class: "hero__image image_stacked_second" %>
+    </div>
+  </div>
+
+
+  <div class="margin-block-double">
+    <div class="hero__content">
+      <div class="hero__title">User-friendly features.</div>
+      <p class="hero__description"><span class="highlight-text">A lot of expense trackers are either hard to use or have too many features that you don't need.</span> This expense tracker is <span class="highlight-text text-accent">simple</span>, <span class="highlight-text text-accent">intuitive</span>, and focuses only on the essential features you need to manage your spending. <span class="highlight-text"> It <span class="highlight-text text-accent">eliminates unnecessary complexity</span>, making it quick and easy to track expenses without feeling overwhelmed.</span></p>
+    </div>
+  </div>
+
+  <div id="features" class="">
+    <div class="hero__content">
+      <div class="hero__title">Lets Take a Look</div>
+      <div class="hero__subtitle">After you sign up, everything clicks into place.</div>
+      <p class="hero__description">The home screen organizes your expenses, budgets, and financial goals all in one place.</p>
+      <div class="hero__container">
+        <div class="image_card">
+          <div class="image_title_tag">See your total stats</div>
+          <%= image_tag "feature_dashboard.png", alt: "Trackit" %>
+        </div>
+        <div class="image_card">
+          <div class="image_title_tag">A simple form for transactions</div>
+          <%= image_tag "feature_form.png", alt: "Trackit" %>
+        </div>
+        <div class="image_card">
+          <div class="image_title_tag">See all your expenses</div>
+          <%= image_tag "feature_transactions.png", alt: "Trackit" %>
+        </div>
+      </div>
     </div>
   </div>
 </main>
@@ -59,3 +92,46 @@
     <%= image_tag "trackit_form.png", alt: "Trackit", class: "image image_stacked_second" %>
   </div>
 </div>
+
+<%= content_for :footer do %>
+  <footer class="footer">
+    <div class="footer__content">
+      <div class="footer__grid">
+        <div class="footer__section">
+          <h3 class="footer__heading">Trackit</h3>
+          <p class="footer__description">Simple expense tracking for everyone. Manage your finances with ease.</p>
+        </div>
+
+        <div class="footer__section">
+          <h4 class="footer__heading">Product</h4>
+          <ul class="footer__links">
+            <li><%= link_to "Features", "#features" %></li>
+            <li><%= link_to "Pricing", "#pricing" %></li>
+            <li><%= link_to "Results", "#results" %></li>
+          </ul>
+        </div>
+
+        <div class="footer__section">
+          <h4 class="footer__heading">Company</h4>
+          <ul class="footer__links">
+            <li><%= link_to "About", "#" %></li>
+            <li><%= link_to "Contact", "#" %></li>
+            <li><%= link_to "Privacy Policy", "#" %></li>
+          </ul>
+        </div>
+
+        <div class="footer__section">
+          <h4 class="footer__heading">Get Started</h4>
+          <ul class="footer__links">
+            <li><%= link_to "Sign up", signup_path %></li>
+            <li><%= link_to "Sign in", login_path %></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; <%= Time.current.year %> Trackit. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+<% end %>
