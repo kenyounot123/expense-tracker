@@ -4,6 +4,7 @@
   --responsive-size-x-small: clamp(1.5em, 1.5vw, 3em);
   --responsive-size-xx-small: clamp(1em, 1.2vw, 1.8em);
   --responsive-image-size: clamp(10em, 40vw, 800px);
+  --landing-padding: var(--block-space) 2em;
 }
 
 .hero__container {
@@ -20,7 +21,7 @@
   display: flex;
   align-items: center;
   gap: var(--inline-space-double);
-  padding: var(--block-space) var(--inline-space-double);
+  padding: var(--landing-padding);
   width: 100%;
 
   .nav__logo {
@@ -49,7 +50,7 @@
 
 
 .hero {
-  padding: var(--block-space) var(--inline-space-double);
+  padding: var(--landing-padding);
   margin: var(--block-space) 0;
 }
 .hero__content {
@@ -101,6 +102,7 @@
 
 .image_card {
   position: relative;
+  box-shadow: 0 0 10px rgba(248, 239, 239, 0.1);
 }
 .image_title_tag {
   position: absolute;
@@ -111,7 +113,7 @@
   padding: var(--inline-space);
   color: var(--color-ink-reversed);
   font-size: var(--responsive-size-xx-small);
-  font-weight: 600;
+  font-weight: 800;
 }
 
 .image-container {
@@ -157,7 +159,7 @@
 
 .footer {
   background-color: var(--color-dark);
-  padding: var(--block-space-double) var(--inline-space-double);
+  padding: var(--landing-padding);
   margin-top: var(--block-space-double);
   width: 100%;
 }
