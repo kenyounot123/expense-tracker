@@ -31,6 +31,7 @@
   font-weight: 600;
 }
 .text-underline { text-decoration: underline; }
+.text-opacity { opacity: 0.8; }
 
 /* Flexbox and grid */
 .flex { display: flex; }

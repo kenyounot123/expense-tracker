@@ -3,7 +3,7 @@
     <div class="expense__title">
       <%= expense.description.truncate(20) %>
     </div>
-    <%= link_to expense_path(expense) do %>
+    <%= link_to expense_path(expense), data: { turbo_frame: "_top" } do %>
       <button class="btn btn-secondary">
         See Details
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
