@@ -102,4 +102,6 @@
   </div>
 <%# TODO: Cache results if needed %>
   <%= render(@expenses) || "You currently have no expenses" %>
+  <%== pagy_nav(@pagy) %>
+
 <% end %>

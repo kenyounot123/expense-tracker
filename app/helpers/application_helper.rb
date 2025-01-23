@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+
   def prefers_color_scheme?(scheme)
     # Get the color-scheme from meta tag (defaults to "dark")
     current_scheme = content_for(:color_scheme) || "dark"

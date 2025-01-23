@@ -65,3 +65,5 @@ end
 # Data visualization gems
 gem "chartkick"
 gem "groupdate"
+# Pagination gem
+gem "pagy", "~> 9.3", ">= 9.3.3"
