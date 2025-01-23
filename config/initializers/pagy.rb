@@ -1,2 +1,2 @@
-Pagy::DEFAULT[:limit] = 5
+Pagy::DEFAULT[:limit] = 3
 Pagy::DEFAULT.freeze
