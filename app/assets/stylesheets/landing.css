@@ -87,7 +87,8 @@
 .hero__image-container {
   position: relative;
   width: 90%;
-  height: 750px;
+  min-height: 500px;
+  max-height: 750px;
   margin-top: var(--block-space-double);
   padding: var(--block-space);
 }
@@ -107,13 +108,14 @@
 .image_title_tag {
   position: absolute;
   top: 0;
-  left: 20%;
+  left: 30%;
   transform: translateY(-40%) translateX(-50%);
   background-color: var(--color-secondary-accent);
   padding: var(--inline-space);
   color: var(--color-ink-reversed);
   font-size: var(--responsive-size-xx-small);
   font-weight: 800;
+  text-wrap: nowrap;
 }
 
 .image-container {

@@ -12,9 +12,9 @@
       <li><%= link_to "Results", "#results" %></li>
       <li><%= link_to "Features", "#features" %></li>
       <li><%= link_to "Pricing", "#pricing" %></li>
+      <li><%= link_to "Sign in", login_path, class: "btn btn-outline btn-hero" %></li>
+      <li><%= link_to "Sign up", signup_path, class: "btn btn-primary btn-hero" %></li>
     </div>
-    <li><%= link_to "Sign in", login_path, class: "btn btn-outline btn-hero" %></li>
-    <li><%= link_to "Sign up", signup_path, class: "btn btn-primary btn-hero" %></li>
   </ul>
   <div data-controller="dropdown" class="nav__hamburger">
     <div class="flex items-center">
@@ -43,7 +43,7 @@
     <div class="hero__container">
       <div class="hero__subtitle">Your finances need <span class="text-accent">TrackExp</span>.</div>
       <div class="hero__button-container">
-        <button class="btn btn-call-to-action">Get started</button>
+        <%= link_to "Get started", expenses_path, class: "btn btn-call-to-action" %>
       </div>
     </div>
   </div>
