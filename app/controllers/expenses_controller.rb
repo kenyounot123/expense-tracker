@@ -3,7 +3,7 @@ class ExpensesController < ApplicationController
   before_action :set_total_spendings, only: %i[ index show ]
 
   def index
-    @expenses = current_user_expenses.includes(:categories).order(created_at: sort_direction).all
+    @pagy, @expenses = pagy(current_user_expenses.includes(:categories).order(created_at: sort_direction))
     @total_income = current_user_expenses.total_income
   end
 
