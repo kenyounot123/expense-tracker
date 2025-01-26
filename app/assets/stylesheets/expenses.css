@@ -13,7 +13,6 @@
   color: var(--color-positive);
   overflow-wrap: break-word;
   hyphens: auto;
-  margin-bottom: 1em;
 }
 
 .expense__amount-value {
