@@ -5,13 +5,15 @@
 
 <nav class="nav">
   <div class="nav__logo">
-    TrackExp
+    <%= link_to root_path, class: "flex items-center" do %>
+      <%= image_tag "favicon.png", alt: "TrackExp", class: "nav__logo-image" %>
+      TrackExp
+    <% end %>
   </div>
   <ul class="nav__links">
     <div class="nav__responsive-menu-links">
       <li><%= link_to "Results", "#results" %></li>
       <li><%= link_to "Features", "#features" %></li>
-      <li><%= link_to "Pricing", "#pricing" %></li>
       <li><%= link_to "Sign in", login_path, class: "btn btn-outline btn-hero" %></li>
       <li><%= link_to "Sign up", signup_path, class: "btn btn-primary btn-hero" %></li>
     </div>
@@ -29,7 +31,8 @@
     >
       <%= link_to "Results", "#results", class: "dropdown-item" %>
       <%= link_to "Features", "#features", class: "dropdown-item" %>
-      <%= link_to "Pricing", "#pricing", class: "dropdown-item" %>
+      <%= link_to "Sign in", login_path, class: "dropdown-item" %>
+      <%= link_to "Sign up", signup_path, class: "dropdown-item" %>
     </ul>
   </div>
 </nav>
@@ -106,7 +109,6 @@
           <h4 class="footer__heading">Product</h4>
           <ul class="footer__links">
             <li><%= link_to "Features", "#features" %></li>
-            <li><%= link_to "Pricing", "#pricing" %></li>
             <li><%= link_to "Results", "#results" %></li>
           </ul>
         </div>

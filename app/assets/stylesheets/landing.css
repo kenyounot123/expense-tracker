@@ -28,6 +28,13 @@
     font-size: var(--responsive-size-x-small);
     font-weight: 600;
     flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav__logo-image {
+    width: 1.5em;
+    height: 1.5em;
   }
   
   .nav__links {
