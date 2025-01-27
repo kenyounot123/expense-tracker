@@ -1,5 +1,7 @@
 class Expense < ApplicationRecord
-  include Calculatable
+  include Calculatable, RecurringExpense
+
+  EXPENSE_TYPES = %w[one_time monthly yearly].freeze
 
   has_and_belongs_to_many :categories
   belongs_to :user

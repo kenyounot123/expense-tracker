@@ -10,7 +10,7 @@ fried_rice:
   amount: 20
   description: "Fried rice for lunch"
   date: "2025-01-01"
-  expense_type: "Monthly"
+  expense_type: "monthly"
 
 shopping_expense:
   id: 2
@@ -18,5 +18,5 @@ shopping_expense:
   amount: 100
   description: "Shopping"
   date: "2025-01-01"
-  expense_type: "One-time"
+  expense_type: "one_time"
 

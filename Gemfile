@@ -67,3 +67,5 @@ gem "chartkick"
 gem "groupdate"
 # Pagination gem
 gem "pagy", "~> 9.3", ">= 9.3.3"
+# Job monitoring gem
+gem "mission_control-jobs"
