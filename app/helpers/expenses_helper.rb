@@ -9,10 +9,8 @@ module ExpensesHelper
     return "Recent" unless SORT_DIRECTIONS.include?(params[:sort])
 
     case params[:sort]
-    when SORT_DIRECTIONS.first
-      "Recent"
-    else
-      "Oldest"
+    when "asc" then "Oldest"
+    when "desc" then "Recent"
     end
   end
 end
