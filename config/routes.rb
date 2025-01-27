@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount MissionControl::Jobs::Engine, at: "/jobs"
   root "landings#index"
   # Authentication
   resource :session, only: [ :create ]

@@ -91,11 +91,11 @@
         class="dropdown-menu"
         data-action="click@window->dropdown#hide"
       >
-        <%= link_to "Recent", expenses_path(sort: :asc), 
-            class: "dropdown-item #{params[:sort] != 'desc' ? 'disabled' : ''}", 
+        <%= link_to "Recent", expenses_path(sort: :desc), 
+            class: "dropdown-item #{params[:sort] != 'asc' ? 'disabled' : ''}", 
             data: { turbo_frame: "expenses_content" } %>
-        <%= link_to "Oldest", expenses_path(sort: :desc), 
-            class: "dropdown-item #{params[:sort] == 'desc' ? 'disabled' : ''}", 
+        <%= link_to "Oldest", expenses_path(sort: :asc), 
+            class: "dropdown-item #{params[:sort] == 'asc' ? 'disabled' : ''}", 
             data: { turbo_frame: "expenses_content" } %>
       </ul>
     </div>
