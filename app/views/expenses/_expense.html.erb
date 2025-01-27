@@ -26,7 +26,7 @@
   </div>
   <div class="expense__details">
     <span><%= expense.date.strftime("%b %d, %Y") %></span>
-    <span><%= expense.expense_type %> Payment</span>
+    <span><%= expense.expense_type.humanize %> Payment</span>
   </div>
   <div>
     <% expense.categories.each do |category| %>

@@ -28,7 +28,7 @@
   <%#                   { class: "margin-block" } %>
 
   <%= form.label :expense_type, class: "text-positive text-label" %>
-  <%= form.select :expense_type, ["One-Time", "Monthly", "Yearly"], { selected: "One-Time" }, { class: "margin-block" } %>
+  <%= form.select :expense_type, [["One-Time", "one_time"], ["Monthly", "monthly"], ["Yearly", "yearly"]], { selected: "one_time" }, { class: "margin-block" } %>
 
   <div class="margin-block">
     <%= form.submit "Add Expense", class: "btn btn-primary btn--submit", 

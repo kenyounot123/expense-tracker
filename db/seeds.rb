@@ -9,7 +9,6 @@
 #   end
 
 Expense.destroy_all
-Category.destroy_all
 # Create sample categories
 # Create sample expenses
 expenses = [
@@ -71,26 +70,11 @@ expenses = [
   }
 ]
 
-# Create each category
-categories.each do |category_data|
-  category = Category.create!(category_data)
-  puts "Created category: #{category.name}"
-end
 # Create each expense
 expenses.each do |expense_data|
-  # Extract categories before creating expense
-  categories_names = expense_data.delete(:categories)
   expense = Expense.create!(expense_data)
-
-  # Find and associate categories
-  categories_names.each do |category_name|
-    category = Category.find_by!(name: category_name)
-    expense.categories << category
-  end
-
   puts "Created expense: #{expense.description}"
 end
 
 
 puts "Created #{Expense.count} expenses"
-puts "Created #{Category.count} categories"
