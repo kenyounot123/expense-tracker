@@ -69,3 +69,5 @@ gem "groupdate"
 gem "pagy", "~> 9.3", ">= 9.3.3"
 # Job monitoring gem
 gem "mission_control-jobs"
+# SEO
+gem "sitemap_generator"
