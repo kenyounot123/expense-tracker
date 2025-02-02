@@ -1,4 +1,8 @@
 <%# Add form validation %>
+<% content_for :title do %>
+  Sign up
+<% end %>
+
 <%= form_with url: registrations_path, class: "margin-block-double card flex flex-column" do |form| %>
   <h1 class="text-xx-large text-center"><b>Create an Account</b></h1>
   <%= form.label :email_address, "Email Address", class: "text-positive text-label" %>
