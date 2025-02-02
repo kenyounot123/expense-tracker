@@ -10,4 +10,8 @@ module ApplicationHelper
   def chart_color_for_scheme
     prefers_color_scheme?(:light) ? "#000000" : "#FFFFFF"
   end
+
+  def user_total_spendings
+    Current.user.expenses.total_spendings
+  end
 end
