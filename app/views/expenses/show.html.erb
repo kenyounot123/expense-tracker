@@ -8,9 +8,11 @@
 
 <% content_for :analytics do %>
    <%= pie_chart [
-         ["This Expense", @expense.amount],
-         ["Other Expenses", @total_spendings - @expense.amount]
+         ["Current", number_to_percentage((@expense.amount / user_total_spendings) * 100, precision: 2)],
+         ["Other Expenses", number_to_percentage((user_total_spendings - @expense.amount) / user_total_spendings * 100, precision: 2)]
        ],
+       suffix: "%",
+       prefix: "",
        donut: true,
        colors: ["#CD4FF7", "#8e7ff5"]
        %>
@@ -20,12 +22,12 @@
 <div class="expense__actions margin-block flex gap-inline-double items-center justify-end">
   <%= link_to "Edit", edit_expense_path(@expense), class: "btn btn-secondary" %>
   <%# TODO: Make this a modal  %>
-  <%= button_to "Delete", expense_path(@expense), method: :delete, 
+  <%= link_to "Delete", expense_path(@expense), 
       class: "btn btn-danger", 
-      data: { confirm: "Are you sure you want to delete this expense?" } %>
+      data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this expense?" } %>
 </div>
 <div class="expense__card">
-  <div class="expense__title">
+  <div class="expense__title margin-bottom">
     <p>
       <%= @expense.description %>
     </p>
@@ -44,7 +46,7 @@
   </div>
   <div class="expense__details">
     <span><%= @expense.date.strftime("%b %d, %Y") %></span>
-    <span><%= @expense.expense_type %> Payment</span>
+    <span><%= @expense.expense_type.humanize %> Payment</span>
   </div>
   <div>
     <% @expense.categories.each do |category| %>

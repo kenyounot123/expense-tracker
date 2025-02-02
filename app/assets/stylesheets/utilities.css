@@ -22,6 +22,7 @@
 .text-accent { color: var(--color-accent); }
 .text-secondary-accent { color: var(--color-secondary-accent); }
 .text-semibold { font-weight: 600; }
+.text-light { font-weight: 200; }
 .text-label { 
   font-size: 1em;
   font-weight: 600;
@@ -53,6 +54,7 @@
 .margin-inline-start { margin-inline-start: var(--inline-space); }
 .margin-inline-end { margin-inline-end: var(--inline-space); }
 .margin-block-double { margin-block: var(--block-space-double); }
+.margin-bottom { margin-bottom: var(--block-space); }
 
 /* Padding */
 .pad { padding: var(--block-space) var(--inline-space); }

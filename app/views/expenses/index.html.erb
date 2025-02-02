@@ -2,8 +2,8 @@
 
 <% content_for :header do %>
   <nav class="flex justify-between items-center">
-    <h1 class="text-xx-large"">
-      <b>Welcome Back</b>
+    <h1 class="text-xx-large">
+      <b>Dashboard</b>
     </h1>
     <% if authenticated? %>
       <%= link_to "Log Out", logout_path, class: "btn btn-primary", method: :delete, data: { turbo_method: :delete } %>
