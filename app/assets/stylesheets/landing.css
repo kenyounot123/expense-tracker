@@ -117,8 +117,8 @@
 .image_title_tag {
   position: absolute;
   top: 0;
-  left: 30%;
-  transform: translateY(-40%) translateX(-50%);
+  left: 0;
+  transform: translateY(-40%);
   background-color: var(--color-secondary-accent);
   padding: var(--inline-space);
   color: var(--color-ink-reversed);
