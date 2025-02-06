@@ -17,7 +17,7 @@
   <section class="card">
     <%= turbo_frame_tag "analytics_content" do %>
       <div class="flex justify-between items-center">
-        <h2 class="margin-block-end">Total Spent: <span class="text-accent text-large">$<%= @total_spendings %></span></h2>
+        <h2 class="margin-block-end">Total Spent: <span class="text-accent text-large">$<%= format("%.2f", @total_spendings) %></span></h2>
         <div data-controller="dropdown" class="position-relative">
           <button type="button" class="btn btn-dropdown" data-action="click->dropdown#toggle">
             View
