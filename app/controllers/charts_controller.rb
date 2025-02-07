@@ -13,7 +13,8 @@ class ChartsController < ApplicationController
     income_by_month = @user.expenses.income.group_by_month(:date).sum(:amount)
     spending_by_month = @user.expenses.spendings.group_by_month(:date).sum(:amount)
 
-    profits_by_month = income_by_month.merge(spending_by_month) { |_, income, spending| income - spending }
+    # Need to negate income to mark it as a positive value (by default expenses are negative)
+    profits_by_month = income_by_month.merge(spending_by_month) { |_, income, spending| -income + spending }
 
     render json: profits_by_month
   end
