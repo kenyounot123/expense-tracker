@@ -3,3 +3,12 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "chartkick"
 import "Chart.bundle"
+
+document.addEventListener("turbo:load", () => {
+  // Force Chartkick to refresh charts
+  if (typeof Chartkick !== 'undefined') {
+    Chartkick.eachChart((chart) => {
+      chart.redraw()
+    })
+  }
+})

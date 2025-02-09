@@ -17,9 +17,16 @@
                          required: true, 
                          autocomplete: "current-password", 
                          placeholder: "Enter your password", 
-                         maxlength: 72 %><br>
+                         maxlength: 72 %>
 
-  <p class="text-right"><%= link_to "Forgot your password?", new_password_path, class: "text-positive" %></p>
+
+  <div class="flex justify-between items-center">
+    <%= form.label :remember_me do %>
+      <%= form.check_box :remember_me %>
+      <span class="text-positive">Remember me</span>
+    <% end %>
+    <p class="text-right"><%= link_to "Forgot your password?", new_password_path, class: "text-positive" %></p>
+  </div>
 
   <%= form.submit "Sign in", class: "btn btn-login" %>
 
