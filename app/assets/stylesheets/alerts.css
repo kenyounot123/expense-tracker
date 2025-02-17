@@ -6,10 +6,20 @@
   border: var(--alert-border, none);
   position: fixed;
   top: 0;
-  width: 100vw;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: clamp(300px, 500px, 60vw);
   margin: 0;
   text-align: center;
   z-index: 1000;
+  font-weight: 600;
+}
+
+.alert-close {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .alert-error {

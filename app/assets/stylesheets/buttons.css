@@ -103,6 +103,13 @@
   --btn-color: var(--color-ink);
 }
 
+.btn-close {
+  --btn-background: none;
+  --btn-color: var(--color-black);
+  --btn-border: none;
+  --btn-padding: 0 0.5em;
+}
+
 .btn-login {
   --btn-background: var(--color-positive);
   --btn-color: var(--color-ink);

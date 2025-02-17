@@ -44,8 +44,7 @@
   </head>
 
   <body>
-    <%= tag.div(flash[:alert], class: "alert alert-error") if flash[:alert] %>
-    <%= tag.div(flash[:notice], class: "alert alert-success") if flash[:notice] %>
+    <%= render "shared/alert" %>
 
     <div id="container">
       <header id="header">
