@@ -37,7 +37,7 @@
 
 .expense__details {
   display: flex;
-  justify-content: space-between;
+  gap: 0.5em; 
   font-size: 0.875em;
   color: var(--color-ink);
   opacity: 0.8;
