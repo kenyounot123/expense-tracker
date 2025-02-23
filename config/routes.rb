@@ -11,11 +11,8 @@ Rails.application.routes.draw do
   resources :passwords, param: :token
 
   # Expenses
-  resources :expenses do
-    collection do 
-      resources :search, only: :index
-    end
-  end
+  resources :expenses
+  resources :searches, only: :index
 
   # Charts
   scope :charts do
