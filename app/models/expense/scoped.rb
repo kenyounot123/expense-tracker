@@ -1,4 +1,4 @@
-module Expense::Calculatable
+module Expense::Scoped
   extend ActiveSupport::Concern
 
   included do
