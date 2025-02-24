@@ -1,5 +1,5 @@
 class Expense < ApplicationRecord
-  include Calculatable, RecurringExpense
+  include Scoped, RecurringExpense
 
   EXPENSE_TYPES = %w[one_time monthly yearly].freeze
 

@@ -1,0 +1,11 @@
+<% expenses.each_with_index do |expense, index| %>
+  <tr>
+    <td><%= index + 1 %></td>
+    <td><%= expense.description %></td>
+    <td><%= expense.expense_type.humanize %></td>
+    <td><%= expense.income? ? "Income" : "Expense" %></td>
+    <td><%= expense.date.strftime("%m/%d/%Y") %></td>
+    <td><%= number_to_currency(expense.amount) %></td>
+    <td><%= link_to "View", expense_path(expense), class: "search-table__link" %></td>
+  </tr>
+<% end %>

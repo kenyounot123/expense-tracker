@@ -24,26 +24,32 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag "_reset", 
-                          "colors",
-                          "fonts",
-                          "base",
-                          "text",
-                          "utilities",
-                          "layout",
-                          "buttons",
-                          "dropdown",
-                          "landing",
-                          "data-turbo-track": "reload" %>
+                           "colors",
+                           "fonts",
+                           "base",
+                           "text",
+                           "utilities",
+                           "layout",
+                           "buttons",
+                           "inputs",
+                           "alerts",
+                           "dropdown",
+                           "expenses",
+                           "landing",
+                           "pagy",
+                           "search",
+                           "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
     <%= javascript_importmap_tags %>
 
     <meta name="color-scheme" content="dark">
   </head>
 
-  <body class="landings">
-    <%= yield %>
+  <body>
+    <%= render "shared/alert" %>
 
-    <footer id="footer">
-      <%= yield :footer %>
-    </footer>
+    <main class="pad-inline-double">
+      <%= yield %>
+    </main>
   </body>
 </html>

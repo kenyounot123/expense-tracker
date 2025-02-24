@@ -1,0 +1,5 @@
+<%= form_with url: searches_path, method: :get, class: "search-form card" do |form| %>
+  <%= form.search_field :query, placeholder: "Search expenses", autocomplete: "off", class: "search-form__input input" %>
+  <%= form.submit "Search", class: "btn btn-primary" %>
+  <%= link_to "Clear Filters", searches_path, class: "text-underline" %>
+<% end %>

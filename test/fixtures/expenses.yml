@@ -12,6 +12,20 @@ fried_rice:
   date: "2025-01-01"
   expense_type: "monthly"
 
+egg_fried_rice_expense:
+  user_id: 1
+  amount: 15
+  description: "rice for dinner"
+  date: "2025-02-01"
+  expense_type: "one_time"
+  
+tv_expense:
+  user_id: 1
+  amount: 17
+  description: "tv cable"
+  date: "2025-02-05"
+  expense_type: "one_time"
+
 shopping_expense:
   id: 2
   user_id: 2

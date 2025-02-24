@@ -17,7 +17,7 @@
   <section class="card">
     <%= turbo_frame_tag "analytics_content" do %>
       <div class="flex justify-between items-center">
-        <h2 class="margin-block-end">Total Spent: <span class="text-accent text-large">$<%= format("%.2f", @total_spendings) %></span></h2>
+        <h2 class="margin-block-end">Total Spent: <span class="text-accent text-large"><%= number_to_currency(@total_spendings) %></span></h2>
         <div data-controller="dropdown" class="position-relative">
           <button type="button" class="btn btn-dropdown" data-action="click->dropdown#toggle">
             View
@@ -75,7 +75,15 @@
 </div>
 
 <%= turbo_frame_tag "expenses_content" do %>
-  <div class="flex justify-end items-center">
+  <div class="flex justify-between items-center">
+    <div>
+      <%= link_to searches_path, class: "btn btn-transparent btn-gap-less", data: { turbo_frame: "_top" } do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+        </svg>
+        Search
+      <% end %>
+    </div>
     <div data-controller="dropdown" class="position-relative">
       <button type="button" class="btn btn-transparent btn-gap-less text-opacity" data-action="click->dropdown#toggle">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">

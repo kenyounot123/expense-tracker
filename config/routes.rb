@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   # Expenses
   resources :expenses
+  resources :searches, only: :index
 
   # Charts
   scope :charts do
