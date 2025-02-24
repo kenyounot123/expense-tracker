@@ -12,7 +12,7 @@ class SearchesController < ApplicationController
   end
 
   private
-  
+
   def search_params
     params.permit(:query)
   end
