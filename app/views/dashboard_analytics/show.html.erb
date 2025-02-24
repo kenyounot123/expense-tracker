@@ -2,7 +2,7 @@
   <div class="flex justify-between items-center">
     <h2 class="margin-block-end">
       Total <%= format_analytics_type(@type) %>:
-      <span class="text-accent text-large">$<%= number_to_currency(@total) %></span>
+      <span class="text-accent text-large"><%= number_to_currency(@total) %></span>
     </h2>
 
     <div data-controller="dropdown" class="position-relative">

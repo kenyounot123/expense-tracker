@@ -1,21 +1,30 @@
+<%= render "shared/header", title: "Search and Advanced filters", back_path: expenses_path %>
+
 <%= render "search_form" %>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Description</th>
-      <th>Expense Type</th>
-      <th>Income or Expense</th>
-      <th>Amount</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= render "expense" %>
+<div class="search-results margin-block-double">
+  <table id="search-table">
+    <thead>
+      <tr>
+        <th class="search-table__header">No.</th>
+        <th class="search-table__header">Description</th>
+        <th class="search-table__header">Expense Type</th>
+        <th class="search-table__header">Income or Expense</th>
+        <th class="search-table__header">Date</th>
+        <th class="search-table__header">Amount</th>
+        <th class="search-table__header">
+        </th>
+      </tr>
+    </thead>
+    <tbody data-controller="row-link">
+      <%= render "expense", expenses: @expenses %>
 
-    <% if @expenses.empty? %>
-      <p class="text-center">No expenses found.</p>
-    <% end %>
-  </tbody>
-</table>
+      <% if @expenses.empty? %>
+        <tr>
+          <td colspan="5" class="search-table__empty">No expenses found.</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 

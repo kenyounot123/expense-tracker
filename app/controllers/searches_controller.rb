@@ -1,4 +1,6 @@
 class SearchesController < ApplicationController
+  layout "search"
+
   def index
     query = search_params[:query].to_s
 
