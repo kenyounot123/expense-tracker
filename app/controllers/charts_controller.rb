@@ -29,7 +29,7 @@ class ChartsController < ApplicationController
       profits_by_month = {}
       larger_month_amount_hash.each do |month, amount|
         next unless income_by_month.has_key?(month) && spending_by_month.has_key?(month)
-        profits_by_month[month] = spending_by_month[month] - income_by_month[month]
+        profits_by_month[month] = income_by_month[month] - spending_by_month[month]
       end
       profits_by_month
     end
