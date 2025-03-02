@@ -7,11 +7,30 @@
     <thead>
       <tr>
         <th class="search-table__header">No.</th>
-        <th class="search-table__header">Description</th>
-        <th class="search-table__header">Expense Type</th>
-        <th class="search-table__header">Income or Expense</th>
-        <th class="search-table__header">Date</th>
-        <th class="search-table__header">Amount</th>
+        <th class="search-table__header">
+          <div class="flex justify-between items-center">
+            <span>Description</span>
+            <%= sort_indicator_for("description") %>
+          </div>
+        </th>
+        <th class="search-table__header">
+          Expense Type
+        </th>
+        <th class="search-table__header">
+          Income or Expense
+        </th>
+        <th class="search-table__header">
+          <div class="flex justify-between items-center">
+            <span>Date</span>
+            <%= sort_indicator_for("date") %>
+          </div>
+        </th>
+        <th class="search-table__header">
+          <div class="flex justify-between items-center">
+            <span>Amount</span>
+            <%= sort_indicator_for("amount") %>
+          </div>
+        </th>
         <th class="search-table__header">
         </th>
       </tr>
@@ -21,7 +40,7 @@
 
       <% if @expenses.empty? %>
         <tr>
-          <td colspan="5" class="search-table__empty">No expenses found.</td>
+          <td colspan="7" class="search-table__empty">No expenses found.</td>
         </tr>
       <% end %>
     </tbody>
