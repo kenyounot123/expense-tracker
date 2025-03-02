@@ -16,7 +16,7 @@ class Expense < ApplicationRecord
 
   def self.apply_filters(filters = {})
     return all unless filters.present?
-    
+
     result = all
     result = result.filter_by_expense_type(filters[:expense_type]) if filters[:expense_type].present?
     result = result.filter_by_income(filters[:income]) if filters[:income].present?
