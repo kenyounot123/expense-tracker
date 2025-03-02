@@ -1,5 +1,26 @@
 <%= form_with url: searches_path, method: :get, class: "search-form card" do |form| %>
   <%= form.search_field :query, placeholder: "Search expenses", autocomplete: "off", class: "search-form__input input" %>
-  <%= form.submit "Search", class: "btn btn-primary" %>
-  <%= link_to "Clear Filters", searches_path, class: "text-underline" %>
+  <div class="flex justify-start gap-inline-double items-center">
+    <%= form.submit "Search", class: "btn btn-primary", name: nil %>
+    <%= link_to "Clear Filters", searches_path, class: "text-underline" %>
+  </div>
+
+  <div class="search-form__group">
+    <%= form.label "filters[expense_type]", "By Expense Type", class: "search-form__label" %>
+    <%= form.select "filters[expense_type]", options_for_select([["All", nil], ["One-time", "one_time"], ["Monthly", "monthly"], ["Yearly", "yearly"]], params.dig(:filters, :expense_type)), {} %>
+  </div>
+
+  <div class="search-form__group">
+    <%= form.label "filters[income]", "By Income", class: "search-form__label" %>
+    <%= form.select "filters[income]", options_for_select([["All", nil], ["Income", true], ["Expense", false]], params.dig(:filters, :income)), {} %>
+  </div>
+
+  <div class="search-form__group">
+    <%= form.label "filters[date_range]", "By Date Range", class: "search-form__label" %>
+    <div class="date-range-inputs">
+      <%= form.date_field "filters[start_date]", value: params.dig(:filters, :start_date), class: "input date-input" %>
+      <span class="date-separator">to</span>
+      <%= form.date_field "filters[end_date]", value: params.dig(:filters, :end_date), class: "input date-input" %>
+    </div>
+  </div>
 <% end %>
