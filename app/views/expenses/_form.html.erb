@@ -1,40 +1,40 @@
-<%= form_with model: @expense, data: { controller: "toggle-income" }, class: "card flex flex-column" do |form| %>
-  <%= form.label :amount, class: "text-positive text-label" %>
+<%= form_with model: @expense, data: { controller: "toggle-income" }, class: "bg-dark dark:bg-white rounded-lg p-6 flex flex-col" do |form| %>
+  <%= form.label :amount, class: "text-positive dark:text-positive-light font-semibold mb-2" %>
   <div class="flex justify-between items-center">
-    <div class="position-relative">
-      <span class="amount-unit">$</span>
-      <%= form.number_field :amount, placeholder: "0.00", class: "margin-block", step: "0.01" %>
+    <div class="relative">
+      <span class="absolute left-2 top-1/2 transform -translate-y-1/2 text-white dark:text-bg">$</span>
+      <%= form.number_field :amount, placeholder: "0.00", class: "bg-bg dark:bg-bg-light text-white dark:text-bg border border-positive dark:border-positive-light rounded-md py-2 px-6 my-4 w-full focus:outline-none focus:ring-2 focus:ring-positive dark:focus:ring-positive-light", step: "0.01" %>
     </div>
-    <%# TODO: Update styling of checkbox %>
     <div>
-      <%= form.label :income, class: "text-positive text-label" %>
-      <button type="button" class="btn btn-primary">
-        <%= form.check_box :income, data: { action: "toggle-income#toggle" } %>
+      <%= form.label :income, class: "text-positive dark:text-positive-light font-semibold mb-2" %>
+      <button type="button" class="bg-positive dark:bg-positive-light text-white font-semibold py-2 px-4 rounded-full inline-flex items-center hover:opacity-80 transition-all duration-300">
+        <%= form.check_box :income, data: { action: "toggle-income#toggle" }, class: "sr-only peer" %>
+        <span class="peer-checked:bg-accent peer-checked:dark:bg-accent-light w-6 h-6 rounded-full transition-all duration-300"></span>
       </button>
     </div>
   </div>
 
-  <%= form.label :description, class: "text-positive text-label" %>
-  <%= form.text_field :description, class: "margin-block" %>
+  <%= form.label :description, class: "text-positive dark:text-positive-light font-semibold mb-2" %>
+  <%= form.text_field :description, class: "bg-bg dark:bg-bg-light text-white dark:text-bg border border-positive dark:border-positive-light rounded-md py-2 px-4 my-4 w-full focus:outline-none focus:ring-2 focus:ring-positive dark:focus:ring-positive-light" %>
 
-  <%= form.label :date, class: "text-positive text-label" %>
-  <%= form.date_field :date, value: Date.today, class: "margin-block" %>
+  <%= form.label :date, class: "text-positive dark:text-positive-light font-semibold mb-2" %>
+  <%= form.date_field :date, value: Date.today, class: "bg-bg dark:bg-bg-light text-white dark:text-bg border border-positive dark:border-positive-light rounded-md py-2 px-4 my-4 w-full focus:outline-none focus:ring-2 focus:ring-positive dark:focus:ring-positive-light" %>
 
   <%# TODO: Add form validation to not allow empty category %>
-  <%# <%= form.label :category_ids, "Categories", class: "text-positive text-label" %>
+  <%# <%= form.label :category_ids, "Categories", class: "text-positive dark:text-positive-light font-semibold mb-2" %>
   <%# <%= form.select :category_ids, 
   <%#                   Category.all.map { |category| [category.name, category.id] },
   <%#                   { prompt: "Select categories" }, 
-  <%#                   { class: "margin-block" } %>
+  <%#                   { class: "bg-bg dark:bg-bg-light text-white dark:text-bg border border-positive dark:border-positive-light rounded-md py-2 px-4 my-4 w-full focus:outline-none focus:ring-2 focus:ring-positive dark:focus:ring-positive-light" } %>
 
-  <%= form.label :expense_type, class: "text-positive text-label" %>
-  <%= form.select :expense_type, [["One-Time", "one_time"], ["Monthly", "monthly"], ["Yearly", "yearly"]], { selected: "one_time" }, { class: "margin-block" } %>
-  <div class="">
-    <p class="text-small text-light text-opacity">Choosing "Monthly" or "Yearly" will set up a recurring payment for this expense.</p>
+  <%= form.label :expense_type, class: "text-positive dark:text-positive-light font-semibold mb-2" %>
+  <%= form.select :expense_type, [["One-Time", "one_time"], ["Monthly", "monthly"], ["Yearly", "yearly"]], { selected: "one_time" }, { class: "bg-bg dark:bg-bg-light text-white dark:text-bg border border-positive dark:border-positive-light rounded-md py-2 px-4 my-4 w-full focus:outline-none focus:ring-2 focus:ring-positive dark:focus:ring-positive-light" } %>
+  <div>
+    <p class="text-sm font-light text-white dark:text-bg opacity-80">Choosing "Monthly" or "Yearly" will set up a recurring payment for this expense.</p>
   </div>
 
-  <div class="margin-block">
-    <%= form.submit "Add Expense", class: "btn btn-primary btn--submit", 
+  <div class="mt-4">
+    <%= form.submit "Add Expense", class: "bg-positive dark:bg-positive-light text-white font-semibold py-2 px-4 rounded-full inline-flex items-center hover:opacity-80 transition-all duration-300 w-full justify-center", 
                                     data: { toggle_income_target: "submitButtonText", 
                                     disable_with: "Saving..." } %>
   </div>

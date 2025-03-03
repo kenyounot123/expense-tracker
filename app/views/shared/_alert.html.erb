@@ -1,20 +1,20 @@
 <% if flash[:alert] %>
-  <div class="alert alert-error" data-controller="close-content" data-close-content-target="content">
+  <div class="fixed top-4 right-4 left-4 md:left-auto md:w-96 bg-red dark:bg-red-light text-white p-4 rounded-lg shadow-lg z-50 flex justify-between items-center" data-controller="close-content" data-close-content-target="content">
     <%= flash[:alert] %>
-    <div class="btn btn-close alert-close" data-action="click->close-content#close" aria-label="Close">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+    <button class="text-white hover:opacity-80 ml-4" data-action="click->close-content#close" aria-label="Close">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
       </svg>
-    </div>
+    </button>
   </div>
 <% end %>
 <% if flash[:notice] %>
-  <div class="alert alert-success" data-controller="close-content" data-close-content-target="content">
+  <div class="fixed top-4 right-4 left-4 md:left-auto md:w-96 bg-green dark:bg-green-light text-white p-4 rounded-lg shadow-lg z-50 flex justify-between items-center" data-controller="close-content" data-close-content-target="content">
     <%= flash[:notice] %>
-    <div class="btn btn-close alert-close" data-action="click->close-content#close" aria-label="Close">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+    <button class="text-white hover:opacity-80 ml-4" data-action="click->close-content#close" aria-label="Close">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
       </svg>
-    </div>
+    </button>
   </div>
 <% end %>

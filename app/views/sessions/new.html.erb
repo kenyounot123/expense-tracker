@@ -2,35 +2,46 @@
   Sign in
 <% end %>
 
-<%= form_with url: session_path, class: "margin-block-double card flex flex-column" do |form| %>
-  <h1 class="text-xx-large text-center"><b>Welcome Back</b></h1>
-  <%= form.label :email_address, "Email Address", class: "text-positive text-label" %>
-  <%= form.email_field :email_address, 
-                      required: true, 
-                      autofocus: true, 
-                      autocomplete: "username", 
-                      placeholder: "Enter your email address", 
-                      value: params[:email_address] %><br>
+<div class="flex justify-center items-center min-h-screen">
+  <%= form_with url: session_path, class: "bg-dark dark:bg-white rounded-lg shadow-lg p-8 w-full max-w-md mx-auto" do |form| %>
+    <h1 class="text-3xl md:text-4xl font-bold text-center mb-8 text-white dark:text-bg">Welcome Back</h1>
+    
+    <div class="mb-6">
+      <%= form.label :email_address, "Email Address", class: "text-positive dark:text-positive-light font-semibold block mb-2" %>
+      <%= form.email_field :email_address, 
+                          required: true, 
+                          autofocus: true, 
+                          autocomplete: "username", 
+                          placeholder: "Enter your email address", 
+                          value: params[:email_address],
+                          class: "bg-bg dark:bg-bg-light text-white dark:text-bg border border-positive dark:border-positive-light rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive dark:focus:ring-positive-light" %>
+    </div>
 
-  <%= form.label :password, "Password", class: "text-positive text-label" %>
-  <%= form.password_field :password, 
-                         required: true, 
-                         autocomplete: "current-password", 
-                         placeholder: "Enter your password", 
-                         maxlength: 72 %>
+    <div class="mb-6">
+      <%= form.label :password, "Password", class: "text-positive dark:text-positive-light font-semibold block mb-2" %>
+      <%= form.password_field :password, 
+                            required: true, 
+                            autocomplete: "current-password", 
+                            placeholder: "Enter your password", 
+                            maxlength: 72,
+                            class: "bg-bg dark:bg-bg-light text-white dark:text-bg border border-positive dark:border-positive-light rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive dark:focus:ring-positive-light" %>
+    </div>
 
+    <div class="flex justify-between items-center mb-6">
+      <label class="flex items-center text-white dark:text-bg">
+        <%= form.check_box :remember_me, class: "mr-2 text-positive" %>
+        <span class="text-positive dark:text-positive-light">Remember me</span>
+      </label>
+      <p><%= link_to "Forgot your password?", new_password_path, class: "text-positive dark:text-positive-light hover:underline" %></p>
+    </div>
 
-  <div class="flex justify-between items-center">
-    <%= form.label :remember_me do %>
-      <%= form.check_box :remember_me %>
-      <span class="text-positive">Remember me</span>
-    <% end %>
-    <p class="text-right"><%= link_to "Forgot your password?", new_password_path, class: "text-positive" %></p>
-  </div>
+    <%= form.submit "Sign in", class: "bg-positive dark:bg-positive-light text-white font-semibold py-2 px-4 rounded-full w-full hover:opacity-80 transition-all duration-300 mb-6" %>
 
-  <%= form.submit "Sign in", class: "btn btn-login" %>
-
-  <hr class="margin-block">
-
-  <p class="text-center">Don't have an account? <%= link_to "Sign up", signup_path, class: "text-positive" %></p>
-<% end %>
+    <div class="border-t border-positive/30 dark:border-positive-light/30 pt-6 mt-2">
+      <p class="text-center text-white dark:text-bg">
+        Don't have an account? 
+        <%= link_to "Sign up", signup_path, class: "text-positive dark:text-positive-light hover:underline" %>
+      </p>
+    </div>
+  <% end %>
+</div>

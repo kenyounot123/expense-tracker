@@ -22,33 +22,19 @@
 
     <%= favicon_link_tag "favicon.png" %>
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag "_reset", 
-                           "colors",
-                           "fonts",
-                           "base",
-                           "text",
-                           "utilities",
-                           "layout",
-                           "buttons",
-                           "inputs",
-                           "alerts",
-                           "dropdown",
-                           "expenses",
-                           "landing",
-                           "pagy",
-                           "search",
-                           "data-turbo-track": "reload" %>
+    <%# Include Tailwind CSS %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    
     <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
     <%= javascript_importmap_tags %>
 
     <meta name="color-scheme" content="dark">
   </head>
 
-  <body>
+  <body class="bg-bg dark:bg-bg text-white font-sans overflow-x-hidden">
     <%= render "shared/alert" %>
 
-    <div id="container">
+    <div id="container" class="min-h-screen flex flex-col">
       <header id="header">
         <%= yield :header %>
       </header>
@@ -57,7 +43,7 @@
         <%= yield :analytics %>
       </div>
 
-      <main id="main" class="pad-block-end-double">
+      <main id="main" class="flex-grow pb-8">
         <%= yield %>
       </main>
 

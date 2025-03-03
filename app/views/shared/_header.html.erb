@@ -1,16 +1,16 @@
-<div class="flex items-center gap-inline-double">
+<div class="flex items-center gap-4">
   <% if back_path.nil? %>
     <%= link_to :back do %>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white hover:text-positive transition-colors duration-300">
         <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
       </svg>
     <% end %>
   <% else %>
   <%= link_to back_path do %>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white hover:text-positive transition-colors duration-300">
         <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
       </svg>
     <% end %>
   <% end %>
-  <h1 class="text-xx-large"><b><%= title %></b></h1>
+  <h1 class="text-4xl font-bold"><%= title %></h1>
 </div>

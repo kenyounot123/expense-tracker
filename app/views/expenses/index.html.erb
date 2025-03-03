@@ -2,48 +2,48 @@
 
 <% content_for :header do %>
   <nav class="flex justify-between items-center">
-    <h1 class="text-xx-large">
-      <b>Dashboard</b>
+    <h1 class="text-4xl font-bold">
+      Dashboard
     </h1>
     <% if authenticated? %>
-      <%= link_to "Log Out", logout_path, class: "btn btn-primary", method: :delete, data: { turbo_method: :delete } %>
+      <%= link_to "Log Out", logout_path, class: "bg-positive dark:bg-positive-light text-white font-semibold py-2 px-4 rounded-full inline-flex items-center hover:opacity-80 transition-all duration-300", method: :delete, data: { turbo_method: :delete } %>
     <% else %>
-      <%= link_to "Log In", login_path, class: "btn btn-primary" %>
+      <%= link_to "Log In", login_path, class: "bg-positive dark:bg-positive-light text-white font-semibold py-2 px-4 rounded-full inline-flex items-center hover:opacity-80 transition-all duration-300" %>
     <% end %>
   </nav>
 <% end %>
 
 <% content_for :analytics do %>
-  <section class="card">
+  <section class="bg-dark dark:bg-white rounded-lg p-6 mb-6">
     <%= turbo_frame_tag "analytics_content" do %>
       <div class="flex justify-between items-center">
-        <h2 class="margin-block-end">Total Spent: <span class="text-accent text-large"><%= number_to_currency(@total_spendings) %></span></h2>
-        <div data-controller="dropdown" class="position-relative">
-          <button type="button" class="btn btn-dropdown" data-action="click->dropdown#toggle">
+        <h2 class="mb-4">Total Spent: <span class="text-accent dark:text-accent-light text-xl"><%= number_to_currency(@total_spendings) %></span></h2>
+        <div data-controller="dropdown" class="relative">
+          <button type="button" class="bg-positive dark:bg-positive-light text-white font-semibold py-2 px-4 rounded inline-flex items-center gap-2 hover:opacity-80 transition-all duration-300" data-action="click->dropdown#toggle">
             View
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
               <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
             </svg>
           </button>
           <ul
             data-dropdown-target="menu"
-            class="dropdown-menu"
+            class="absolute right-0 mt-2 w-48 bg-dark dark:bg-white border border-positive dark:border-positive-light rounded-md shadow-lg z-10 hidden"
             data-action="click@window->dropdown#hide"
           >
             <%= link_to "Income", dashboard_analytics_path(filter_type: :income, chart_type: :monthly), 
-                class: "dropdown-item", 
+                class: "block px-4 py-2 text-white dark:text-bg hover:bg-positive hover:dark:bg-positive-light hover:text-white", 
                 data: { turbo_frame: "analytics_content" } %>
             <%= link_to "Spent", dashboard_analytics_path(filter_type: :spendings, chart_type: :monthly), 
-                class: "dropdown-item #{params[:filter_type].to_s.empty? ? 'disabled' : ''}", 
+                class: "block px-4 py-2 text-white dark:text-bg hover:bg-positive hover:dark:bg-positive-light hover:text-white #{params[:filter_type].to_s.empty? ? 'opacity-50 cursor-not-allowed' : ''}", 
                 data: { turbo_frame: "analytics_content" } %>
             <%= link_to "Profits", dashboard_analytics_path(filter_type: :profits), 
-                class: "dropdown-item",
+                class: "block px-4 py-2 text-white dark:text-bg hover:bg-positive hover:dark:bg-positive-light hover:text-white",
                 data: { turbo_frame: "analytics_content" } %>
             <%= link_to "Daily Income", dashboard_analytics_path(filter_type: :income, chart_type: :daily), 
-                class: "dropdown-item",
+                class: "block px-4 py-2 text-white dark:text-bg hover:bg-positive hover:dark:bg-positive-light hover:text-white",
                 data: { turbo_frame: "analytics_content" } %>
             <%= link_to "Daily Spendings", dashboard_analytics_path(filter_type: :spendings, chart_type: :daily), 
-                class: "dropdown-item",
+                class: "block px-4 py-2 text-white dark:text-bg hover:bg-positive hover:dark:bg-positive-light hover:text-white",
                 data: { turbo_frame: "analytics_content" } %>
           </ul>
         </div>
@@ -69,11 +69,11 @@
   </section>
 <% end %>
 
-<div class="flex justify-between items-center">
-  <h2>Activity</h2>
+<div class="flex justify-between items-center mb-4">
+  <h2 class="text-2xl font-semibold">Activity</h2>
 
-  <%= link_to new_expense_path, class: "btn btn-secondary flex items-center justify-center" do %>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <%= link_to new_expense_path, class: "bg-accent dark:bg-accent-light text-white font-semibold py-2 px-4 rounded-full inline-flex items-center gap-2 hover:opacity-80 transition-all duration-300" do %>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
       <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
     </svg> 
     <p>Add Transaction</p>
@@ -81,35 +81,35 @@
 </div>
 
 <%= turbo_frame_tag "expenses_content" do %>
-  <div class="flex justify-between items-center">
+  <div class="flex justify-between items-center mb-4">
     <div>
-      <%= link_to searches_path, class: "btn btn-transparent btn-gap-less", data: { turbo_frame: "_top" } do %>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-          <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+      <%= link_to searches_path, class: "text-white opacity-80 hover:opacity-100 inline-flex items-center gap-1", data: { turbo_frame: "_top" } do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
         </svg>
         Search
       <% end %>
     </div>
-    <div data-controller="dropdown" class="position-relative">
-      <button type="button" class="btn btn-transparent btn-gap-less text-opacity" data-action="click->dropdown#toggle">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+    <div data-controller="dropdown" class="relative">
+      <button type="button" class="text-white opacity-80 hover:opacity-100 inline-flex items-center gap-1" data-action="click->dropdown#toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
         </svg>
         Sort by: <%= sort_by_direction %>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
           <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
         </svg>
       </button>
       <ul
         data-dropdown-target="menu"
-        class="dropdown-menu"
+        class="absolute right-0 mt-2 w-48 bg-dark dark:bg-white border border-positive dark:border-positive-light rounded-md shadow-lg z-10 hidden"
         data-action="click@window->dropdown#hide"
       >
         <%= link_to "Recent", expenses_path(sort: :desc), 
-            class: "dropdown-item #{params[:sort] != 'asc' ? 'disabled' : ''}", 
+            class: "block px-4 py-2 text-white dark:text-bg hover:bg-positive hover:dark:bg-positive-light hover:text-white #{params[:sort] != 'asc' ? 'opacity-50 cursor-not-allowed' : ''}", 
             data: { turbo_frame: "expenses_content" } %>
         <%= link_to "Oldest", expenses_path(sort: :asc), 
-            class: "dropdown-item #{params[:sort] == 'asc' ? 'disabled' : ''}", 
+            class: "block px-4 py-2 text-white dark:text-bg hover:bg-positive hover:dark:bg-positive-light hover:text-white #{params[:sort] == 'asc' ? 'opacity-50 cursor-not-allowed' : ''}", 
             data: { turbo_frame: "expenses_content" } %>
       </ul>
     </div>

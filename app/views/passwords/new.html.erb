@@ -2,8 +2,19 @@
   <%= render "shared/header", title: "Forgot your password?", back_path: login_path %>
 <% end %>
 
-<%= form_with url: passwords_path, class: "card flex flex-column" do |form| %>
-  <%= form.label :email_address, "Email Address", class: "text-positive text-label" %>
-  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
-  <%= form.submit "Email reset instructions", class: "btn btn-login" %>
-<% end %>
+<div class="flex justify-center items-center py-8">
+  <%= form_with url: passwords_path, class: "bg-dark dark:bg-white rounded-lg shadow-lg p-8 w-full max-w-md mx-auto" do |form| %>
+    <div class="mb-6">
+      <%= form.label :email_address, "Email Address", class: "text-positive dark:text-positive-light font-semibold block mb-2" %>
+      <%= form.email_field :email_address, 
+                          required: true, 
+                          autofocus: true, 
+                          autocomplete: "username", 
+                          placeholder: "Enter your email address", 
+                          value: params[:email_address],
+                          class: "bg-bg dark:bg-bg-light text-white dark:text-bg border border-positive dark:border-positive-light rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive dark:focus:ring-positive-light" %>
+    </div>
+    
+    <%= form.submit "Email reset instructions", class: "bg-positive dark:bg-positive-light text-white font-semibold py-2 px-4 rounded-full w-full hover:opacity-80 transition-all duration-300" %>
+  <% end %>
+</div>

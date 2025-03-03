@@ -1,49 +1,53 @@
-<%= render "shared/header", title: "Search and Advanced filters", back_path: expenses_path %>
+<% content_for :header do %>
+  <%= render "shared/header", title: "Search and Advanced filters", back_path: expenses_path %>
+<% end %>
 
 <%= render "search_form" %>
 
-<div class="search-results margin-block-double">
-  <table id="search-table">
-    <thead>
-      <tr>
-        <th class="search-table__header">No.</th>
-        <th class="search-table__header">
-          <div class="flex justify-between items-center">
-            <span>Description</span>
-            <%= sort_indicator_for("description") %>
-          </div>
-        </th>
-        <th class="search-table__header">
-          Expense Type
-        </th>
-        <th class="search-table__header">
-          Income or Expense
-        </th>
-        <th class="search-table__header">
-          <div class="flex justify-between items-center">
-            <span>Date</span>
-            <%= sort_indicator_for("date") %>
-          </div>
-        </th>
-        <th class="search-table__header">
-          <div class="flex justify-between items-center">
-            <span>Amount</span>
-            <%= sort_indicator_for("amount") %>
-          </div>
-        </th>
-        <th class="search-table__header">
-        </th>
-      </tr>
-    </thead>
-    <tbody data-controller="row-link">
-      <%= render "expense", expenses: @expenses %>
-
-      <% if @expenses.empty? %>
-        <tr>
-          <td colspan="7" class="search-table__empty">No expenses found.</td>
+<div class="mt-8">
+  <div class="overflow-x-auto">
+    <table class="w-full bg-dark dark:bg-white rounded-lg shadow-lg">
+      <thead>
+        <tr class="border-b border-positive dark:border-positive-light">
+          <th class="py-3 px-4 text-left text-positive dark:text-positive-light font-semibold">No.</th>
+          <th class="py-3 px-4 text-left text-positive dark:text-positive-light font-semibold">
+            <div class="flex justify-between items-center">
+              <span>Description</span>
+              <%= sort_indicator_for("description") %>
+            </div>
+          </th>
+          <th class="py-3 px-4 text-left text-positive dark:text-positive-light font-semibold">
+            Expense Type
+          </th>
+          <th class="py-3 px-4 text-left text-positive dark:text-positive-light font-semibold">
+            Income or Expense
+          </th>
+          <th class="py-3 px-4 text-left text-positive dark:text-positive-light font-semibold">
+            <div class="flex justify-between items-center">
+              <span>Date</span>
+              <%= sort_indicator_for("date") %>
+            </div>
+          </th>
+          <th class="py-3 px-4 text-left text-positive dark:text-positive-light font-semibold">
+            <div class="flex justify-between items-center">
+              <span>Amount</span>
+              <%= sort_indicator_for("amount") %>
+            </div>
+          </th>
+          <th class="py-3 px-4 text-left text-positive dark:text-positive-light font-semibold">
+          </th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody data-controller="row-link">
+        <%= render "expense", expenses: @expenses %>
+
+        <% if @expenses.empty? %>
+          <tr>
+            <td colspan="7" class="py-8 px-4 text-center text-white dark:text-bg opacity-80">No expenses found.</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
 

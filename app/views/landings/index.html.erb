@@ -3,130 +3,145 @@
 <% end %>
 
 
-<nav class="nav">
-  <div class="nav__logo">
+<nav class="bg-bg-landings py-4 px-6 flex justify-between items-center">
+  <div class="flex items-center">
     <%= link_to root_path, class: "flex items-center" do %>
-      <%= image_tag "favicon.png", alt: "TrackExp", class: "nav__logo-image" %>
-      TrackExp
+      <%= image_tag "favicon.png", alt: "TrackExp", class: "w-10 h-10 mr-2" %>
+      <span class="text-white text-xl font-bold">TrackExp</span>
     <% end %>
   </div>
-  <ul class="nav__links">
-    <div class="nav__responsive-menu-links">
-      <li><%= link_to "Results", "#results" %></li>
-      <li><%= link_to "Features", "#features" %></li>
-      <li><%= link_to "Sign in", login_path, class: "btn btn-outline btn-hero" %></li>
-      <li><%= link_to "Sign up", signup_path, class: "btn btn-primary btn-hero" %></li>
-    </div>
+  <ul class="hidden md:flex items-center space-x-6">
+    <li><%= link_to "Results", "#results", class: "text-white hover:text-positive transition-colors duration-300" %></li>
+    <li><%= link_to "Features", "#features", class: "text-white hover:text-positive transition-colors duration-300" %></li>
+    <li><%= link_to "Sign in", login_path, class: "border border-positive text-white hover:bg-positive hover:text-white px-4 py-2 rounded-full transition-colors duration-300" %></li>
+    <li><%= link_to "Sign up", signup_path, class: "bg-positive text-white px-4 py-2 rounded-full hover:opacity-90 transition-opacity duration-300" %></li>
   </ul>
-  <div data-controller="dropdown" class="nav__hamburger">
+  <div data-controller="dropdown" class="relative md:hidden">
     <div class="flex items-center">
-      <svg tabindex="0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="nav__menu" data-action="click->dropdown#toggle">
+      <svg tabindex="0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white cursor-pointer" data-action="click->dropdown#toggle">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
       </svg>
     </div>
     <ul
       data-dropdown-target="menu"
-      class="dropdown-menu"
+      class="absolute right-0 mt-2 w-48 bg-dark border border-positive rounded-md shadow-lg z-10 hidden"
       data-action="click@window->dropdown#hide"
     >
-      <%= link_to "Results", "#results", class: "dropdown-item" %>
-      <%= link_to "Features", "#features", class: "dropdown-item" %>
-      <%= link_to "Sign in", login_path, class: "dropdown-item" %>
-      <%= link_to "Sign up", signup_path, class: "dropdown-item" %>
+      <%= link_to "Results", "#results", class: "block px-4 py-2 text-white hover:bg-positive hover:text-white" %>
+      <%= link_to "Features", "#features", class: "block px-4 py-2 text-white hover:bg-positive hover:text-white" %>
+      <%= link_to "Sign in", login_path, class: "block px-4 py-2 text-white hover:bg-positive hover:text-white" %>
+      <%= link_to "Sign up", signup_path, class: "block px-4 py-2 text-white hover:bg-positive hover:text-white" %>
     </ul>
   </div>
 </nav>
 
-<main class="hero">
-  <div class="hero__content">
-    <div class="hero__title">Finally, an <span class="text-accent">expense tracker</span> that's actually easy to use.</div>
+<main class="bg-bg-landings text-white px-6 py-12 md:py-24">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row items-center justify-between">
+      <div class="md:w-1/2 mb-12 md:mb-0">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Finally, an <span class="text-accent">expense tracker</span> that's actually easy to use.</h1>
 
-    <p class="hero__description margin-block">Too many complicated features? Hard to use? We've got you covered.</p>
+        <p class="text-xl mb-8 opacity-90">Too many complicated features? Hard to use? We've got you covered.</p>
 
-    <div class="hero__container">
-      <div class="hero__subtitle">Your finances need <span class="text-accent">TrackExp</span>.</div>
-      <div class="hero__button-container">
-        <%= link_to "Get started", expenses_path, class: "btn btn-call-to-action" %>
+        <div class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4">Your finances need <span class="text-accent">TrackExp</span>.</h2>
+          <div>
+            <%= link_to "Get started", expenses_path, class: "bg-positive text-white px-6 py-3 rounded-full text-lg font-semibold hover:opacity-90 transition-opacity duration-300 inline-block" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:w-1/2 relative">
+        <%= image_tag "trackexp.png", alt: "TrackExp", class: "w-full rounded-lg shadow-lg z-10 relative" %>
+        <%= image_tag "trackexp_form.png", alt: "TrackExp", class: "w-4/5 rounded-lg shadow-lg absolute -bottom-8 -right-8 z-0" %>  
       </div>
     </div>
-  </div>
 
-  <div class="hero__image-container">
-      <%= image_tag "trackexp.png", alt: "TrackExp", class: "hero__image image_stacked_first" %>
-      <%= image_tag "trackexp_form.png", alt: "TrackExp", class: "hero__image image_stacked_second" %>  
-  </div>
-
-
-  <div class="margin-block-double">
-    <div class="hero__content">
-      <div class="hero__title">User-friendly features.</div>
-      <p class="hero__description"><span class="highlight-text">A lot of expense trackers are either hard to use or have too many features that you don't need.</span> This expense tracker is <span class="highlight-text text-accent">simple</span>, <span class="highlight-text text-accent">intuitive</span>, and focuses only on the essential features you need to manage your spending. <span class="highlight-text"> It <span class="highlight-text text-accent">eliminates unnecessary complexity</span>, making it quick and easy to track expenses without feeling overwhelmed.</span></p>
+    <div class="my-24">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-6">User-friendly features.</h2>
+        <p class="text-xl leading-relaxed">
+          <span class="bg-dark bg-opacity-50 px-2 py-1 rounded">A lot of expense trackers are either hard to use or have too many features that you don't need.</span> 
+          This expense tracker is 
+          <span class="bg-dark bg-opacity-50 px-2 py-1 rounded text-accent">simple</span>, 
+          <span class="bg-dark bg-opacity-50 px-2 py-1 rounded text-accent">intuitive</span>, 
+          and focuses only on the essential features you need to manage your spending. 
+          <span class="bg-dark bg-opacity-50 px-2 py-1 rounded">It 
+          <span class="text-accent">eliminates unnecessary complexity</span>, 
+          making it quick and easy to track expenses without feeling overwhelmed.</span>
+        </p>
+      </div>
     </div>
-  </div>
 
-  <div id="features" class="">
-    <div class="hero__content">
-      <div class="hero__title">Lets Take a Look</div>
-      <div class="hero__description"><span class="highlight-text">After you sign up, everything clicks into place.</span> The home screen organizes your expenses, budgets, and financial goals all in one place.</div>
-      <div class="hero__container">
-        <div class="image_card">
-          <div class="image_title_tag">See your total stats</div>
-          <%= image_tag "feature_dashboard.png", alt: "TrackExp" %>
+    <div id="features" class="my-24">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold mb-6">Let's Take a Look</h2>
+        <p class="text-xl max-w-3xl mx-auto">
+          <span class="bg-dark bg-opacity-50 px-2 py-1 rounded">After you sign up, everything clicks into place.</span> 
+          The home screen organizes your expenses, budgets, and financial goals all in one place.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-dark rounded-lg overflow-hidden shadow-lg">
+          <div class="bg-positive text-white py-2 px-4 font-semibold">See your total stats</div>
+          <%= image_tag "feature_dashboard.png", alt: "TrackExp", class: "w-full" %>
         </div>
-        <div class="image_card">
-          <div class="image_title_tag">A simple form for transactions</div>
-          <%= image_tag "feature_form.png", alt: "TrackExp" %>
+        <div class="bg-dark rounded-lg overflow-hidden shadow-lg">
+          <div class="bg-positive text-white py-2 px-4 font-semibold">A simple form for transactions</div>
+          <%= image_tag "feature_form.png", alt: "TrackExp", class: "w-full" %>
         </div>
-        <div class="image_card">
-          <div class="image_title_tag">See all your expenses</div>
-          <%= image_tag "feature_transactions.png", alt: "TrackExp" %>
+        <div class="bg-dark rounded-lg overflow-hidden shadow-lg">
+          <div class="bg-positive text-white py-2 px-4 font-semibold">See all your expenses</div>
+          <%= image_tag "feature_transactions.png", alt: "TrackExp", class: "w-full" %>
         </div>
       </div>
     </div>
   </div>
 </main>
 
-<div class="image-container">
-  <div class="image-container__images">
-    <%= image_tag "trackexp.png", alt: "TrackExp", class: "image image_stacked_first" %>
-    <%= image_tag "trackexp_form.png", alt: "TrackExp", class: "image image_stacked_second" %>
+<div class="bg-bg-landings py-12 px-6 relative overflow-hidden">
+  <div class="max-w-6xl mx-auto relative">
+    <div class="flex justify-center">
+      <%= image_tag "trackexp.png", alt: "TrackExp", class: "w-2/3 md:w-1/2 rounded-lg shadow-lg z-10 relative" %>
+      <%= image_tag "trackexp_form.png", alt: "TrackExp", class: "w-1/2 md:w-2/5 rounded-lg shadow-lg absolute top-1/4 right-1/4 z-0" %>
+    </div>
   </div>
 </div>
 
 <%= content_for :footer do %>
-  <footer class="footer">
-    <div class="footer__content">
-      <div class="footer__grid">
-        <div class="footer__section">
-          <h3 class="footer__heading">TrackExp</h3>
-          <p class="footer__description">Simple expense tracking for everyone. Manage your finances with ease.</p>
+  <footer class="bg-dark text-white py-12 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div>
+          <h3 class="text-xl font-bold mb-4">TrackExp</h3>
+          <p class="text-gray-300">Simple expense tracking for everyone. Manage your finances with ease.</p>
         </div>
 
-        <div class="footer__section">
-          <h4 class="footer__heading">Product</h4>
-          <ul class="footer__links">
-            <li><%= link_to "Features", "#features" %></li>
-            <li><%= link_to "Results", "#results" %></li>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Product</h4>
+          <ul class="space-y-2">
+            <li><%= link_to "Features", "#features", class: "text-gray-300 hover:text-white transition-colors duration-300" %></li>
+            <li><%= link_to "Results", "#results", class: "text-gray-300 hover:text-white transition-colors duration-300" %></li>
           </ul>
         </div>
 
-        <div class="footer__section">
-          <h4 class="footer__heading">Company</h4>
-          <ul class="footer__links">
-            <li><%= link_to "About", root_path %></li>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Company</h4>
+          <ul class="space-y-2">
+            <li><%= link_to "About", root_path, class: "text-gray-300 hover:text-white transition-colors duration-300" %></li>
           </ul>
         </div>
 
-        <div class="footer__section">
-          <h4 class="footer__heading">Get Started</h4>
-          <ul class="footer__links">
-            <li><%= link_to "Sign up", signup_path %></li>
-            <li><%= link_to "Sign in", login_path %></li>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Get Started</h4>
+          <ul class="space-y-2">
+            <li><%= link_to "Sign up", signup_path, class: "text-gray-300 hover:text-white transition-colors duration-300" %></li>
+            <li><%= link_to "Sign in", login_path, class: "text-gray-300 hover:text-white transition-colors duration-300" %></li>
           </ul>
         </div>
       </div>
 
-      <div class="footer__bottom">
+      <div class="border-t border-gray-700 pt-6 text-center text-gray-400">
         <p>&copy; <%= Time.current.year %> TrackExp. All rights reserved.</p>
       </div>
     </div>
