@@ -14,7 +14,7 @@ class DashboardAnalyticsController < ApplicationController
     render layout: false if turbo_frame_request?
   end
 
-  private 
+  private
 
   def permitted_params
     params.permit(:filter_type, :chart_type)

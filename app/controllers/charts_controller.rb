@@ -54,6 +54,6 @@ class ChartsController < ApplicationController
     end
 
     def permitted_params
-      params.permit(:chart_type, :chart => {})
+      params.permit(:chart_type, chart: {})
     end
 end
