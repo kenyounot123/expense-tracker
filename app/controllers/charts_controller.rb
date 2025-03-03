@@ -1,12 +1,27 @@
 class ChartsController < ApplicationController
   before_action :set_user
+  before_action :set_chart_type
 
   def income
-    render json: @user.expenses.income.group_by_month(:date).sum(:amount)
+    case @chart_type
+    when "monthly"
+      render json: @user.expenses.income.group_by_month(:date).sum(:amount)
+    when "daily"
+      render json: @user.expenses.income.group_by_day(:date).sum(:amount)
+    else
+      render json: @user.expenses.income.group_by_month(:date).sum(:amount)
+    end
   end
 
   def spendings
-    render json: @user.expenses.spendings.group_by_month(:date).sum(:amount)
+    case @chart_type
+    when "monthly"
+      render json: @user.expenses.spendings.group_by_month(:date).sum(:amount)
+    when "daily"
+      render json: @user.expenses.spendings.group_by_day(:date).sum(:amount)
+    else
+      render json: @user.expenses.spendings.group_by_month(:date).sum(:amount)
+    end
   end
 
   def profits
@@ -16,6 +31,10 @@ class ChartsController < ApplicationController
   private
     def set_user
       @user = Current.user
+    end
+
+    def set_chart_type
+      @chart_type = permitted_params[:chart_type]
     end
 
     def profits_by_month
@@ -32,5 +51,9 @@ class ChartsController < ApplicationController
         profits_by_month[month] = income_by_month[month] - spending_by_month[month]
       end
       profits_by_month
+    end
+
+    def permitted_params
+      params.permit(:chart_type, :chart => {})
     end
 end

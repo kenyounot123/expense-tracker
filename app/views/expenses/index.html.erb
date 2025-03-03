@@ -30,20 +30,26 @@
             class="dropdown-menu"
             data-action="click@window->dropdown#hide"
           >
-            <%= link_to "Income", dashboard_analytics_path(type: :income), 
+            <%= link_to "Income", dashboard_analytics_path(filter_type: :income, chart_type: :monthly), 
                 class: "dropdown-item", 
                 data: { turbo_frame: "analytics_content" } %>
-            <%= link_to "Spent", dashboard_analytics_path(type: :spendings), 
-                class: "dropdown-item #{params[:type].to_s.empty? ? 'disabled' : ''}", 
+            <%= link_to "Spent", dashboard_analytics_path(filter_type: :spendings, chart_type: :monthly), 
+                class: "dropdown-item #{params[:filter_type].to_s.empty? ? 'disabled' : ''}", 
                 data: { turbo_frame: "analytics_content" } %>
-            <%= link_to "Profits", dashboard_analytics_path(type: :profits), 
+            <%= link_to "Profits", dashboard_analytics_path(filter_type: :profits), 
+                class: "dropdown-item",
+                data: { turbo_frame: "analytics_content" } %>
+            <%= link_to "Daily Income", dashboard_analytics_path(filter_type: :income, chart_type: :daily), 
+                class: "dropdown-item",
+                data: { turbo_frame: "analytics_content" } %>
+            <%= link_to "Daily Spendings", dashboard_analytics_path(filter_type: :spendings, chart_type: :daily), 
                 class: "dropdown-item",
                 data: { turbo_frame: "analytics_content" } %>
           </ul>
         </div>
       </div>
 
-      <%= line_chart chart_path_for(params[:type]),
+      <%= line_chart chart_path_for(params[:filter_type], params[:chart_type]),
           thousands: ",",
           library: {
             scales: {

@@ -17,19 +17,25 @@
         class="dropdown-menu"
         data-action="click@window->dropdown#hide"
       >
-        <%= link_to "Income", dashboard_analytics_path(type: :income), 
-            class: "dropdown-item #{params[:type].to_s == 'income' ? 'disabled' : ''}", 
+        <%= link_to "Income", dashboard_analytics_path(filter_type: :income, chart_type: :monthly), 
+            class: "dropdown-item #{params[:filter_type].to_s == 'income' && params[:chart_type].to_s == 'monthly' ? 'disabled' : ''}", 
             data: { turbo_frame: "analytics_content" } %>
-        <%= link_to "Spent", dashboard_analytics_path(type: :spendings), 
-            class: "dropdown-item #{params[:type].to_s == 'spendings' ? 'disabled' : ''}", 
+        <%= link_to "Spent", dashboard_analytics_path(filter_type: :spendings, chart_type: :monthly), 
+            class: "dropdown-item #{params[:filter_type].to_s == 'spendings' && params[:chart_type].to_s == 'monthly' ? 'disabled' : ''}", 
             data: { turbo_frame: "analytics_content" } %>
-        <%= link_to "Profits", dashboard_analytics_path(type: :profits), 
-            class: "dropdown-item #{params[:type].to_s == 'profits' ? 'disabled' : ''}", 
+        <%= link_to "Profits", dashboard_analytics_path(filter_type: :profits), 
+            class: "dropdown-item #{params[:filter_type].to_s == 'profits' ? 'disabled' : ''}", 
+            data: { turbo_frame: "analytics_content" } %>
+        <%= link_to "Daily Income", dashboard_analytics_path(filter_type: :income, chart_type: :daily), 
+            class: "dropdown-item #{params[:chart_type].to_s == 'daily' && params[:filter_type].to_s == 'income' ? 'disabled' : ''}", 
+            data: { turbo_frame: "analytics_content" } %>
+        <%= link_to "Daily Spendings", dashboard_analytics_path(filter_type: :spendings, chart_type: :daily), 
+            class: "dropdown-item #{params[:chart_type].to_s == 'daily' && params[:filter_type].to_s == 'spendings' ? 'disabled' : ''}", 
             data: { turbo_frame: "analytics_content" } %>
       </ul>
     </div>
   </div>
-  <%= line_chart chart_path_for(params[:type]),
+  <%= line_chart chart_path_for(params[:filter_type], params[:chart_type]),
     thousands: ",",
       library: {
         scales: {

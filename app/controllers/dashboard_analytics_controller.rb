@@ -1,6 +1,6 @@
 class DashboardAnalyticsController < ApplicationController
   def show
-    @type = params[:type]&.to_sym || :spendings
+    @type = permitted_params[:filter_type]&.to_sym || :spendings
 
     @total = case @type
     when :income
@@ -12,5 +12,11 @@ class DashboardAnalyticsController < ApplicationController
     end
 
     render layout: false if turbo_frame_request?
+  end
+
+  private 
+
+  def permitted_params
+    params.permit(:filter_type, :chart_type)
   end
 end
