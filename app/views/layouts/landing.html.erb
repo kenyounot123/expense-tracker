@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="description" content="TrackExp - A simple and intuitive expense tracker to manage your finances with ease">
-    <meta name="keywords" content="Expense Tracker, Personal Finance, Budget Management, Financial Tracking, Money Management">
-    <meta property="og:title" content="TrackExp">
-    <meta property="og:description" content="A simple and intuitive expense tracker">
+    <meta name="description" content="TrackExp - Simple expense tracking to help you save money and build wealth">
+    <meta name="keywords" content="Expense Tracker, Personal Finance, Budget Management, Financial Tracking, Money Management, Wealth Building">
+    <meta property="og:title" content="TrackExp - Simple Expense Tracking">
+    <meta property="og:description" content="Track expenses, save money, and build wealth with a simple, intuitive interface">
     <meta property="og:image" content="https://trackexp.com/favicon.png">
     <meta property="og:url" content="https://trackexp.com">
     <meta property="og:type" content="website">
@@ -23,7 +23,7 @@
     <%= favicon_link_tag "favicon.png" %>
 
     <%# Include Tailwind CSS %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     
     <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
     <%= javascript_importmap_tags %>
@@ -31,7 +31,7 @@
     <meta name="color-scheme" content="dark">
   </head>
 
-  <body class="bg-bg-landings text-white font-sans overflow-x-hidden">
+  <body class="font-sans overflow-x-hidden bg-white dark:bg-bg text-bg dark:text-white">
     <%= render "shared/alert" %>
 
     <%= yield %>
