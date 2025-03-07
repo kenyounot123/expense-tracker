@@ -4,8 +4,17 @@
 <% end %>
 
 <div class="flex justify-center items-center min-h-screen">
-  <%= form_with url: registrations_path, class: "bg-dark dark:bg-white rounded-lg shadow-lg p-8 w-full max-w-md mx-auto" do |form| %>
-    <h1 class="text-3xl md:text-4xl font-bold text-center mb-8 text-white dark:text-bg">Create an Account</h1>
+  <div class="absolute top-6 left-6 z-10">
+    <%= link_to root_path, class: "flex items-center bg-dark border-2 border-positive rounded-full py-2 px-4 text-white hover:bg-positive/10 transition-all duration-300 shadow-lg" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 mr-2 text-positive">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+      </svg>
+      <span class="font-medium">Back to Home</span>
+    <% end %>
+  </div>
+
+  <%= form_with url: registrations_path, class: "bg-dark rounded-lg shadow-lg p-8 w-full max-w-md mx-auto" do |form| %>
+    <h1 class="text-3xl md:text-4xl font-bold text-center mb-8 text-white">Create an Account</h1>
     
     <div class="mb-6">
       <%= form.label :email_address, "Email Address", class: "text-positive dark:text-positive-light font-semibold block mb-2" %>
@@ -41,7 +50,7 @@
     <%= form.submit "Create Account", class: "bg-positive dark:bg-positive-light text-white font-semibold py-2 px-4 rounded-full w-full hover:opacity-80 transition-all duration-300 mb-6" %>
 
     <div class="border-t border-positive/30 dark:border-positive-light/30 pt-6 mt-2">
-      <p class="text-center text-white dark:text-bg">
+      <p class="text-center text-white">
         Already have an account? 
         <%= link_to "Sign in", login_path, class: "text-positive dark:text-positive-light hover:underline" %>
       </p>

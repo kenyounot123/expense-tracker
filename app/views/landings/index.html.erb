@@ -2,46 +2,46 @@
   TrackExp | Simple Expense Tracking
 <% end %>
 
-<nav class="bg-white dark:bg-dark py-4 px-6 md:px-12 flex justify-between items-center sticky top-0 z-50 shadow-sm">
+<nav class="bg-dark py-4 px-6 md:px-12 flex justify-between items-center sticky top-0 z-50 shadow-sm">
   <div class="flex items-center">
     <%= link_to root_path, class: "flex items-center" do %>
       <%= image_tag "favicon.png", alt: "TrackExp", class: "w-8 h-8 mr-2" %>
-      <span class="text-bg dark:text-white text-xl font-bold">TrackExp</span>
+      <span class="text-white text-xl font-bold">TrackExp</span>
     <% end %>
   </div>
   <ul class="hidden md:flex items-center space-x-8">
-    <li><%= link_to "Features", "#features", class: "text-bg dark:text-white hover:text-positive dark:hover:text-positive transition-colors duration-300 font-medium" %></li>
-    <li><%= link_to "Sign in", login_path, class: "text-bg dark:text-white hover:text-positive dark:hover:text-positive transition-colors duration-300 font-medium" %></li>
+    <li><%= link_to "Features", "#features", class: "text-white hover:text-positive transition-colors duration-300 font-medium" %></li>
+    <li><%= link_to "Sign in", login_path, class: "text-white hover:text-positive transition-colors duration-300 font-medium" %></li>
     <li><%= link_to "Get Started", signup_path, class: "bg-positive text-white px-5 py-2 rounded-full hover:bg-positive-light transition-colors duration-300 font-medium" %></li>
   </ul>
   <div data-controller="dropdown" class="relative md:hidden">
     <div class="flex items-center">
-      <svg tabindex="0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-bg dark:text-white cursor-pointer" data-action="click->dropdown#toggle">
+      <svg tabindex="0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white cursor-pointer" data-action="click->dropdown#toggle">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
       </svg>
     </div>
     <ul
       data-dropdown-target="menu"
-      class="absolute right-0 mt-2 w-48 bg-white dark:bg-dark border border-gray-200 dark:border-gray-700 rounded-md shadow-lg z-10 hidden"
+      class="absolute right-0 mt-2 w-48 bg-dark border border-gray-700 rounded-md shadow-lg z-10 hidden"
       data-action="click@window->dropdown#hide"
     >
-      <%= link_to "Features", "#features", class: "block px-4 py-2 text-bg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800" %>
-      <%= link_to "Sign in", login_path, class: "block px-4 py-2 text-bg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800" %>
-      <%= link_to "Get Started", signup_path, class: "block px-4 py-2 text-bg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800" %>
+      <%= link_to "Features", "#features", class: "block px-4 py-2 text-white hover:bg-gray-800" %>
+      <%= link_to "Sign in", login_path, class: "block px-4 py-2 text-white hover:bg-gray-800" %>
+      <%= link_to "Get Started", signup_path, class: "block px-4 py-2 text-white hover:bg-gray-800" %>
     </ul>
   </div>
 </nav>
 
 <!-- Hero Section -->
-<section class="bg-gradient-to-b from-white to-gray-100 dark:from-bg dark:to-bg-landings py-16 md:py-20">
+<section class="bg-gradient-to-b from-bg to-bg-landings py-16 md:py-20">
   <div class="max-w-6xl mx-auto px-6 md:px-12">
     <div class="flex flex-col md:flex-row items-center justify-between">
       <div class="md:w-1/2 mb-12 md:mb-0">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-bg dark:text-white leading-tight">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight">
           Simplify Your <span class="text-positive">Personal Finance</span>
         </h1>
 
-        <p class="text-xl mb-8 text-gray-600 dark:text-gray-300 leading-relaxed">
+        <p class="text-xl mb-8 text-gray-300 leading-relaxed">
           Easily track your spending and income to gain a clear view of your finances.
         </p>
 
@@ -50,28 +50,22 @@
           <%= link_to "Learn more", "#features", class: "border border-positive text-positive px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 text-center" %>
         </div>
         
-        <div class="flex items-center space-x-2 text-gray-600 dark:text-gray-300 mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-green dark:text-green-light">
+        <div class="flex items-center space-x-2 text-gray-300 mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-green-light">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <span>Simple to use</span>
         </div>
-        <div class="flex items-center space-x-2 text-gray-600 dark:text-gray-300 mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-green dark:text-green-light">
+        <div class="flex items-center space-x-2 text-gray-300 mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-green-light">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <span>Visualize your finances</span>
         </div>
-        <div class="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-green dark:text-green-light">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <span>No credit card required</span>
-        </div>
       </div>
 
       <div class="md:w-1/2 relative">
-        <div class="bg-white dark:bg-dark rounded-2xl shadow-xl overflow-hidden relative z-10">
+        <div class="bg-dark rounded-2xl shadow-xl overflow-hidden relative z-10">
           <%= image_tag "trackexp.png", alt: "TrackExp Dashboard", class: "w-full" %>
         </div>
         <div class="absolute -bottom-6 -right-6 w-4/5 h-4/5 bg-positive/20 rounded-2xl -z-10"></div>
@@ -81,10 +75,10 @@
 </section>
 
 <!-- Social Proof -->
-<section class="bg-white dark:bg-dark py-12">
+<section class="bg-dark py-12">
   <div class="max-w-6xl mx-auto px-6 md:px-12">
     <div class="text-center mb-8">
-      <p class="text-gray-500 dark:text-gray-400 uppercase tracking-wider font-medium text-sm">Trusted by thousands of users</p>
+      <p class="text-gray-400 uppercase tracking-wider font-medium text-sm">Trusted by thousands of users</p>
     </div>
     <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
       <div class="flex items-center">
@@ -95,20 +89,20 @@
             </svg>
           <% end %>
         </div>
-        <span class="ml-2 text-gray-600 dark:text-gray-300">4.9/5 rating</span>
+        <span class="ml-2 text-gray-300">4.9/5 rating</span>
       </div>
-      <div class="text-gray-600 dark:text-gray-300 font-medium">10,000+ active users</div>
-      <div class="text-gray-600 dark:text-gray-300 font-medium">$1M+ expenses tracked</div>
+      <div class="text-gray-300 font-medium">10,000+ active users</div>
+      <div class="text-gray-300 font-medium">$1M+ expenses tracked</div>
     </div>
   </div>
 </section>
 
 <!-- Features Section -->
-<section id="features" class="py-20 bg-gray-50 dark:bg-bg-landings">
+<section id="features" class="py-20 bg-bg-landings">
   <div class="max-w-6xl mx-auto px-6 md:px-12">
     <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-bg dark:text-white">Features designed for simplicity</h2>
-      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Features designed for simplicity</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">
         Track expenses, save money, and view your finances effortlessly.
       </p>
     </div>
@@ -116,19 +110,19 @@
     <!-- First Feature Row - Search and Filters -->
     <div class="flex flex-col md:flex-row items-center mb-24">
       <div class="md:w-1/2 mb-8 md:mb-0 md:pl-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-bg dark:text-white leading-tight">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white leading-tight">
           Search and <span class="text-accent">filter</span> your transactions
         </h2>
-        <p class="text-xl mb-6 text-gray-600 dark:text-gray-300">
+        <p class="text-xl mb-6 text-gray-300">
           Easily filter and search through your transactions to get a clearer view of your spending and income patterns.
         </p>
-        <div class="flex items-center space-x-2 text-gray-600 dark:text-gray-300 mb-4">
+        <div class="flex items-center space-x-2 text-gray-300 mb-4">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-green">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <span>Quickly find specific transactions</span>
         </div>
-        <div class="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
+        <div class="flex items-center space-x-2 text-gray-300">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-green">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
@@ -136,7 +130,7 @@
         </div>
       </div>
       <div class="md:w-1/2 relative">
-        <div class="bg-white dark:bg-dark rounded-2xl shadow-xl overflow-hidden p-6 relative z-10">
+        <div class="bg-dark rounded-2xl shadow-xl overflow-hidden p-6 relative z-10">
           <%= image_tag "feature_transactions.png", alt: "Advanced Filters", class: "w-full rounded-lg" %>
         </div>
         <div class="absolute -bottom-4 -left-4 w-full h-full bg-accent/10 rounded-2xl -z-10"></div>
@@ -146,19 +140,19 @@
     <!-- Second Feature Row - Expert Portfolios -->
     <div class="flex flex-col md:flex-row-reverse items-center mb-24">
       <div class="md:w-1/2 mb-8 md:mb-0 md:pl-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-bg dark:text-white leading-tight">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white leading-tight">
           Charts and <span class="text-accent">visualizations</span> for insights
         </h2>
-        <p class="text-xl mb-6 text-gray-600 dark:text-gray-300">
+        <p class="text-xl mb-6 text-gray-300">
           Charts and graphs to help you visualize your spending and income.
         </p>
-        <div class="flex items-center space-x-2 text-gray-600 dark:text-gray-300 mb-4">
+        <div class="flex items-center space-x-2 text-gray-300 mb-4">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-green">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <span>Visualize your spending habits</span>
         </div>
-        <div class="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
+        <div class="flex items-center space-x-2 text-gray-300">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-green">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
@@ -166,7 +160,7 @@
         </div>
       </div>
       <div class="md:w-1/2 relative">
-        <div class="bg-white dark:bg-dark rounded-2xl shadow-xl overflow-hidden p-6 relative z-10">
+        <div class="bg-dark rounded-2xl shadow-xl overflow-hidden p-6 relative z-10">
           <%= image_tag "feature_dashboard.png", alt: "Expert Insights", class: "w-full rounded-lg" %>
         </div>
         <div class="absolute -bottom-4 -left-4 w-full h-full bg-accent/10 rounded-2xl -z-10"></div>
@@ -176,30 +170,30 @@
     <!-- Third Feature Row - Simple Entry -->
     <div class="flex flex-col md:flex-row items-center">
       <div class="md:w-1/2 mb-8 md:mb-0 md:pr-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-bg dark:text-white leading-tight">
-          <span class="text-accent dark:text-accent-light">Simple entry</span>, powerful results
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white leading-tight">
+          <span class="text-accent-light">Simple entry</span>, powerful results
         </h2>
-        <p class="text-xl mb-6 text-gray-600 dark:text-gray-300">
+        <p class="text-xl mb-6 text-gray-300">
           Add new expense or income in seconds with our easy-to-use form.
         </p>
-        <div class="flex items-center space-x-2 text-gray-600 dark:text-gray-300 mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-green dark:text-green-light">
+        <div class="flex items-center space-x-2 text-gray-300 mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-green-light">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <span>Quick entry in seconds</span>
         </div>
-        <div class="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-green dark:text-green-light">
+        <div class="flex items-center space-x-2 text-gray-300">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-green-light">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <span>Categorize and organize effortlessly</span>
         </div>
       </div>
       <div class="md:w-1/2 relative">
-        <div class="bg-white dark:bg-dark rounded-2xl shadow-xl overflow-hidden p-6 relative z-10">
+        <div class="bg-dark rounded-2xl shadow-xl overflow-hidden p-6 relative z-10">
           <%= image_tag "feature_form.png", alt: "Simple Entry", class: "w-full rounded-lg" %>
         </div>
-        <div class="absolute -bottom-4 -right-4 w-full h-full bg-green/10 dark:bg-green-light/10 rounded-2xl -z-10"></div>
+        <div class="absolute -bottom-4 -right-4 w-full h-full bg-green-light/10 rounded-2xl -z-10"></div>
       </div>
     </div>
   </div>
@@ -213,51 +207,9 @@
       Join users who are already tracking their expenses and building wealth with TrackExp.
     </p>
     <%= link_to "Get started for free", signup_path, class: "bg-white text-positive px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors duration-300 inline-block" %>
-    <p class="mt-4 text-white/80">No credit card required. Cancel anytime.</p>
   </div>
 </section>
 
 <%= content_for :footer do %>
-  <footer class="bg-white dark:bg-dark text-bg dark:text-white py-12 px-6 border-t border-gray-200 dark:border-gray-800">
-    <div class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-        <div>
-          <div class="flex items-center mb-4">
-            <%= image_tag "favicon.png", alt: "TrackExp", class: "w-8 h-8 mr-2" %>
-            <span class="text-xl font-bold">TrackExp</span>
-          </div>
-          <p class="text-gray-600 dark:text-gray-300">Simple expense tracking for everyone. Manage your finances with ease.</p>
-        </div>
-
-        <div>
-          <h4 class="text-lg font-semibold mb-4">Product</h4>
-          <ul class="space-y-2">
-            <li><%= link_to "Features", "#features", class: "text-gray-600 dark:text-gray-300 hover:text-positive dark:hover:text-positive transition-colors duration-300" %></li>
-            <li><%= link_to "How it works", "#how-it-works", class: "text-gray-600 dark:text-gray-300 hover:text-positive dark:hover:text-positive transition-colors duration-300" %></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="text-lg font-semibold mb-4">Company</h4>
-          <ul class="space-y-2">
-            <li><%= link_to "About", root_path, class: "text-gray-600 dark:text-gray-300 hover:text-positive dark:hover:text-positive transition-colors duration-300" %></li>
-            <li><%= link_to "Privacy", privacy_path, class: "text-gray-600 dark:text-gray-300 hover:text-positive dark:hover:text-positive transition-colors duration-300" %></li>
-            <li><%= link_to "Terms", terms_path, class: "text-gray-600 dark:text-gray-300 hover:text-positive dark:hover:text-positive transition-colors duration-300" %></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="text-lg font-semibold mb-4">Get Started</h4>
-          <ul class="space-y-2">
-            <li><%= link_to "Sign up", signup_path, class: "text-gray-600 dark:text-gray-300 hover:text-positive dark:hover:text-positive transition-colors duration-300" %></li>
-            <li><%= link_to "Sign in", login_path, class: "text-gray-600 dark:text-gray-300 hover:text-positive dark:hover:text-positive transition-colors duration-300" %></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="border-t border-gray-200 dark:border-gray-800 pt-6 text-center text-gray-500 dark:text-gray-400">
-        <p>&copy; <%= Time.current.year %> TrackExp. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <%= render "shared/footer" %>
 <% end %>

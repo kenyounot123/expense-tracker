@@ -1,0 +1,41 @@
+<footer class="bg-dark text-white py-12 px-6 border-t border-gray-800">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+      <div>
+        <div class="flex items-center mb-4">
+          <%= image_tag "favicon.png", alt: "TrackExp", class: "w-8 h-8 mr-2" %>
+          <span class="text-xl font-bold">TrackExp</span>
+        </div>
+        <p class="text-gray-300">Simple expense tracking for everyone. Manage your finances with ease.</p>
+      </div>
+
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Product</h4>
+        <ul class="space-y-2">
+          <li><%= link_to "Features", root_path + "#features", class: "text-gray-300 hover:text-positive transition-colors duration-300" %></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Company</h4>
+        <ul class="space-y-2">
+          <li><%= link_to "About", root_path, class: "text-gray-300 hover:text-positive transition-colors duration-300" %></li>
+          <li><%= link_to "Privacy", privacy_path, class: "text-gray-300 hover:text-positive transition-colors duration-300" %></li>
+          <li><%= link_to "Terms", terms_path, class: "text-gray-300 hover:text-positive transition-colors duration-300" %></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Get Started</h4>
+        <ul class="space-y-2">
+          <li><%= link_to "Sign up", signup_path, class: "text-gray-300 hover:text-positive transition-colors duration-300" %></li>
+          <li><%= link_to "Sign in", login_path, class: "text-gray-300 hover:text-positive transition-colors duration-300" %></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-800 pt-6 text-center text-gray-400">
+      <p>&copy; <%= Time.current.year %> TrackExp. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
