@@ -1,36 +1,67 @@
-<div class="bg-dark rounded-card shadow-card p-6 mb-4">
-  <div class="flex justify-between items-center">
-    <div class="text-2xl font-bold text-positive break-words hyphens-auto">
-      <%= expense.description.truncate(20) %>
+<div class="border-b border-gray-800 hover:bg-dark/50 transition-colors duration-200">
+  <div class="p-4 md:p-5 flex items-center">
+    <!-- Left side with transaction type indicator -->
+    <div class="flex-shrink-0 mr-4">
+      <% if expense.income? %>
+        <div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-green-500">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+          </svg>
+        </div>
+      <% else %>
+        <div class="w-12 h-12 rounded-full bg-red-500 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-red-500">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+          </svg>
+        </div>
+      <% end %>
     </div>
-    <%= link_to expense_path(expense), data: { turbo_frame: "_top" } do %>
-      <button class="bg-accent text-white font-semibold py-2 px-4 rounded-full inline-flex items-center gap-2 hover:opacity-80 hover:brightness-110 transition-all duration-300">
-        See Details
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-        </svg>
-      </button>
-    <% end %>
-  </div>
-  <div class="flex justify-between my-4">
-    <span class="text-4xl font-bold text-accent"><%= number_to_currency(expense.amount) %></span>
-    <% if expense.income? %>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 font-bold text-green">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-      </svg>
-    <% else %>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 font-bold text-red">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
-      </svg>
-    <% end %>
-  </div>
-  <div class="flex justify-between text-sm text-white opacity-80 my-4">
-    <span><%= expense.date.strftime("%b %d, %Y") %></span>
-    <span><%= expense.expense_type.humanize %> Payment</span>
-  </div>
-  <div>
-    <% expense.categories.each do |category| %>
-      <span class="inline-block bg-dark text-white border border-positive rounded-md px-3 py-1.5 text-sm font-bold uppercase tracking-wider mr-2 mb-2"><%= category.name %></span>
-    <% end %>
+    
+    <!-- Transaction details -->
+    <div class="flex-grow min-w-0">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+        <div class="mb-1 md:mb-0">
+          <div class="flex items-center">
+            <h3 class="text-lg font-semibold text-white truncate"><%= expense.description %></h3>
+            <!-- Clear income/expense label -->
+            <span class="ml-2 px-2 py-0.5 text-xs font-bold rounded-full <%= expense.income? ? 'bg-green-500/20 text-green-500' : 'bg-red-500/20 text-red-500' %>">
+              <%= expense.income? ? 'INCOME' : 'EXPENSE' %>
+            </span>
+          </div>
+          <div class="flex items-center text-sm text-gray-400">
+            <span class="mr-2"><%= expense.date.strftime("%b %d, %Y") %></span>
+            <span class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-3 mr-1">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+              </svg>
+              <%= expense.expense_type.humanize %>
+            </span>
+          </div>
+        </div>
+        
+        <div class="flex items-center">
+          <span class="<%= expense.income? ? 'text-green-500' : 'text-red-500' %> text-lg font-bold mr-4">
+            <%= expense.income? ? '+' : '-' %><%= number_to_currency(expense.amount.abs) %>
+          </span>
+          
+          <%= link_to expense_path(expense), class: "bg-positive/10 hover:bg-positive/20 p-2 rounded-full transition-colors duration-200", data: { turbo_frame: "_top" } do %>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-positive">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+          <% end %>
+        </div>
+      </div>
+      
+      <% if expense.categories.any? %>
+        <div class="mt-2 flex flex-wrap">
+          <% expense.categories.each do |category| %>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-positive/10 text-positive mr-2 mb-1">
+              <%= category.name %>
+            </span>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
