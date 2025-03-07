@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   mount MissionControl::Jobs::Engine, at: "/jobs"
   root "landings#index"
 
+  # Static pages
+  get "/privacy", to: "landings#privacy", as: :privacy
+  get "/terms", to: "landings#terms", as: :terms
+
   # Authentication
   resource :session, only: [ :create ]
   get "/login", to: "sessions#new", as: :login
