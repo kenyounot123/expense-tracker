@@ -16,40 +16,40 @@
     <h1 class="text-3xl md:text-4xl font-bold text-center mb-8 text-white">Welcome Back</h1>
     
     <div class="mb-6">
-      <%= form.label :email_address, "Email Address", class: "text-positive dark:text-positive-light font-semibold block mb-2" %>
+      <%= form.label :email_address, "Email Address", class: "text-positive font-semibold block mb-2" %>
       <%= form.email_field :email_address, 
                           required: true, 
                           autofocus: true, 
                           autocomplete: "username", 
                           placeholder: "Enter your email address", 
                           value: params[:email_address],
-                          class: "bg-bg dark:bg-bg-light text-white dark:text-bg border border-positive dark:border-positive-light rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive dark:focus:ring-positive-light" %>
+                          class: "bg-bg text-white border border-positive rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive" %>
     </div>
 
     <div class="mb-6">
-      <%= form.label :password, "Password", class: "text-positive dark:text-positive-light font-semibold block mb-2" %>
+      <%= form.label :password, "Password", class: "text-positive font-semibold block mb-2" %>
       <%= form.password_field :password, 
                             required: true, 
                             autocomplete: "current-password", 
                             placeholder: "Enter your password", 
                             maxlength: 72,
-                            class: "bg-bg dark:bg-bg-light text-white dark:text-bg border border-positive dark:border-positive-light rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive dark:focus:ring-positive-light" %>
+                            class: "bg-bg text-white border border-positive rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive" %>
     </div>
 
     <div class="flex justify-between items-center mb-6">
-      <label class="flex items-center text-white dark:text-bg">
+      <label class="flex items-center text-white">
         <%= form.check_box :remember_me, class: "mr-2 text-positive" %>
-        <span class="text-positive dark:text-positive-light">Remember me</span>
+        <span class="text-positive">Remember me</span>
       </label>
-      <p><%= link_to "Forgot your password?", new_password_path, class: "text-positive dark:text-positive-light hover:underline" %></p>
+      <p><%= link_to "Forgot your password?", new_password_path, class: "text-positive hover:underline" %></p>
     </div>
 
-    <%= form.submit "Sign in", class: "bg-positive dark:bg-positive-light text-white font-semibold py-2 px-4 rounded-full w-full hover:opacity-80 transition-all duration-300 mb-6" %>
+    <%= form.submit "Sign in", class: "bg-positive text-white font-semibold py-2 px-4 rounded-full w-full hover:opacity-80 transition-all duration-300 mb-6" %>
 
-    <div class="border-t border-positive/30 dark:border-positive-light/30 pt-6 mt-2">
+    <div class="border-t border-positive/30 pt-6 mt-2">
       <p class="text-center text-white">
         Don't have an account? 
-        <%= link_to "Sign up", signup_path, class: "text-positive dark:text-positive-light hover:underline" %>
+        <%= link_to "Sign up", signup_path, class: "text-positive hover:underline" %>
       </p>
     </div>
   <% end %>

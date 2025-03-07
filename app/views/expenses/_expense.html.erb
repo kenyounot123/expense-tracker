@@ -1,10 +1,10 @@
-<div class="bg-dark dark:bg-white rounded-card shadow-card p-6 mb-4">
+<div class="bg-dark rounded-card shadow-card p-6 mb-4">
   <div class="flex justify-between items-center">
-    <div class="text-2xl font-bold text-positive dark:text-positive-light break-words hyphens-auto">
+    <div class="text-2xl font-bold text-positive break-words hyphens-auto">
       <%= expense.description.truncate(20) %>
     </div>
     <%= link_to expense_path(expense), data: { turbo_frame: "_top" } do %>
-      <button class="bg-accent dark:bg-accent-light text-white font-semibold py-2 px-4 rounded-full inline-flex items-center gap-2 hover:opacity-80 hover:brightness-110 transition-all duration-300">
+      <button class="bg-accent text-white font-semibold py-2 px-4 rounded-full inline-flex items-center gap-2 hover:opacity-80 hover:brightness-110 transition-all duration-300">
         See Details
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
@@ -13,13 +13,13 @@
     <% end %>
   </div>
   <div class="flex justify-between my-4">
-    <span class="text-4xl font-bold text-accent dark:text-accent-light"><%= number_to_currency(expense.amount) %></span>
+    <span class="text-4xl font-bold text-accent"><%= number_to_currency(expense.amount) %></span>
     <% if expense.income? %>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 font-bold text-green dark:text-green-light">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 font-bold text-green">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
       </svg>
     <% else %>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 font-bold text-red dark:text-red-light">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 font-bold text-red">
         <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
       </svg>
     <% end %>
@@ -30,7 +30,7 @@
   </div>
   <div>
     <% expense.categories.each do |category| %>
-      <span class="inline-block bg-dark dark:bg-white text-white dark:text-bg border border-positive dark:border-positive-light rounded-md px-3 py-1.5 text-sm font-bold uppercase tracking-wider mr-2 mb-2"><%= category.name %></span>
+      <span class="inline-block bg-dark text-white border border-positive rounded-md px-3 py-1.5 text-sm font-bold uppercase tracking-wider mr-2 mb-2"><%= category.name %></span>
     <% end %>
   </div>
 </div>

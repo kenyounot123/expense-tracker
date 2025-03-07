@@ -1,31 +1,31 @@
 <% content_for :header do %>
   <div class="flex items-center justify-center">
-    <h1 class="text-3xl md:text-4xl font-bold text-white dark:text-bg">Update your password</h1>
+    <h1 class="text-3xl md:text-4xl font-bold text-white">Update your password</h1>
   </div>
 <% end %>
 
 <div class="flex justify-center items-center py-8">
-  <%= form_with url: password_path(params[:token]), method: :put, class: "bg-dark dark:bg-white rounded-lg shadow-lg p-8 w-full max-w-md mx-auto" do |form| %>
+  <%= form_with url: password_path(params[:token]), method: :put, class: "bg-dark rounded-lg shadow-lg p-8 w-full max-w-md mx-auto" do |form| %>
     <div class="mb-6">
-      <%= form.label :password, "New Password", class: "text-positive dark:text-positive-light font-semibold block mb-2" %>
+      <%= form.label :password, "New Password", class: "text-positive font-semibold block mb-2" %>
       <%= form.password_field :password, 
                             required: true, 
                             autocomplete: "new-password", 
                             placeholder: "Enter new password", 
                             maxlength: 72,
-                            class: "bg-bg dark:bg-bg-light text-white dark:text-bg border border-positive dark:border-positive-light rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive dark:focus:ring-positive-light" %>
+                            class: "bg-bg text-white border border-positive rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive" %>
     </div>
     
     <div class="mb-6">
-      <%= form.label :password_confirmation, "Confirm New Password", class: "text-positive dark:text-positive-light font-semibold block mb-2" %>
+      <%= form.label :password_confirmation, "Confirm New Password", class: "text-positive font-semibold block mb-2" %>
       <%= form.password_field :password_confirmation, 
                             required: true, 
                             autocomplete: "new-password", 
                             placeholder: "Repeat new password", 
                             maxlength: 72,
-                            class: "bg-bg dark:bg-bg-light text-white dark:text-bg border border-positive dark:border-positive-light rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive dark:focus:ring-positive-light" %>
+                            class: "bg-bg text-white border border-positive rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive" %>
     </div>
     
-    <%= form.submit "Save Changes", class: "bg-positive dark:bg-positive-light text-white font-semibold py-2 px-4 rounded-full w-full hover:opacity-80 transition-all duration-300" %>
+    <%= form.submit "Save Changes", class: "bg-positive text-white font-semibold py-2 px-4 rounded-full w-full hover:opacity-80 transition-all duration-300" %>
   <% end %>
 </div>

@@ -6,20 +6,20 @@
       Dashboard
     </h1>
     <% if authenticated? %>
-      <%= link_to "Log Out", logout_path, class: "bg-positive dark:bg-positive-light text-white font-semibold py-2 px-4 rounded-full inline-flex items-center hover:opacity-80 transition-all duration-300", method: :delete, data: { turbo_method: :delete } %>
+      <%= link_to "Log Out", logout_path, class: "bg-positive text-white font-semibold py-2 px-4 rounded-full inline-flex items-center hover:opacity-80 transition-all duration-300", method: :delete, data: { turbo_method: :delete } %>
     <% else %>
-      <%= link_to "Log In", login_path, class: "bg-positive dark:bg-positive-light text-white font-semibold py-2 px-4 rounded-full inline-flex items-center hover:opacity-80 transition-all duration-300" %>
+      <%= link_to "Log In", login_path, class: "bg-positive text-white font-semibold py-2 px-4 rounded-full inline-flex items-center hover:opacity-80 transition-all duration-300" %>
     <% end %>
   </nav>
 <% end %>
 
 <% content_for :analytics do %>
-  <section class="bg-dark dark:bg-white rounded-lg p-6 mb-6">
+  <section class="bg-dark rounded-lg p-6 mb-6">
     <%= turbo_frame_tag "analytics_content" do %>
       <div class="flex justify-between items-center">
-        <h2 class="mb-4">Total Spent: <span class="text-accent dark:text-accent-light text-xl"><%= number_to_currency(@total_spendings) %></span></h2>
+        <h2 class="mb-4">Total Spent: <span class="text-accent text-xl"><%= number_to_currency(@total_spendings) %></span></h2>
         <div data-controller="dropdown" class="relative">
-          <button type="button" class="bg-positive dark:bg-positive-light text-white font-semibold py-2 px-4 rounded inline-flex items-center gap-2 hover:opacity-80 transition-all duration-300" data-action="click->dropdown#toggle">
+          <button type="button" class="bg-positive text-white font-semibold py-2 px-4 rounded inline-flex items-center gap-2 hover:opacity-80 transition-all duration-300" data-action="click->dropdown#toggle">
             View
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
               <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
@@ -27,23 +27,23 @@
           </button>
           <ul
             data-dropdown-target="menu"
-            class="absolute right-0 mt-2 w-48 bg-dark dark:bg-white border border-positive dark:border-positive-light rounded-md shadow-lg z-10 hidden"
+            class="absolute right-0 mt-2 w-48 bg-dark border border-positive rounded-md shadow-lg z-10 hidden"
             data-action="click@window->dropdown#hide"
           >
             <%= link_to "Income", dashboard_analytics_path(filter_type: :income, chart_type: :monthly), 
-                class: "block px-4 py-2 text-white dark:text-bg hover:bg-positive hover:dark:bg-positive-light hover:text-white", 
+                class: "block px-4 py-2 text-white hover:bg-positive hover:text-white", 
                 data: { turbo_frame: "analytics_content" } %>
             <%= link_to "Spent", dashboard_analytics_path(filter_type: :spendings, chart_type: :monthly), 
-                class: "block px-4 py-2 text-white dark:text-bg hover:bg-positive hover:dark:bg-positive-light hover:text-white #{params[:filter_type].to_s.empty? ? 'opacity-50 cursor-not-allowed' : ''}", 
+                class: "block px-4 py-2 text-white hover:bg-positive hover:text-white #{params[:filter_type].to_s.empty? ? 'opacity-50 cursor-not-allowed' : ''}", 
                 data: { turbo_frame: "analytics_content" } %>
             <%= link_to "Profits", dashboard_analytics_path(filter_type: :profits), 
-                class: "block px-4 py-2 text-white dark:text-bg hover:bg-positive hover:dark:bg-positive-light hover:text-white",
+                class: "block px-4 py-2 text-white hover:bg-positive hover:text-white",
                 data: { turbo_frame: "analytics_content" } %>
             <%= link_to "Daily Income", dashboard_analytics_path(filter_type: :income, chart_type: :daily), 
-                class: "block px-4 py-2 text-white dark:text-bg hover:bg-positive hover:dark:bg-positive-light hover:text-white",
+                class: "block px-4 py-2 text-white hover:bg-positive hover:text-white",
                 data: { turbo_frame: "analytics_content" } %>
             <%= link_to "Daily Spendings", dashboard_analytics_path(filter_type: :spendings, chart_type: :daily), 
-                class: "block px-4 py-2 text-white dark:text-bg hover:bg-positive hover:dark:bg-positive-light hover:text-white",
+                class: "block px-4 py-2 text-white hover:bg-positive hover:text-white",
                 data: { turbo_frame: "analytics_content" } %>
           </ul>
         </div>
@@ -72,7 +72,7 @@
 <div class="flex justify-between items-center mb-4">
   <h2 class="text-2xl font-semibold">Activity</h2>
 
-  <%= link_to new_expense_path, class: "bg-accent dark:bg-accent-light text-white font-semibold py-2 px-4 rounded-full inline-flex items-center gap-2 hover:opacity-80 transition-all duration-300" do %>
+  <%= link_to new_expense_path, class: "bg-accent text-white font-semibold py-2 px-4 rounded-full inline-flex items-center gap-2 hover:opacity-80 transition-all duration-300" do %>
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
       <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
     </svg> 
@@ -102,14 +102,14 @@
       </button>
       <ul
         data-dropdown-target="menu"
-        class="absolute right-0 mt-2 w-48 bg-dark dark:bg-white border border-positive dark:border-positive-light rounded-md shadow-lg z-10 hidden"
+        class="absolute right-0 mt-2 w-48 bg-dark border border-positive rounded-md shadow-lg z-10 hidden"
         data-action="click@window->dropdown#hide"
       >
         <%= link_to "Recent", expenses_path(sort: :desc), 
-            class: "block px-4 py-2 text-white dark:text-bg hover:bg-positive hover:dark:bg-positive-light hover:text-white #{params[:sort] != 'asc' ? 'opacity-50 cursor-not-allowed' : ''}", 
+            class: "block px-4 py-2 text-white hover:bg-positive hover:text-white #{params[:sort] != 'asc' ? 'opacity-50 cursor-not-allowed' : ''}", 
             data: { turbo_frame: "expenses_content" } %>
         <%= link_to "Oldest", expenses_path(sort: :asc), 
-            class: "block px-4 py-2 text-white dark:text-bg hover:bg-positive hover:dark:bg-positive-light hover:text-white #{params[:sort] == 'asc' ? 'opacity-50 cursor-not-allowed' : ''}", 
+            class: "block px-4 py-2 text-white hover:bg-positive hover:text-white #{params[:sort] == 'asc' ? 'opacity-50 cursor-not-allowed' : ''}", 
             data: { turbo_frame: "expenses_content" } %>
       </ul>
     </div>

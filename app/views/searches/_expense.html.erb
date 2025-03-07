@@ -1,19 +1,19 @@
 <% expenses.each_with_index do |expense, index| %>
-  <tr class="border-b border-positive/20 dark:border-positive-light/20 hover:bg-bg/50 dark:hover:bg-bg-light/50 transition-colors duration-200">
-    <td class="py-3 px-4 text-white dark:text-bg"><%= index + 1 %></td>
-    <td class="py-3 px-4 text-white dark:text-bg"><%= expense.description %></td>
-    <td class="py-3 px-4 text-white dark:text-bg"><%= expense.expense_type.humanize %></td>
+  <tr class="border-b border-positive/20 hover:bg-bg/50 transition-colors duration-200">
+    <td class="py-3 px-4 text-white"><%= index + 1 %></td>
+    <td class="py-3 px-4 text-white"><%= expense.description %></td>
+    <td class="py-3 px-4 text-white"><%= expense.expense_type.humanize %></td>
     <td class="py-3 px-4">
       <% if expense.income? %>
-        <span class="text-green dark:text-green-light">Income</span>
+        <span class="text-green">Income</span>
       <% else %>
-        <span class="text-red dark:text-red-light">Expense</span>
+        <span class="text-red">Expense</span>
       <% end %>
     </td>
-    <td class="py-3 px-4 text-white dark:text-bg"><%= expense.date.strftime("%m/%d/%Y") %></td>
-    <td class="py-3 px-4 font-semibold text-accent dark:text-accent-light"><%= number_to_currency(expense.amount) %></td>
+    <td class="py-3 px-4 text-white"><%= expense.date.strftime("%m/%d/%Y") %></td>
+    <td class="py-3 px-4 font-semibold text-accent"><%= number_to_currency(expense.amount) %></td>
     <td class="py-3 px-4">
-      <%= link_to "View", expense_path(expense), class: "bg-positive dark:bg-positive-light text-white font-semibold py-1 px-3 rounded-full text-sm hover:opacity-80 transition-all duration-300" %>
+      <%= link_to "View", expense_path(expense), class: "bg-positive text-white font-semibold py-1 px-3 rounded-full text-sm hover:opacity-80 transition-all duration-300" %>
     </td>
   </tr>
 <% end %>

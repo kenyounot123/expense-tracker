@@ -1,36 +1,36 @@
-<%= form_with url: searches_path, method: :get, class: "bg-dark dark:bg-white rounded-lg p-6 shadow-lg" do |form| %>
-  <%= form.search_field :query, placeholder: "Search expenses", autocomplete: "off", class: "bg-bg dark:bg-bg-light text-white dark:text-bg border border-positive dark:border-positive-light rounded-md py-2 px-4 w-full mb-4 focus:outline-none focus:ring-2 focus:ring-positive dark:focus:ring-positive-light" %>
+<%= form_with url: searches_path, method: :get, class: "bg-dark rounded-lg p-6 shadow-lg" do |form| %>
+  <%= form.search_field :query, placeholder: "Search expenses", autocomplete: "off", class: "bg-bg text-white border border-positive rounded-md py-2 px-4 w-full mb-4 focus:outline-none focus:ring-2 focus:ring-positive" %>
   <div class="flex justify-start gap-4 items-center mb-6">
-    <%= form.submit "Search", class: "bg-positive dark:bg-positive-light text-white font-semibold py-2 px-4 rounded-full hover:opacity-80 transition-all duration-300", name: nil %>
-    <%= link_to "Clear Filters", searches_path, class: "text-positive dark:text-positive-light hover:underline" %>
+    <%= form.submit "Search", class: "bg-positive text-white font-semibold py-2 px-4 rounded-full hover:opacity-80 transition-all duration-300", name: nil %>
+    <%= link_to "Clear Filters", searches_path, class: "text-positive hover:underline" %>
   </div>
 
   <div class="mb-4">
-    <%= form.label "filters[expense_type]", "By Expense Type", class: "text-positive dark:text-positive-light font-semibold block mb-2" %>
+    <%= form.label "filters[expense_type]", "By Expense Type", class: "text-positive font-semibold block mb-2" %>
     <%= form.select "filters[expense_type]", 
                    options_for_select([["All", nil], ["One-time", "one_time"], ["Monthly", "monthly"], ["Yearly", "yearly"]], params.dig(:filters, :expense_type)), 
                    {}, 
-                   { class: "bg-bg dark:bg-bg-light text-white dark:text-bg border border-positive dark:border-positive-light rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive dark:focus:ring-positive-light" } %>
+                   { class: "bg-bg text-white border border-positive rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive" } %>
   </div>
 
   <div class="mb-4">
-    <%= form.label "filters[income]", "By Income", class: "text-positive dark:text-positive-light font-semibold block mb-2" %>
+    <%= form.label "filters[income]", "By Income", class: "text-positive font-semibold block mb-2" %>
     <%= form.select "filters[income]", 
                    options_for_select([["All", nil], ["Income", true], ["Expense", false]], params.dig(:filters, :income)), 
                    {}, 
-                   { class: "bg-bg dark:bg-bg-light text-white dark:text-bg border border-positive dark:border-positive-light rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive dark:focus:ring-positive-light" } %>
+                   { class: "bg-bg text-white border border-positive rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive" } %>
   </div>
 
   <div class="mb-4">
-    <%= form.label "filters[date_range]", "By Date Range", class: "text-positive dark:text-positive-light font-semibold block mb-2" %>
+    <%= form.label "filters[date_range]", "By Date Range", class: "text-positive font-semibold block mb-2" %>
     <div class="flex items-center space-x-2">
       <%= form.date_field "filters[start_date]", 
                          value: params.dig(:filters, :start_date), 
-                         class: "bg-bg dark:bg-bg-light text-white dark:text-bg border border-positive dark:border-positive-light rounded-md py-2 px-4 flex-1 focus:outline-none focus:ring-2 focus:ring-positive dark:focus:ring-positive-light" %>
-      <span class="text-white dark:text-bg">to</span>
+                         class: "bg-bg text-white border border-positive rounded-md py-2 px-4 flex-1 focus:outline-none focus:ring-2 focus:ring-positive" %>
+      <span class="text-white">to</span>
       <%= form.date_field "filters[end_date]", 
                          value: params.dig(:filters, :end_date), 
-                         class: "bg-bg dark:bg-bg-light text-white dark:text-bg border border-positive dark:border-positive-light rounded-md py-2 px-4 flex-1 focus:outline-none focus:ring-2 focus:ring-positive dark:focus:ring-positive-light" %>
+                         class: "bg-bg text-white border border-positive rounded-md py-2 px-4 flex-1 focus:outline-none focus:ring-2 focus:ring-positive" %>
     </div>
   </div>
 <% end %>
