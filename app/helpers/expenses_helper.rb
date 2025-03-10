@@ -13,4 +13,8 @@ module ExpensesHelper
     when "desc" then "Recent"
     end
   end
+
+  def user_total_spendings
+    Current.user.expenses.total_spendings
+  end
 end

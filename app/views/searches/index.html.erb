@@ -1,53 +1,67 @@
 <% content_for :header do %>
-  <%= render "shared/header", title: "Search and Advanced filters", back_path: expenses_path %>
+  <%= render "shared/header", title: "Search Expenses", back_path: expenses_path %>
 <% end %>
 
 <%= render "search_form" %>
 
 <div class="mt-8">
-  <div class="overflow-x-auto">
-    <table class="w-full bg-dark rounded-lg shadow-lg">
-      <thead>
-        <tr class="border-b border-positive">
-          <th class="py-3 px-4 text-left text-positive font-semibold">No.</th>
-          <th class="py-3 px-4 text-left text-positive font-semibold">
-            <div class="flex justify-between items-center">
-              <span>Description</span>
-              <%= sort_indicator_for("description") %>
-            </div>
-          </th>
-          <th class="py-3 px-4 text-left text-positive font-semibold">
-            Expense Type
-          </th>
-          <th class="py-3 px-4 text-left text-positive font-semibold">
-            Income or Expense
-          </th>
-          <th class="py-3 px-4 text-left text-positive font-semibold">
-            <div class="flex justify-between items-center">
-              <span>Date</span>
-              <%= sort_indicator_for("date") %>
-            </div>
-          </th>
-          <th class="py-3 px-4 text-left text-positive font-semibold">
-            <div class="flex justify-between items-center">
-              <span>Amount</span>
-              <%= sort_indicator_for("amount") %>
-            </div>
-          </th>
-          <th class="py-3 px-4 text-left text-positive font-semibold">
-          </th>
-        </tr>
-      </thead>
-      <tbody data-controller="row-link">
-        <%= render "expense", expenses: @expenses %>
-
-        <% if @expenses.empty? %>
-          <tr>
-            <td colspan="7" class="py-8 px-4 text-center text-white opacity-80">No expenses found.</td>
+  <% if @expenses&.any? %>
+    <div class="overflow-x-auto rounded-lg shadow-lg">
+      <table class="w-full bg-dark">
+        <thead>
+          <tr class="border-b border-positive">
+            <th class="py-4 px-4 text-left text-positive font-semibold">#</th>
+            <th class="py-4 px-4 text-left text-positive font-semibold">
+              <div class="flex items-center gap-2">
+                <span>Description</span>
+                <%= sort_indicator_for("description") %>
+              </div>
+            </th>
+            <th class="py-4 px-4 text-left text-positive font-semibold">
+              <span>Expense Type</span>
+            </th>
+            <th class="py-4 px-4 text-left text-positive font-semibold">
+              <span>Entry Type</span>
+            </th>
+            <th class="py-4 px-4 text-left text-positive font-semibold">
+              <div class="flex items-center gap-2">
+                <span>Date</span>
+                <%= sort_indicator_for("date") %>
+              </div>
+            </th>
+            <th class="py-4 px-4 text-left text-positive font-semibold">
+              <div class="flex items-center gap-2">
+                <span>Amount</span>
+                <%= sort_indicator_for("amount") %>
+              </div>
+            </th>
+            <th class="py-4 px-4 text-right text-positive font-semibold">
+              Actions
+            </th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+        </thead>
+        <tbody data-controller="row-link">
+          <%= render "expense", expenses: @expenses %>
+        </tbody>
+      </table>
+    </div>
+  <% elsif params[:query].present? || params[:filters].present? %>
+    <div class="bg-dark rounded-lg p-8 text-center shadow-lg">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-positive/50 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <h3 class="text-xl text-white font-semibold mb-2">No matching expenses found</h3>
+      <p class="text-white/70 mb-6">Try adjusting your search criteria or filters</p>
+      <%= link_to "Clear All Filters", searches_path, class: "bg-positive text-white font-semibold py-2 px-6 rounded-md hover:bg-positive/90 transition-all duration-300 inline-flex items-center gap-2" %>
+    </div>
+  <% else %>
+    <div class="bg-dark rounded-lg p-8 text-center shadow-lg">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-positive/50 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+      <h3 class="text-xl text-white font-semibold mb-2">Start searching your expenses</h3>
+      <p class="text-white/70">Use the search box and filters above to find specific expenses</p>
+    </div>
+  <% end %>
 </div>
 

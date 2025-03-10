@@ -20,7 +20,7 @@
         <%= link_to "Income", dashboard_analytics_path(filter_type: :income, chart_type: :monthly), 
             class: "block px-4 py-2 text-white hover:bg-positive #{params[:filter_type].to_s == 'income' && params[:chart_type].to_s == 'monthly' ? 'opacity-50 cursor-not-allowed' : ''}", 
             data: { turbo_frame: "analytics_content" } %>
-        <%= link_to "Spent", dashboard_analytics_path(filter_type: :spendings, chart_type: :monthly), 
+        <%= link_to "Expenses", dashboard_analytics_path(filter_type: :spendings, chart_type: :monthly), 
             class: "block px-4 py-2 text-white hover:bg-positive #{params[:filter_type].to_s == 'spendings' && params[:chart_type].to_s == 'monthly' ? 'opacity-50 cursor-not-allowed' : ''}", 
             data: { turbo_frame: "analytics_content" } %>
         <%= link_to "Profits", dashboard_analytics_path(filter_type: :profits), 

@@ -11,11 +11,11 @@
     <div class="flex items-center gap-4">
       <% if authenticated? %>
         <div class="relative group" data-controller="dropdown">
-          <div data-action="click->dropdown#toggle" class="w-10 h-10 rounded-full bg-positive/20 flex items-center justify-center text-positive font-bold cursor-pointer">
+          <div data-action="click->dropdown#toggle" class="w-10 h-10 rounded-full bg-positive flex items-center justify-center text-white font-bold cursor-pointer p-2">
             <%= Current.user.email_address.split("@").first.upcase %>
           </div>
           <div data-dropdown-target="menu" data-action="click@window->dropdown#hide" class="absolute right-0 mt-2 w-48 bg-dark border border-gray-700 rounded-lg shadow-lg z-10 hidden">
-            <%= link_to logout_path, class: "block px-4 py-3 text-white rounded-lg", method: :delete, data: { turbo_method: :delete } do %>
+            <%= link_to logout_path, class: "block px-4 py-3 text-white rounded-lg hover:opacity-80 transition-colors duration-300", method: :delete, data: { turbo_method: :delete } do %>
               <div class="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2 text-gray-400">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
@@ -47,15 +47,9 @@
           </svg>
         </div>
         <div>
-          <p class="text-gray-400 text-sm">Income</p>
+          <p class="text-gray-400 text-sm">Total Income</p>
           <h3 class="text-xl font-bold text-white"><%= number_to_currency(@total_income || 0) %></h3>
         </div>
-      </div>
-      <div class="mt-2 text-green-500 text-sm flex items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
-        </svg>
-        <span>+5% from last month</span>
       </div>
     </div>
     
@@ -67,15 +61,9 @@
           </svg>
         </div>
         <div>
-          <p class="text-gray-400 text-sm">Expenses</p>
+          <p class="text-gray-400 text-sm">Total Expenses</p>
           <h3 class="text-xl font-bold text-white"><%= number_to_currency(@total_spendings) %></h3>
         </div>
-      </div>
-      <div class="mt-2 text-red-500 text-sm flex items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6L9 12.75l4.286-4.286a11.948 11.948 0 014.306 6.43l.776 2.898m0 0l3.182-5.511m-3.182 5.51l-5.511-3.181" />
-        </svg>
-        <span>+2.3% from last month</span>
       </div>
     </div>
     
@@ -87,15 +75,9 @@
           </svg>
         </div>
         <div>
-          <p class="text-gray-400 text-sm">Balance</p>
+          <p class="text-gray-400 text-sm">Total Profits</p>
           <h3 class="text-xl font-bold text-white"><%= number_to_currency((@total_income || 0) - @total_spendings) %></h3>
         </div>
-      </div>
-      <div class="mt-2 text-positive text-sm flex items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
-        </svg>
-        <span>+3.2% from last month</span>
       </div>
     </div>
   </div>
@@ -106,7 +88,7 @@
         <h2 class="text-xl font-semibold">Financial Overview</h2>
         <div data-controller="dropdown" class="relative">
           <button type="button" class="bg-positive/10 text-positive font-medium py-2 px-4 rounded-lg inline-flex items-center gap-2 hover:bg-positive/20" data-action="click->dropdown#toggle">
-            <%= params[:filter_type].present? ? params[:filter_type].to_s.titleize : "Monthly Expenses" %>
+            <%= params[:filter_type].present? ? params[:filter_type].to_s.titleize : "View" %>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
               <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
             </svg>
@@ -117,19 +99,19 @@
             data-action="click@window->dropdown#hide"
           >
             <%= link_to "Income", dashboard_analytics_path(filter_type: :income, chart_type: :monthly), 
-                class: "block px-4 py-2 text-white hover:bg-positive/10 rounded-t-lg", 
+                class: "block px-4 py-2 text-white hover:bg-positive rounded-t-lg", 
                 data: { turbo_frame: "analytics_content" } %>
             <%= link_to "Expenses", dashboard_analytics_path(filter_type: :spendings, chart_type: :monthly), 
-                class: "block px-4 py-2 text-white hover:bg-positive/10", 
+                class: "block px-4 py-2 text-white hover:bg-positive", 
                 data: { turbo_frame: "analytics_content" } %>
             <%= link_to "Profits", dashboard_analytics_path(filter_type: :profits), 
-                class: "block px-4 py-2 text-white hover:bg-positive/10",
+                class: "block px-4 py-2 text-white hover:bg-positive",
                 data: { turbo_frame: "analytics_content" } %>
             <%= link_to "Daily Income", dashboard_analytics_path(filter_type: :income, chart_type: :daily), 
-                class: "block px-4 py-2 text-white hover:bg-positive/10",
+                class: "block px-4 py-2 text-white hover:bg-positive",
                 data: { turbo_frame: "analytics_content" } %>
             <%= link_to "Daily Expenses", dashboard_analytics_path(filter_type: :spendings, chart_type: :daily), 
-                class: "block px-4 py-2 text-white hover:bg-positive/10 rounded-b-lg",
+                class: "block px-4 py-2 text-white hover:bg-positive rounded-b-lg",
                 data: { turbo_frame: "analytics_content" } %>
           </ul>
         </div>

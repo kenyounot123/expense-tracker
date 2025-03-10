@@ -1,5 +1,5 @@
 <% if flash[:alert] %>
-  <div class="fixed top-4 right-4 left-4 md:left-auto md:w-96 bg-red text-white p-4 rounded-lg shadow-lg z-50 flex justify-between items-center" data-controller="close-content" data-close-content-target="content">
+  <div class="fixed top-4 right-4 left-4 md:left-auto md:w-96 bg-red-500 text-white p-4 rounded-lg shadow-lg z-50 flex justify-between items-center" data-controller="close-content" data-close-content-target="content">
     <%= flash[:alert] %>
     <button class="text-white hover:opacity-80 ml-4" data-action="click->close-content#close" aria-label="Close">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -9,7 +9,7 @@
   </div>
 <% end %>
 <% if flash[:notice] %>
-  <div class="fixed top-4 right-4 left-4 md:left-auto md:w-96 bg-green text-white p-4 rounded-lg shadow-lg z-50 flex justify-between items-center" data-controller="close-content" data-close-content-target="content">
+  <div class="fixed top-4 right-4 left-4 md:left-auto md:w-96 bg-green-500 text-white p-4 rounded-lg shadow-lg z-50 flex justify-between items-center" data-controller="close-content" data-close-content-target="content">
     <%= flash[:notice] %>
     <button class="text-white hover:opacity-80 ml-4" data-action="click->close-content#close" aria-label="Close">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

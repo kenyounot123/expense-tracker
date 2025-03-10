@@ -1,19 +1,38 @@
 <% expenses.each_with_index do |expense, index| %>
-  <tr class="border-b border-positive/20 hover:bg-bg/50 transition-colors duration-200">
-    <td class="py-3 px-4 text-white"><%= index + 1 %></td>
-    <td class="py-3 px-4 text-white"><%= expense.description %></td>
-    <td class="py-3 px-4 text-white"><%= expense.expense_type.humanize %></td>
-    <td class="py-3 px-4">
+  <tr class="border-positive/20 hover:bg-bg/50 transition-colors duration-200" 
+      data-action="click->row-link#visit" 
+      data-row-link-url-value="<%= expense_path(expense) %>">
+    <td class="py-4 px-4 text-white/80"><%= index + 1 %></td>
+    <td class="py-4 px-4">
+      <div class="flex flex-col">
+        <span class="text-white font-medium"><%= expense.description %></span>
+      </div>
+    </td>
+    <td class="py-4 px-4">
+      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-positive/20 text-positive">
+        <%= expense.expense_type.humanize %>
+      </span>
+    </td>
+    <td class="py-4 px-4">
       <% if expense.income? %>
-        <span class="text-green">Income</span>
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-500/20 text-green-400">Income</span>
       <% else %>
-        <span class="text-red">Expense</span>
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-500/20 text-red-400">Expense</span>
       <% end %>
     </td>
-    <td class="py-3 px-4 text-white"><%= expense.date.strftime("%m/%d/%Y") %></td>
-    <td class="py-3 px-4 font-semibold text-accent"><%= number_to_currency(expense.amount) %></td>
-    <td class="py-3 px-4">
-      <%= link_to "View", expense_path(expense), class: "bg-positive text-white font-semibold py-1 px-3 rounded-full text-sm hover:opacity-80 transition-all duration-300" %>
+    <td class="py-4 px-4 text-white/80"><%= expense.date.strftime("%b %d, %Y") %></td>
+    <td class="py-4 px-4 font-semibold <%= expense.income? ? 'text-green-400' : 'text-red-400' %>">
+      <%= number_to_currency(expense.amount) %>
+    </td>
+    <td class="py-4 px-4 text-right">
+      <div class="flex items-center justify-end gap-2">
+        <%= link_to expense_path(expense), class: "text-positive hover:text-white transition-colors duration-200" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+        <% end %>
+      </div>
     </td>
   </tr>
 <% end %>
