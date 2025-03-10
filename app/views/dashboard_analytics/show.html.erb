@@ -18,30 +18,28 @@
         data-action="click@window->dropdown#hide"
       >
         <%= link_to "Income", dashboard_analytics_path(filter_type: :income, chart_type: :monthly), 
-            class: "dropdown-item #{params[:filter_type].to_s == 'income' && params[:chart_type].to_s == 'monthly' ? 'disabled' : ''}", 
+            class: "block px-4 py-2 text-white hover:bg-positive #{params[:filter_type].to_s == 'income' && params[:chart_type].to_s == 'monthly' ? 'opacity-50 cursor-not-allowed' : ''}", 
             data: { turbo_frame: "analytics_content" } %>
         <%= link_to "Spent", dashboard_analytics_path(filter_type: :spendings, chart_type: :monthly), 
-            class: "dropdown-item #{params[:filter_type].to_s == 'spendings' && params[:chart_type].to_s == 'monthly' ? 'disabled' : ''}", 
+            class: "block px-4 py-2 text-white hover:bg-positive #{params[:filter_type].to_s == 'spendings' && params[:chart_type].to_s == 'monthly' ? 'opacity-50 cursor-not-allowed' : ''}", 
             data: { turbo_frame: "analytics_content" } %>
         <%= link_to "Profits", dashboard_analytics_path(filter_type: :profits), 
-            class: "dropdown-item #{params[:filter_type].to_s == 'profits' ? 'disabled' : ''}", 
+            class: "block px-4 py-2 text-white hover:bg-positive #{params[:filter_type].to_s == 'profits' ? 'opacity-50 cursor-not-allowed' : ''}", 
             data: { turbo_frame: "analytics_content" } %>
         <%= link_to "Daily Income", dashboard_analytics_path(filter_type: :income, chart_type: :daily), 
-            class: "dropdown-item #{params[:chart_type].to_s == 'daily' && params[:filter_type].to_s == 'income' ? 'disabled' : ''}", 
+            class: "block px-4 py-2 text-white hover:bg-positive #{params[:chart_type].to_s == 'daily' && params[:filter_type].to_s == 'income' ? 'opacity-50 cursor-not-allowed' : ''}", 
             data: { turbo_frame: "analytics_content" } %>
         <%= link_to "Daily Spendings", dashboard_analytics_path(filter_type: :spendings, chart_type: :daily), 
-            class: "dropdown-item #{params[:chart_type].to_s == 'daily' && params[:filter_type].to_s == 'spendings' ? 'disabled' : ''}", 
+            class: "block px-4 py-2 text-white hover:bg-positive #{params[:chart_type].to_s == 'daily' && params[:filter_type].to_s == 'spendings' ? 'opacity-50 cursor-not-allowed' : ''}", 
             data: { turbo_frame: "analytics_content" } %>
       </ul>
     </div>
   </div>
   
   <div class="aspect-[16/9] md:aspect-[21/9]">
-    <%= line_chart chart_path_for(params[:filter_type], params[:chart_type]),
+    <%= column_chart chart_path_for(params[:filter_type], params[:chart_type]),
         thousands: ",",
-        colors: ["#38bdf8"],
-        curve: true,
-        points: false,
+        colors: ["#CD4FF7"],
         height: "100%",
         library: {
           scales: {
@@ -56,7 +54,26 @@
               ticks: { color: chart_color_for_scheme, fontFamily: "Poppins" }
             }
           },
-          maintainAspectRatio: false
+          maintainAspectRatio: false,
+          borderRadius: 6,
+          barPercentage: 0.6,
+          categoryPercentage: 0.7,
+          plugins: {
+            tooltip: {
+              backgroundColor: '#1e1e1e',
+              titleFont: {
+                family: 'Poppins',
+                size: 14
+              },
+              bodyFont: {
+                family: 'Poppins',
+                size: 13
+              },
+              padding: 12,
+              borderColor: '#333',
+              borderWidth: 1
+            }
+          }
         } %>
   </div>
 <% end %> 

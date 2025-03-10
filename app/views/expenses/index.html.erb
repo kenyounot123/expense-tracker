@@ -136,11 +136,9 @@
       </div>
 
       <div class="aspect-[16/9] md:aspect-[21/9]">
-        <%= line_chart chart_path_for(params[:filter_type], params[:chart_type]),
+        <%= column_chart chart_path_for(params[:filter_type], params[:chart_type]),
             thousands: ",",
-            colors: ["#38bdf8"],
-            curve: true,
-            points: false,
+            colors: ["#CD4FF7"],
             height: "100%",
             library: {
               scales: {
@@ -155,7 +153,26 @@
                   ticks: { color: chart_color_for_scheme, fontFamily: "Poppins" }
                 }
               },
-              maintainAspectRatio: false
+              maintainAspectRatio: false,
+              borderRadius: 6,
+              barPercentage: 0.6,
+              categoryPercentage: 0.7,
+              plugins: {
+                tooltip: {
+                  backgroundColor: '#1e1e1e',
+                  titleFont: {
+                    family: 'Poppins',
+                    size: 14
+                  },
+                  bodyFont: {
+                    family: 'Poppins',
+                    size: 13
+                  },
+                  padding: 12,
+                  borderColor: '#333',
+                  borderWidth: 1
+                }
+              }
             } %>
       </div>
     <% end %>
