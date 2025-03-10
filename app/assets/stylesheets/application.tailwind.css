@@ -1,5 +1,6 @@
 @import "./colors.css";
 @import "./pagy.css";
+@import "./multiselect.css";
 
 @tailwind base;
 @tailwind components;

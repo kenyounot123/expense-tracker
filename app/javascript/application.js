@@ -3,6 +3,7 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "chartkick"
 import "Chart.bundle"
+import "@wizardhealth/stimulus-multiselect"
 
 document.addEventListener("turbo:load", () => {
   // Force Chartkick to refresh charts
