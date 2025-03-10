@@ -45,7 +45,7 @@
             <%= expense.income? ? '+' : '-' %><%= number_to_currency(expense.amount.abs) %>
           </span>
           
-          <%= link_to expense_path(expense), class: "bg-positive/10 hover:bg-positive/20 p-2 rounded-full transition-colors duration-200", data: { turbo_frame: "_top" } do %>
+          <%= link_to expense_path(expense), class: "bg-bg hover:opacity-80 p-2 rounded-full transition-colors duration-200", data: { turbo_frame: "_top" } do %>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-positive">
               <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
             </svg>
@@ -56,7 +56,7 @@
       <% if expense.categories.any? %>
         <div class="mt-2 flex flex-wrap">
           <% expense.categories.each do |category| %>
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-positive/10 text-positive mr-2 mb-1">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-positive text-positive mr-2 mb-1">
               <%= category.name %>
             </span>
           <% end %>

@@ -47,16 +47,16 @@
     </div>
   <% elsif params[:query].present? || params[:filters].present? %>
     <div class="bg-dark rounded-lg p-8 text-center shadow-lg">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-positive/50 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-positive mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
       <h3 class="text-xl text-white font-semibold mb-2">No matching expenses found</h3>
       <p class="text-white/70 mb-6">Try adjusting your search criteria or filters</p>
-      <%= link_to "Clear All Filters", searches_path, class: "bg-positive text-white font-semibold py-2 px-6 rounded-md hover:bg-positive/90 transition-all duration-300 inline-flex items-center gap-2" %>
+      <%= link_to "Clear All Filters", searches_path, class: "bg-positive text-white font-semibold py-2 px-6 rounded-md hover:bg-positive transition-all duration-300 inline-flex items-center gap-2" %>
     </div>
   <% else %>
     <div class="bg-dark rounded-lg p-8 text-center shadow-lg">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-positive/50 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-positive mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
       </svg>
       <h3 class="text-xl text-white font-semibold mb-2">Start searching your expenses</h3>

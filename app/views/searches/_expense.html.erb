@@ -1,5 +1,5 @@
 <% expenses.each_with_index do |expense, index| %>
-  <tr class="border-positive/20 hover:bg-bg/50 transition-colors duration-200" 
+  <tr class="border-positive hover:bg-bg/50 transition-colors duration-200" 
       data-action="click->row-link#visit" 
       data-row-link-url-value="<%= expense_path(expense) %>">
     <td class="py-4 px-4 text-white/80"><%= index + 1 %></td>
@@ -9,7 +9,7 @@
       </div>
     </td>
     <td class="py-4 px-4">
-      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-positive/20 text-positive">
+      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium text-positive">
         <%= expense.expense_type.humanize %>
       </span>
     </td>
