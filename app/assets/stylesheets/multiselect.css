@@ -19,7 +19,7 @@
 }
 
 .multiselect__pill {
-  @apply bg-blue-600 text-xs pl-1 rounded flex text-white;
+  @apply bg-positive text-xs pl-1 rounded flex text-white;
 }
 
 .multiselect__pill-delete {
@@ -35,11 +35,11 @@
 }
 
 .multiselect__input-container {
-  @apply flex bg-bg;
+  @apply flex bg-bg rounded border border-gray-500;
 }
 
 .multiselect__focused {
-  @apply bg-gray-100;
+  @apply bg-positive;
 }
 
 .multiselect__placeholder {
@@ -97,7 +97,7 @@
 }
 
 .multiselect__dropdown {
-  @apply w-full rounded hidden mt-2 z-50 bg-dark absolute border border-gray-300;
+  @apply w-full rounded hidden mt-2 z-50 bg-dark absolute border border-gray-500;
 }
 
 .multiselect__dropdown--open {

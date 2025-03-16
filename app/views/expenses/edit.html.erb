@@ -1,7 +1,7 @@
-<% content_for :title, "Edit Expense" %>
+<% content_for :title, "Edit #{@expense.income? ? "Income" : "Expense"}" %>
 
 <%= content_for :header do %>
-  <%= render "shared/header", title: "Edit Expense", back_path: expense_path(@expense) %>
+  <%= render "shared/header", title: "Edit #{@expense.income? ? "Income" : "Expense"}", back_path: expense_path(@expense) %>
 <% end %>
 
 <%= render "form", expense: @expense %>
