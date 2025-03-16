@@ -2,35 +2,55 @@
   Sign in
 <% end %>
 
-<%= form_with url: session_path, class: "margin-block-double card flex flex-column" do |form| %>
-  <h1 class="text-xx-large text-center"><b>Welcome Back</b></h1>
-  <%= form.label :email_address, "Email Address", class: "text-positive text-label" %>
-  <%= form.email_field :email_address, 
-                      required: true, 
-                      autofocus: true, 
-                      autocomplete: "username", 
-                      placeholder: "Enter your email address", 
-                      value: params[:email_address] %><br>
-
-  <%= form.label :password, "Password", class: "text-positive text-label" %>
-  <%= form.password_field :password, 
-                         required: true, 
-                         autocomplete: "current-password", 
-                         placeholder: "Enter your password", 
-                         maxlength: 72 %>
-
-
-  <div class="flex justify-between items-center">
-    <%= form.label :remember_me do %>
-      <%= form.check_box :remember_me %>
-      <span class="text-positive">Remember me</span>
+<div class="flex justify-center items-center min-h-screen">
+  <div class="absolute top-6 left-6 z-10">
+    <%= link_to root_path, class: "flex items-center bg-dark border-2 border-positive rounded-full py-2 px-4 text-white hover:bg-positive transition-all duration-300 shadow-lg" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 mr-2 text-white">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+      </svg>
+      <span class="font-medium">Back to Home</span>
     <% end %>
-    <p class="text-right"><%= link_to "Forgot your password?", new_password_path, class: "text-positive" %></p>
   </div>
 
-  <%= form.submit "Sign in", class: "btn btn-login" %>
+  <%= form_with url: session_path, class: "bg-dark rounded-lg shadow-lg p-8 w-full max-w-md mx-auto" do |form| %>
+    <h1 class="text-3xl md:text-4xl font-bold text-center mb-8 text-white">Welcome Back</h1>
+    
+    <div class="mb-6">
+      <%= form.label :email_address, "Email Address", class: "text-positive font-semibold block mb-2" %>
+      <%= form.email_field :email_address,
+                          required: true,
+                          autofocus: true,
+                          autocomplete: "username",
+                          placeholder: "Enter your email address",
+                          value: params[:email_address],
+                          class: "bg-bg text-white rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive" %>
+    </div>
 
-  <hr class="margin-block">
+    <div class="mb-6">
+      <%= form.label :password, "Password", class: "text-positive font-semibold block mb-2" %>
+      <%= form.password_field :password,
+                            required: true,
+                            autocomplete: "current-password",
+                            placeholder: "Enter your password",
+                            maxlength: 72,
+                            class: "bg-bg text-white rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive" %>
+    </div>
 
-  <p class="text-center">Don't have an account? <%= link_to "Sign up", signup_path, class: "text-positive" %></p>
-<% end %>
+    <div class="flex justify-between items-center mb-6">
+      <label class="flex items-center text-white">
+        <%= form.check_box :remember_me, class: "mr-2 text-positive" %>
+        <span class="text-positive">Remember me</span>
+      </label>
+      <p><%= link_to "Forgot your password?", new_password_path, class: "text-positive hover:underline" %></p>
+    </div>
+
+    <%= form.submit "Sign in", class: "bg-positive text-white font-semibold py-2 px-4 rounded w-full hover:opacity-80 transition-all duration-300 mb-6" %>
+
+    <div class="border-t border-positive pt-6 mt-2">
+      <p class="text-center text-white">
+        Don't have an account? 
+        <%= link_to "Sign up", signup_path, class: "text-positive hover:underline" %>
+      </p>
+    </div>
+  <% end %>
+</div>

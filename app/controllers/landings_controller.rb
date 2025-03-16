@@ -3,4 +3,10 @@ class LandingsController < ApplicationController
   layout "landing"
   def index
   end
+
+  def privacy
+  end
+
+  def terms
+  end
 end

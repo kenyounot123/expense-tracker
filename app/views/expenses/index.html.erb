@@ -1,121 +1,241 @@
-<% content_for :title, "Expense Dashboard" %>
+<% content_for :title, "Dashboard" %>
 
 <% content_for :header do %>
-  <nav class="flex justify-between items-center">
-    <h1 class="text-xx-large">
-      <b>Dashboard</b>
-    </h1>
-    <% if authenticated? %>
-      <%= link_to "Log Out", logout_path, class: "btn btn-primary", method: :delete, data: { turbo_method: :delete } %>
-    <% else %>
-      <%= link_to "Log In", login_path, class: "btn btn-primary" %>
-    <% end %>
+  <nav class="flex justify-between items-center py-4">
+    <div class="flex items-center">
+      <h1 class="text-3xl font-bold">
+        Dashboard
+      </h1>
+      <span class="ml-3 px-3 py-1 bg-indigo-600/20 text-indigo-300 text-sm rounded-full font-medium border border-indigo-500/30">Personal</span>
+    </div>
+    <div class="flex items-center gap-4">
+      <% if authenticated? %>
+        <div class="relative group" data-controller="dropdown">
+          <div data-action="click->dropdown#toggle" class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-600 to-purple-700 flex items-center justify-center text-white font-bold cursor-pointer shadow-md border-2 border-indigo-500/30 hover:border-indigo-400/50 transition-all duration-300">
+            <%= Current.user.email_address.split("@").first[0].upcase %>
+          </div>
+          <div data-dropdown-target="menu" data-action="click@window->dropdown#hide" class="absolute right-0 mt-2 w-48 bg-dark border border-gray-700 rounded-lg shadow-lg z-10 hidden">
+            <%= link_to logout_path, class: "block px-4 py-3 text-white rounded-lg hover:opacity-80 transition-colors duration-300", method: :delete, data: { turbo_method: :delete } do %>
+              <div class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2 text-gray-400">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+                </svg>
+                Log Out
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% else %>
+        <%= link_to login_path, class: "bg-positive text-white font-semibold py-2 px-4 rounded-full inline-flex items-center hover:opacity-80 transition-all duration-300" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m-6-6l3-3m0 0l3 3m-3-3v12" />
+          </svg>
+          Log In
+        <% end %>
+      <% end %>
+    </div>
   </nav>
 <% end %>
 
 <% content_for :analytics do %>
-  <section class="card">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+    <div class="bg-dark rounded-xl p-6 shadow-lg border border-gray-800">
+      <div class="flex items-center mb-3">
+        <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center mr-4">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6 text-green-500">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <div>
+          <p class="text-gray-400 text-sm font-medium">Income</p>
+          <h3 class="text-2xl font-bold text-white"><%= number_to_currency(@total_income || 0) %></h3>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bg-dark rounded-xl p-6 shadow-lg border border-gray-800">
+      <div class="flex items-center mb-3">
+        <div class="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center mr-4">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6 text-red-500">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6L9 12.75l4.286-4.286a11.948 11.948 0 014.306 6.43l.776 2.898m0 0l3.182-5.511m-3.182 5.51l-5.511-3.181" />
+          </svg>
+        </div>
+        <div>
+          <p class="text-gray-400 text-sm font-medium">Expenses</p>
+          <h3 class="text-2xl font-bold text-white"><%= number_to_currency(@total_spendings) %></h3>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bg-dark rounded-xl p-6 shadow-lg border border-gray-800">
+      <div class="flex items-center mb-3">
+        <div class="w-12 h-12 rounded-full bg-bg flex items-center justify-center mr-4">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6 text-positive">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+          </svg>
+        </div>
+        <div>
+          <p class="text-gray-400 text-sm font-medium">Profits</p>
+          <h3 class="text-2xl font-bold text-white <%= (@total_income || 0) - @total_spendings < 0 ? 'text-red-500' : 'text-green-500' %>"><%= number_to_currency((@total_income || 0) - @total_spendings) %></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="bg-dark rounded-xl p-6 mb-6 shadow-md">
     <%= turbo_frame_tag "analytics_content" do %>
-      <div class="flex justify-between items-center">
-        <h2 class="margin-block-end">Total Spent: <span class="text-accent text-large"><%= number_to_currency(@total_spendings) %></span></h2>
-        <div data-controller="dropdown" class="position-relative">
-          <button type="button" class="btn btn-dropdown" data-action="click->dropdown#toggle">
-            View
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-semibold">Financial Overview</h2>
+        <div data-controller="dropdown" class="relative">
+          <button type="button" class="bg-transparent border border-positive text-white font-medium py-2 px-4 rounded-lg inline-flex items-center gap-2 hover:opacity-80" data-action="click->dropdown#toggle">
+            <%= params[:filter_type].present? ? params[:filter_type].to_s.titleize : "View" %>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
               <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
             </svg>
           </button>
           <ul
             data-dropdown-target="menu"
-            class="dropdown-menu"
+            class="absolute right-0 mt-2 w-48 bg-dark border border-gray-700 rounded-lg shadow-lg z-10 hidden"
             data-action="click@window->dropdown#hide"
           >
             <%= link_to "Income", dashboard_analytics_path(filter_type: :income, chart_type: :monthly), 
-                class: "dropdown-item", 
+                class: "block px-4 py-2 text-white hover:bg-positive rounded-t-lg", 
                 data: { turbo_frame: "analytics_content" } %>
-            <%= link_to "Spent", dashboard_analytics_path(filter_type: :spendings, chart_type: :monthly), 
-                class: "dropdown-item #{params[:filter_type].to_s.empty? ? 'disabled' : ''}", 
+            <%= link_to "Expenses", dashboard_analytics_path(filter_type: :spendings, chart_type: :monthly), 
+                class: "block px-4 py-2 text-white hover:bg-positive", 
                 data: { turbo_frame: "analytics_content" } %>
             <%= link_to "Profits", dashboard_analytics_path(filter_type: :profits), 
-                class: "dropdown-item",
+                class: "block px-4 py-2 text-white hover:bg-positive",
                 data: { turbo_frame: "analytics_content" } %>
             <%= link_to "Daily Income", dashboard_analytics_path(filter_type: :income, chart_type: :daily), 
-                class: "dropdown-item",
+                class: "block px-4 py-2 text-white hover:bg-positive",
                 data: { turbo_frame: "analytics_content" } %>
-            <%= link_to "Daily Spendings", dashboard_analytics_path(filter_type: :spendings, chart_type: :daily), 
-                class: "dropdown-item",
+            <%= link_to "Daily Expenses", dashboard_analytics_path(filter_type: :spendings, chart_type: :daily), 
+                class: "block px-4 py-2 text-white hover:bg-positive rounded-b-lg",
                 data: { turbo_frame: "analytics_content" } %>
           </ul>
         </div>
       </div>
 
-      <%= line_chart chart_path_for(params[:filter_type], params[:chart_type]),
-          thousands: ",",
-          library: {
-            scales: {
-              x: {
-                grid: { color: chart_color_for_scheme },
-                border: { color: chart_color_for_scheme },
-                ticks: { color: chart_color_for_scheme, fontFamily: "Poppins" }
+      <div class="aspect-[16/9] md:aspect-[21/9]">
+        <%= column_chart chart_path_for(params[:filter_type], params[:chart_type]),
+            thousands: ",",
+            colors: ["#CD4FF7"],
+            height: "100%",
+            library: {
+              scales: {
+                x: {
+                  grid: { color: chart_color_for_scheme, drawBorder: false, display: false },
+                  border: { color: chart_color_for_scheme },
+                  ticks: { color: chart_color_for_scheme, fontFamily: "Poppins" }
+                },
+                y: {
+                  grid: { color: chart_color_for_scheme, drawBorder: false, borderDash: [3, 3] },
+                  border: { color: chart_color_for_scheme },
+                  ticks: { color: chart_color_for_scheme, fontFamily: "Poppins" }
+                }
               },
-              y: {
-                grid: { color: chart_color_for_scheme },
-                border: { color: chart_color_for_scheme },
-                ticks: { color: chart_color_for_scheme, fontFamily: "Poppins" }
+              maintainAspectRatio: false,
+              borderRadius: 6,
+              barPercentage: 0.6,
+              categoryPercentage: 0.7,
+              plugins: {
+                tooltip: {
+                  backgroundColor: '#1e1e1e',
+                  titleFont: {
+                    family: 'Poppins',
+                    size: 14
+                  },
+                  bodyFont: {
+                    family: 'Poppins',
+                    size: 13
+                  },
+                  padding: 12,
+                  borderColor: '#333',
+                  borderWidth: 1
+                }
               }
-            }
-          } %>
+            } %>
+      </div>
     <% end %>
   </section>
 <% end %>
 
-<div class="flex justify-between items-center">
-  <h2>Activity</h2>
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0 mb-4 sm:mb-6">
+  <h2 class="text-xl font-semibold">Recent Transactions</h2>
 
-  <%= link_to new_expense_path, class: "btn btn-secondary flex items-center justify-center" do %>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-    </svg> 
-    <p>Add Transaction</p>
-  <% end %>
+  <div class="flex items-center gap-2 w-full sm:w-auto">
+    <%= link_to searches_path, class: "flex-1 sm:flex-none bg-transparent border border-positive text-white py-2 px-3 sm:px-4 rounded-lg inline-flex items-center justify-center gap-2 hover:bg-dark transition-all duration-300", data: { turbo_frame: "_top" } do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+      </svg>
+      <span class="sm:inline">Search</span>
+    <% end %>
+
+    <%= link_to new_expense_path, class: "flex-1 sm:flex-none bg-positive text-white font-semibold py-2 px-3 sm:px-4 rounded-lg inline-flex items-center justify-center gap-2 hover:opacity-90 transition-all duration-300" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+      </svg> 
+      <span class="sm:inline">Add Transaction</span>
+    <% end %>
+  </div>
 </div>
 
 <%= turbo_frame_tag "expenses_content" do %>
-  <div class="flex justify-between items-center">
-    <div>
-      <%= link_to searches_path, class: "btn btn-transparent btn-gap-less", data: { turbo_frame: "_top" } do %>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-          <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-        </svg>
-        Search
-      <% end %>
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0 mb-4">
+    <div class="text-sm text-gray-400 order-2 sm:order-1">
+      Showing <%= @pagy.count > 0 ? "#{@pagy.from}-#{@pagy.to} of #{@pagy.count}" : "0" %> transactions
     </div>
-    <div data-controller="dropdown" class="position-relative">
-      <button type="button" class="btn btn-transparent btn-gap-less text-opacity" data-action="click->dropdown#toggle">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+    <div data-controller="dropdown" class="relative self-end sm:self-auto order-1 sm:order-2 mb-2 sm:mb-0">
+      <button type="button" class="text-white opacity-80 hover:opacity-100 inline-flex items-center gap-1 text-sm" data-action="click->dropdown#toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
         </svg>
-        Sort by: <%= sort_by_direction %>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="">
+        Sort: <%= sort_by_direction %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
           <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
         </svg>
       </button>
       <ul
         data-dropdown-target="menu"
-        class="dropdown-menu"
+        class="absolute right-0 mt-2 w-48 bg-dark border border-gray-700 rounded-lg shadow-lg z-10 hidden"
         data-action="click@window->dropdown#hide"
       >
-        <%= link_to "Recent", expenses_path(sort: :desc), 
-            class: "dropdown-item #{params[:sort] != 'asc' ? 'disabled' : ''}", 
+        <%= link_to "Recent First", expenses_path(sort: :desc), 
+            class: "block px-4 py-2 text-white hover:bg-positive rounded-t-lg #{params[:sort] != 'asc' ? 'opacity-50 cursor-not-allowed' : ''}", 
             data: { turbo_frame: "expenses_content" } %>
-        <%= link_to "Oldest", expenses_path(sort: :asc), 
-            class: "dropdown-item #{params[:sort] == 'asc' ? 'disabled' : ''}", 
+        <%= link_to "Oldest First", expenses_path(sort: :asc), 
+            class: "block px-4 py-2 text-white hover:bg-positive rounded-b-lg #{params[:sort] == 'asc' ? 'opacity-50 cursor-not-allowed' : ''}", 
             data: { turbo_frame: "expenses_content" } %>
       </ul>
     </div>
   </div>
-<%# TODO: Cache results if needed %>
-  <%= render(@expenses) || "You currently have no expenses" %>
-  <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
 
+  <div class="bg-dark rounded-xl shadow-md overflow-hidden">
+    <% if @expenses.any? %>
+      <%= render @expenses %>
+    <% else %>
+      <div class="p-8 text-center">
+        <div class="w-16 h-16 bg-positive rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-positive">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">No transactions yet</h3>
+        <p class="text-gray-400 mb-4">Start tracking your finances by adding your first transaction</p>
+        <%= link_to new_expense_path, class: "bg-positive text-white font-semibold py-2 px-6 rounded-lg inline-flex items-center gap-2 hover:opacity-90 transition-all duration-300" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+          </svg> 
+          Add Your First Transaction
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @pagy.pages > 1 %>
+    <div class="mt-6 flex justify-center">
+      <%== pagy_nav(@pagy) %>
+    </div>
+  <% end %>
 <% end %>

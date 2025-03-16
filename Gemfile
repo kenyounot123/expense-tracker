@@ -71,3 +71,6 @@ gem "pagy", "~> 9.3", ">= 9.3.3"
 gem "mission_control-jobs"
 # SEO
 gem "sitemap_generator"
+
+gem "tailwindcss-ruby"
+gem "tailwindcss-rails", "~> 3.3.1"

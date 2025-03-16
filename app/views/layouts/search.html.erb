@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="description" content="A simple and intuitive expense tracker">
-    <meta name="keywords" content="Expense Tracker, Expenses, Easy to use, Simple, Intuitive %>">
+    <meta name="description" content="TrackExp - A simple and intuitive expense tracker to manage your finances with ease">
+    <meta name="keywords" content="Expense Tracker, Personal Finance, Budget Management, Financial Tracking, Money Management">
     <meta property="og:title" content="TrackExp">
     <meta property="og:description" content="A simple and intuitive expense tracker">
     <meta property="og:image" content="https://trackexp.com/favicon.png">
@@ -22,34 +22,31 @@
 
     <%= favicon_link_tag "favicon.png" %>
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag "_reset", 
-                           "colors",
-                           "fonts",
-                           "base",
-                           "text",
-                           "utilities",
-                           "layout",
-                           "buttons",
-                           "inputs",
-                           "alerts",
-                           "dropdown",
-                           "expenses",
-                           "landing",
-                           "pagy",
-                           "search",
-                           "data-turbo-track": "reload" %>
+    <%# Include Tailwind CSS %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    
     <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
     <%= javascript_importmap_tags %>
 
     <meta name="color-scheme" content="dark">
   </head>
 
-  <body>
+  <body class="bg-bg text-white font-sans overflow-x-hidden">
     <%= render "shared/alert" %>
 
-    <main class="pad-inline-double">
-      <%= yield %>
-    </main>
+    <div id="container" class="min-h-screen flex flex-col">
+      <header id="header" class="p-4">
+        <%= yield :header %>
+      </header>
+      
+      <main id="main" class="flex-grow p-4">
+        <%= yield %>
+      </main>
+
+      <footer id="footer">
+        <%= yield :footer %>
+      </footer>
+    </div>
+
   </body>
 </html>

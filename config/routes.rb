@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   mount MissionControl::Jobs::Engine, at: "/jobs"
   root "landings#index"
 
+  # Static pages
+  get "/privacy", to: "landings#privacy", as: :privacy
+  get "/terms", to: "landings#terms", as: :terms
+
   # Authentication
   resource :session, only: [ :create ]
   get "/login", to: "sessions#new", as: :login
@@ -21,8 +25,10 @@ Rails.application.routes.draw do
     get "profits", to: "charts#profits", as: :charts_profits
   end
 
+  # Categories
+  resources :categories, only: :index
   # Dashboard Analytics
-  resource :dashboard_analytics, only: [ :show ]
+  resource :dashboard_analytics, only: :show
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

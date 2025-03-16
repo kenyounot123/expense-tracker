@@ -1,0 +1,90 @@
+<%= content_for :title do %>
+  Terms of Service
+<% end %>
+
+<div class="max-w-4xl mx-auto px-6 py-12 md:py-16">
+  <h1 class="text-3xl md:text-4xl font-bold mb-8 text-white">Terms of Service</h1>
+  
+  <div class="prose prose-lg prose-invert max-w-none">
+    <p class="text-gray-300">Last updated: <%= Time.current.strftime("%B %d, %Y") %></p>
+    
+    <h2>1. Introduction</h2>
+    <p>
+      Welcome to TrackExp. These Terms of Service ("Terms") govern your use of our website and services. 
+      By accessing or using TrackExp, you agree to be bound by these Terms.
+    </p>
+    
+    <h2>2. Definitions</h2>
+    <p>
+      <strong>"Service"</strong> refers to the TrackExp application, website, and related services.<br>
+      <strong>"User"</strong> refers to individuals who register for and use our Service.<br>
+      <strong>"Content"</strong> refers to any information, data, or material entered into or generated through the Service.
+    </p>
+    
+    <h2>3. Account Registration</h2>
+    <p>
+      To use certain features of the Service, you must register for an account. You agree to provide accurate information during registration and to keep your account information updated. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.
+    </p>
+    
+    <h2>4. Acceptable Use</h2>
+    <p>
+      You agree to use the Service only for lawful purposes and in accordance with these Terms. You agree not to:
+    </p>
+    <ul>
+      <li>Use the Service in any way that violates applicable laws or regulations</li>
+      <li>Attempt to gain unauthorized access to any part of the Service</li>
+      <li>Use the Service to transmit malware, viruses, or other harmful code</li>
+      <li>Interfere with or disrupt the integrity or performance of the Service</li>
+      <li>Attempt to probe, scan, or test the vulnerability of the Service</li>
+    </ul>
+    
+    <h2>5. User Content</h2>
+    <p>
+      You retain ownership of any Content you enter into the Service. By using the Service, you grant us a license to store and process your Content solely for the purpose of providing the Service to you.
+    </p>
+    
+    <h2>6. Privacy</h2>
+    <p>
+      Our <%= link_to "Privacy Policy", privacy_path, class: "text-positive hover:underline" %> describes how we handle your personal information and Content. By using the Service, you agree to our Privacy Policy.
+    </p>
+    
+    <h2>7. Service Modifications</h2>
+    <p>
+      We reserve the right to modify, suspend, or discontinue the Service (or any part thereof) at any time, with or without notice. We will not be liable to you or any third party for any modification, suspension, or discontinuation of the Service.
+    </p>
+    
+    <h2>8. Termination</h2>
+    <p>
+      We may terminate or suspend your account and access to the Service immediately, without prior notice or liability, for any reason, including if you breach these Terms. Upon termination, your right to use the Service will immediately cease.
+    </p>
+    
+    <h2>9. Disclaimer of Warranties</h2>
+    <p>
+      THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+    </p>
+    
+    <h2>10. Limitation of Liability</h2>
+    <p>
+      TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL TRACKEXP, ITS DIRECTORS, EMPLOYEES, PARTNERS, AGENTS, SUPPLIERS, OR AFFILIATES BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION, LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES, RESULTING FROM YOUR ACCESS TO OR USE OF OR INABILITY TO ACCESS OR USE THE SERVICE.
+    </p>
+    
+    <h2>11. Governing Law</h2>
+    <p>
+      These Terms shall be governed by and construed in accordance with the laws of [Your Jurisdiction], without regard to its conflict of law provisions.
+    </p>
+    
+    <h2>12. Changes to Terms</h2>
+    <p>
+      We reserve the right to modify these Terms at any time. We will provide notice of significant changes by posting the updated Terms on this page with a new "Last updated" date. Your continued use of the Service after such modifications constitutes your acceptance of the revised Terms.
+    </p>
+    
+    <h2>13. Contact Us</h2>
+    <p>
+      If you have any questions about these Terms, please contact us at support@trackexp.com.
+    </p>
+  </div>
+</div>
+
+<%= content_for :footer do %>
+  <%= render partial: 'shared/footer' %>
+<% end %> 

@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="description" content="A simple and intuitive expense tracker">
-    <meta name="keywords" content="Expense Tracker, Expenses, Easy to use, Simple, Intuitive %>">
-    <meta property="og:title" content="TrackExp">
-    <meta property="og:description" content="A simple and intuitive expense tracker">
+    <meta name="description" content="TrackExp - Simple expense tracking to help you save money and build wealth">
+    <meta name="keywords" content="Expense Tracker, Personal Finance, Budget Management, Financial Tracking, Money Management, Wealth Building">
+    <meta property="og:title" content="TrackExp - Simple Expense Tracking">
+    <meta property="og:description" content="Track expenses, save money, and build wealth with a simple, intuitive interface">
     <meta property="og:image" content="https://trackexp.com/favicon.png">
     <meta property="og:url" content="https://trackexp.com">
     <meta property="og:type" content="website">
@@ -22,28 +22,23 @@
 
     <%= favicon_link_tag "favicon.png" %>
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag "_reset", 
-                          "colors",
-                          "fonts",
-                          "base",
-                          "text",
-                          "utilities",
-                          "layout",
-                          "buttons",
-                          "dropdown",
-                          "landing",
-                          "data-turbo-track": "reload" %>
+    <%# Include Tailwind CSS %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    
+    <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
     <%= javascript_importmap_tags %>
 
     <meta name="color-scheme" content="dark">
   </head>
 
-  <body class="landings">
+  <body class="font-sans overflow-x-hidden bg-bg text-white">
+    <%= render "shared/alert" %>
+
     <%= yield %>
 
     <footer id="footer">
       <%= yield :footer %>
     </footer>
+
   </body>
 </html>
