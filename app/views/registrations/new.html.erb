@@ -24,34 +24,34 @@
                           autocomplete: "username", 
                           placeholder: "Enter your email address", 
                           value: params[:email_address],
-                          class: "bg-bg text-white border border-positive rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive" %>
+                          class: "bg-bg text-white rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive" %>
     </div>
 
     <div class="mb-6">
       <%= form.label :password, "Password", class: "text-positive font-semibold block mb-2" %>
-      <%= form.password_field :password, 
-                            required: true, 
-                            autocomplete: "current-password", 
-                            placeholder: "Enter your password", 
+      <%= form.password_field :password,
+                            required: true,
+                            autocomplete: "current-password",
+                            placeholder: "Enter your password",
                             maxlength: 72,
-                            class: "bg-bg text-white border border-positive rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive" %>
+                            class: "bg-bg text-white rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive" %>
     </div>
 
     <div class="mb-8">
       <%= form.label :password_confirmation, "Confirm Password", class: "text-positive font-semibold block mb-2" %>
-      <%= form.password_field :password_confirmation, 
-                            required: true, 
-                            autocomplete: "new-password", 
-                            placeholder: "Confirm your password", 
+      <%= form.password_field :password_confirmation,
+                            required: true,
+                            autocomplete: "new-password",
+                            placeholder: "Confirm your password",
                             maxlength: 72,
-                            class: "bg-bg text-white border border-positive rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive" %>
+                            class: "bg-bg text-white rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive" %>
     </div>
 
-    <%= form.submit "Create Account", class: "bg-positive text-white font-semibold py-2 px-4 rounded-full w-full hover:opacity-80 transition-all duration-300 mb-6" %>
+    <%= form.submit "Create Account", class: "bg-positive text-white font-semibold py-2 px-4 rounded w-full hover:opacity-80 transition-all duration-300 mb-6" %>
 
     <div class="border-t border-positive pt-6 mt-2">
       <p class="text-center text-white">
-        Already have an account? 
+        Already have an account?
         <%= link_to "Sign in", login_path, class: "text-positive hover:underline" %>
       </p>
     </div>

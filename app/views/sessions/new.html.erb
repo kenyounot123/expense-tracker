@@ -17,23 +17,23 @@
     
     <div class="mb-6">
       <%= form.label :email_address, "Email Address", class: "text-positive font-semibold block mb-2" %>
-      <%= form.email_field :email_address, 
-                          required: true, 
-                          autofocus: true, 
-                          autocomplete: "username", 
-                          placeholder: "Enter your email address", 
+      <%= form.email_field :email_address,
+                          required: true,
+                          autofocus: true,
+                          autocomplete: "username",
+                          placeholder: "Enter your email address",
                           value: params[:email_address],
-                          class: "bg-bg text-white border border-positive rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive" %>
+                          class: "bg-bg text-white rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive" %>
     </div>
 
     <div class="mb-6">
       <%= form.label :password, "Password", class: "text-positive font-semibold block mb-2" %>
-      <%= form.password_field :password, 
-                            required: true, 
-                            autocomplete: "current-password", 
-                            placeholder: "Enter your password", 
+      <%= form.password_field :password,
+                            required: true,
+                            autocomplete: "current-password",
+                            placeholder: "Enter your password",
                             maxlength: 72,
-                            class: "bg-bg text-white border border-positive rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive" %>
+                            class: "bg-bg text-white rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive" %>
     </div>
 
     <div class="flex justify-between items-center mb-6">
@@ -44,7 +44,7 @@
       <p><%= link_to "Forgot your password?", new_password_path, class: "text-positive hover:underline" %></p>
     </div>
 
-    <%= form.submit "Sign in", class: "bg-positive text-white font-semibold py-2 px-4 rounded-full w-full hover:opacity-80 transition-all duration-300 mb-6" %>
+    <%= form.submit "Sign in", class: "bg-positive text-white font-semibold py-2 px-4 rounded w-full hover:opacity-80 transition-all duration-300 mb-6" %>
 
     <div class="border-t border-positive pt-6 mt-2">
       <p class="text-center text-white">

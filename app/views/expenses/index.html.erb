@@ -11,8 +11,8 @@
     <div class="flex items-center gap-4">
       <% if authenticated? %>
         <div class="relative group" data-controller="dropdown">
-          <div data-action="click->dropdown#toggle" class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold cursor-pointer shadow-md">
-            <%= Current.user.email_address.split("@").first.upcase %>
+          <div data-action="click->dropdown#toggle" class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-600 to-purple-700 flex items-center justify-center text-white font-bold cursor-pointer shadow-md border-2 border-indigo-500/30 hover:border-indigo-400/50 transition-all duration-300">
+            <%= Current.user.email_address.split("@").first[0].upcase %>
           </div>
           <div data-dropdown-target="menu" data-action="click@window->dropdown#hide" class="absolute right-0 mt-2 w-48 bg-dark border border-gray-700 rounded-lg shadow-lg z-10 hidden">
             <%= link_to logout_path, class: "block px-4 py-3 text-white rounded-lg hover:opacity-80 transition-colors duration-300", method: :delete, data: { turbo_method: :delete } do %>

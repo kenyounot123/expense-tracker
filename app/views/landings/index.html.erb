@@ -34,7 +34,7 @@
 
 <!-- Hero Section -->
 <section class="bg-gradient-to-b from-bg to-bg-landings py-16 md:py-24 min-h-[45rem]">
-  <div class="max-w-6xl mx-auto px-6 md:px-12">
+  <div class="max-w-6xl mx-auto px-6 md:px-12 md:py-12">
     <div class="flex flex-col md:flex-row items-center justify-between">
       <div class="md:w-1/2 mb-12 md:mb-0">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight">
@@ -74,25 +74,37 @@
   </div>
 </section>
 
-<!-- Social Proof -->
+<!-- Feature Highlights -->
 <section class="bg-dark py-12">
   <div class="max-w-6xl mx-auto px-6 md:px-12">
     <div class="text-center mb-8">
-      <p class="text-gray-400 uppercase tracking-wider font-medium text-sm">Trusted by thousands of users</p>
+      <p class="text-gray-400 uppercase tracking-wider font-medium text-sm">Why choose our platform</p>
     </div>
     <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
       <div class="flex items-center">
-        <div class="flex">
-          <% 5.times do %>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-yellow-400">
-              <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
-            </svg>
-          <% end %>
+        <div class="w-10 h-10 rounded-full bg-indigo-600/20 flex items-center justify-center mr-3">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-indigo-400">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+          </svg>
         </div>
-        <span class="ml-2 text-gray-300">4.9/5 rating</span>
+        <span class="text-gray-300">Secure & Private</span>
       </div>
-      <div class="text-gray-300 font-medium">10,000+ active users</div>
-      <div class="text-gray-300 font-medium">$1M+ expenses tracked</div>
+      <div class="flex items-center">
+        <div class="w-10 h-10 rounded-full bg-green-600/20 flex items-center justify-center mr-3">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-green-400">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+          </svg>
+        </div>
+        <span class="text-gray-300">Fast & Intuitive</span>
+      </div>
+      <div class="flex items-center">
+        <div class="w-10 h-10 rounded-full bg-purple-600/20 flex items-center justify-center mr-3">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-purple-400">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+          </svg>
+        </div>
+        <span class="text-gray-300">Insightful Analytics</span>
+      </div>
     </div>
   </div>
 </section>
@@ -111,7 +123,7 @@
     <div class="flex flex-col md:flex-row items-center mb-24">
       <div class="md:w-1/2 mb-8 md:mb-0 md:pl-12">
         <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white leading-tight">
-          Search and <span class="text-accent">filter</span> your transactions
+          <span class="text-accent">Search and filter</span> your transactions
         </h2>
         <p class="text-xl mb-6 text-gray-300">
           Easily filter and search through your transactions to get a clearer view of your spending and income patterns.
