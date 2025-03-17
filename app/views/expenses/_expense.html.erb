@@ -39,7 +39,7 @@
           </div>
         </div>
         
-        <div class="flex items-center">
+        <div class="flex justify-between items-center">
           <span class="<%= expense.income? ? 'text-green-500' : 'text-red-500' %> text-lg font-bold mr-4">
             <%= expense.income? ? '+' : '-' %><%= number_to_currency(expense.amount.abs) %>
           </span>

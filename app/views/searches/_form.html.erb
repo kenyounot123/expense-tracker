@@ -15,30 +15,30 @@
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
     <div>
-      <%= form.label "filters[expense_type]", "Expense Type", class: "text-positive font-semibold block mb-2" %>
-      <%= form.select "filters[expense_type]", 
-                     options_for_select([["All Types", nil], ["One-time", "one_time"], ["Monthly", "monthly"], ["Yearly", "yearly"]], params.dig(:filters, :expense_type)), 
+      <%= form.label "expense_type", "Expense Type", class: "text-positive font-semibold block mb-2" %>
+      <%= form.select "expense_type", 
+                     options_for_select([["All Types", nil], ["One-time", "one_time"], ["Monthly", "monthly"], ["Yearly", "yearly"]], params.dig(:expense_type)), 
                      {}, 
                      { class: "bg-bg text-white rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive transition-all duration-300" } %>
     </div>
 
     <div>
-      <%= form.label "filters[income]", "Transaction Type", class: "text-positive font-semibold block mb-2" %>
-      <%= form.select "filters[income]", 
-                     options_for_select([["All Transactions", nil], ["Income Only", true], ["Expenses Only", false]], params.dig(:filters, :income)), 
+      <%= form.label "income", "Transaction Type", class: "text-positive font-semibold block mb-2" %>
+      <%= form.select "income", 
+                     options_for_select([["All Transactions", nil], ["Income Only", true], ["Expenses Only", false]], params.dig(:income)), 
                      {}, 
                      { class: "bg-bg text-white rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive transition-all duration-300" } %>
     </div>
 
     <div class="md:col-span-2 lg:col-span-1">
-      <%= form.label "filters[date_range]", "Date Range", class: "text-positive font-semibold block mb-2" %>
+      <%= form.label "date_range", "Date Range", class: "text-positive font-semibold block mb-2" %>
       <div class="flex items-center space-x-2">
-        <%= form.date_field "filters[start_date]", 
-                           value: params.dig(:filters, :start_date), 
+        <%= form.date_field "start_date", 
+                           value: params.dig(:start_date), 
                            class: "bg-bg text-white rounded-md py-2 px-4 flex-1 focus:outline-none focus:ring-2 focus:ring-positive transition-all duration-300" %>
         <span class="text-white">to</span>
-        <%= form.date_field "filters[end_date]", 
-                           value: params.dig(:filters, :end_date), 
+        <%= form.date_field "end_date", 
+                           value: params.dig(:end_date), 
                            class: "bg-bg text-white rounded-md py-2 px-4 flex-1 focus:outline-none focus:ring-2 focus:ring-positive transition-all duration-300" %>
       </div>
     </div>
