@@ -62,7 +62,7 @@
   </div>
 
   <div class="mb-4">
-    <%= form.label :category_ids, class: "text-positive font-medium mb-2 flex items-center" do %>
+    <%= form.label :category_names, class: "text-positive font-medium mb-2 flex items-center" do %>
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
       </svg>
@@ -71,7 +71,7 @@
 
     <div class="relative w-full">
       <div data-controller="multiselect" data-multiselect-search-url-value="/categories" data-multiselect-preload-url-value="/categories" data-placeholder="Search for categories...">
-        <select multiple="multiple" class="multiselect__hidden" data-multiselect-target="hidden" name="expense[category_ids][]" id="expense_category_ids"></select>
+        <select multiple="multiple" class="multiselect__hidden" data-multiselect-target="hidden" name="expense[category_names][]" id="expense_category_names"></select>
       </div>
     </div>
   </div>
