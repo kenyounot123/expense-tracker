@@ -18,8 +18,10 @@ class ExpensesController < ApplicationController
   end
 
   def create
-    @expense = current_user_expenses.build(expense_params)
+    @expense = current_user_expenses.build(expense_params.except(:category_names))
+
     if @expense.save
+      attach_categories
       redirect_to expenses_path, notice: "Expense created successfully"
     else
       render :new, status: :unprocessable_entity
@@ -27,7 +29,8 @@ class ExpensesController < ApplicationController
   end
 
   def update
-    if @expense.update(expense_params)
+    if @expense.update(expense_params.except(:category_names))
+      attach_categories
       redirect_to expense_path(@expense), notice: "Expense updated successfully"
     else
       render :edit, status: :unprocessable_entity
@@ -57,6 +60,23 @@ class ExpensesController < ApplicationController
     end
 
     def expense_params
-      params.require(:expense).permit(:amount, :description, :date, :expense_type, :income, :category_ids)
+      params.require(:expense).permit(
+        :amount,
+        :description,
+        :date,
+        :expense_type,
+        :income,
+        category_names: []
+      )
+    end
+
+    def attach_categories
+      return if expense_params[:category_names].blank?
+
+      categories = expense_params[:category_names].map do |name|
+        Category.find_or_create_by!(name: name.strip)
+      end
+
+      @expense.categories = categories
     end
 end
