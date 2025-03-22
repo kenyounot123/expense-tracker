@@ -18,12 +18,12 @@
     </div>
     
     <div class="md:w-48">
-      <%= form.label :income, class: "text-positive font-medium mb-2 flex items-center" do %>
+      <div class="text-positive font-medium mb-2 flex items-center">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
         </svg>
         Transaction Type
-      <% end %>
+      </div>
       <div class="bg-bg rounded-lg py-3 px-4" data-toggle-income-target="toggleContainer">
         <label class="flex items-center cursor-pointer">
           <%= form.check_box :income, 
@@ -70,8 +70,21 @@
     <% end %>
 
     <div class="relative w-full">
-      <div data-controller="multiselect" data-multiselect-search-url-value="/categories" data-multiselect-preload-url-value="/categories" data-placeholder="Search for categories...">
-        <select multiple="multiple" class="multiselect__hidden" data-multiselect-target="hidden" name="expense[category_names][]" id="expense_category_names"></select>
+      <div data-controller="multiselect category-multiselect"
+           data-category-multiselect-target="multiselect"
+           data-multiselect-search-url-value="/categories"
+           data-multiselect-addable-url-value="/categories/create_from_select"
+           data-multiselect-preload-url-value="/categories"
+           data-multiselect-search-remote-value="true"
+           data-placeholder="Search for categories..."
+           data-no-results-message="Category not found"
+           data-multiselect-selected-value="<%= parse_data_for_multiselect(selected_categories(@expense)) %>"
+           data-addable-placeholder="+ Click to create as new category">
+        <select multiple="multiple"
+                class="multiselect__hidden"
+                data-multiselect-target="hidden"
+                name="expense[category_names][]"
+                id="expense_category_names"></select>
       </div>
     </div>
   </div>
@@ -93,15 +106,8 @@
   </div>
 
   <div class="mt-6 border-t border-positive pt-6">
-    <%= form.button type: "submit", 
-                   class: "bg-positive text-white font-semibold py-3 px-6 rounded-lg hover:bg-positive transition-all duration-300 w-full justify-center flex items-center gap-2 shadow-md", 
-                   data: { toggle_income_target: "submitButtonText", 
-                          disable_with: "Saving..." } do %>
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-      </svg>
-      <%= @expense.new_record? ? "Add Transaction" : "Update Transaction" %>
-    <% end %>
+    <%= form.submit @expense.new_record? ? "Add Transaction" : "Update Transaction", 
+                   class: "bg-positive text-white font-semibold py-3 px-6 rounded-lg hover:opacity-80 transition-all duration-300 w-full justify-center flex items-center gap-2 shadow-md" %>
   </div>
 <% end %>
 

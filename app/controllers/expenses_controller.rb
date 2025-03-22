@@ -29,7 +29,8 @@ class ExpensesController < ApplicationController
   end
 
   def update
-    if @expense.update(expense_params)
+    if @expense.update(expense_params.except(:category_names))
+      attach_categories
       redirect_to expense_path(@expense), notice: "Expense updated successfully"
     else
       render :edit, status: :unprocessable_entity

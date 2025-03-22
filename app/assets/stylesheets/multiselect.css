@@ -103,3 +103,7 @@
 .multiselect__dropdown--open {
   @apply block w-6/12;
 }
+
+.multiselect__addable-button {
+  @apply cursor-pointer text-positive hover:text-positive font-medium;
+}

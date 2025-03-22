@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   # Categories
   resources :categories, only: :index
+  post "categories/create_from_select", to: "categories#create_from_select"
   # Dashboard Analytics
   resource :dashboard_analytics, only: :show
 

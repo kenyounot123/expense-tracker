@@ -7,4 +7,13 @@ class CategoriesController < ApplicationController
       format.json { render json: @categories.map { |category| { value: category.name, text: category.name } } }
     end
   end
+
+  def create_from_select
+    category_name = JSON.parse(request.body.read)["addable"]
+    category = Category.create!(name: category_name)
+
+    render json: { text: category.name, value: category.name }
+  rescue ActiveRecord::RecordInvalid => e
+    render json: { error: e.message }, status: :unprocessable_entity
+  end
 end
