@@ -76,7 +76,7 @@ class ExpensesController < ApplicationController
       categories = expense_params[:category_names].map do |name|
         Category.find_or_create_by!(name: name.strip)
       end
-      
+
       @expense.categories = categories
     end
 end

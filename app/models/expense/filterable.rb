@@ -6,14 +6,10 @@ module Expense::Filterable
     scope :by_income, ->(income) { where(income: income) unless income.nil? }
     scope :by_date_range, ->(start_date, end_date) { where(date: start_date..end_date) }
     scope :by_query, ->(query) { where("description LIKE ? COLLATE NOCASE", "%#{query}%") }
-    scope :by_categories, ->(category_names) { 
-      joins(:categories)
-        .where(categories: { name: category_names })
-        .distinct
-    }
+    scope :by_categories, ->(category_names) { joins(:categories).where(categories: { name: category_names }).distinct }
   end
 
-  class_methods do  
+  class_methods do
     def filter_by(params = {})
       relation = self
       relation = relation.by_expense_type(params[:expense_type]) if params[:expense_type].present?
