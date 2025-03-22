@@ -14,6 +14,6 @@ class SearchesController < ApplicationController
   private
 
   def search_params
-    params.permit(:query, :sort, :direction, :expense_type, :income, :start_date, :end_date )
+    params.permit(:query, :sort, :direction, :expense_type, :income, :start_date, :end_date, :categories)
   end
 end

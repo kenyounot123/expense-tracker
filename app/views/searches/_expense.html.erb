@@ -14,6 +14,15 @@
       </span>
     </td>
     <td class="py-2 px-4">
+      <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-indigo-600/30 text-indigo-300 border border-indigo-500/30">
+        <% if expense.categories.any? %>
+          <%= expense.categories.map(&:name).join(", ") %>
+        <% else %>
+          None
+        <% end %>
+      </span>
+    </td>
+    <td class="py-2 px-4">
       <% if expense.income? %>
         <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-green-500/30 text-green-300 border border-green-500/30">Income</span>
       <% else %>

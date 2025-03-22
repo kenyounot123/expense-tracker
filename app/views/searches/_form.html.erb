@@ -42,6 +42,22 @@
                            class: "bg-bg text-white rounded-md py-2 px-4 flex-1 focus:outline-none focus:ring-2 focus:ring-positive transition-all duration-300" %>
       </div>
     </div>
+
+    <div>
+      <%= form.label "categories", "Categories", class: "text-positive font-semibold block mb-2" %>
+      <div data-controller="multiselect"
+           data-category-multiselect-target="multiselect"
+           data-multiselect-search-url-value="/categories"
+           data-multiselect-preload-url-value="/categories"
+           data-multiselect-selected-value="<%= parse_data_for_multiselect(selected_categories_for_search(params.dig(:categories))) %>"
+           data-placeholder="Search for categories...">
+        <select multiple="multiple"
+                class="multiselect__hidden"
+                data-multiselect-target="hidden"
+                name="categories[]"
+                id="search_categories"></select>
+      </div>
+    </div>
   </div>
 
   <div class="flex flex-wrap justify-between items-center">
@@ -60,5 +76,5 @@
       <% end %>
     </div>
   </div>
-    
+
 <% end %>
