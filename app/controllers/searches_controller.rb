@@ -2,7 +2,7 @@ class SearchesController < ApplicationController
   layout "search"
 
   def index
-    @expenses = Current.user.expenses.filter_by(params)
+    @expenses = Current.user.expenses.includes(:categories).filter_by(params)
 
     if params[:sort].present?
       sort_column = params[:sort]
