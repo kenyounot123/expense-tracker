@@ -1,7 +1,7 @@
 class ExpensesController < ApplicationController
   before_action :set_expense, only: %i[ show edit update destroy ]
   before_action :set_total_spendings, only: %i[ index show ]
-  before_action :set_breadcrumb_path, only: [ :show ]
+  before_action :set_breadcrumb_path, only: %i[ show edit ]
 
   def index
     @pagy, @expenses = pagy(current_user_expenses.includes(:categories).order(created_at: sort_direction))
@@ -9,6 +9,7 @@ class ExpensesController < ApplicationController
   end
 
   def show
+    add_breadcrumb @expense.description.truncate(20), nil
   end
 
   def new
@@ -16,6 +17,8 @@ class ExpensesController < ApplicationController
   end
 
   def edit
+    add_breadcrumb @expense.description.truncate(20), expense_path(@expense, source: params[:source])
+    add_breadcrumb "Edit", nil
   end
 
   def create
@@ -82,10 +85,12 @@ class ExpensesController < ApplicationController
     end
 
     def set_breadcrumb_path
-      @breadcrumb_path = if request.referer&.include?("/searches")
-        "search"
+      case params.dig(:source)
+      when "search"
+        add_breadcrumb "Dashboard", expenses_path
+        add_breadcrumb "Search Expenses", searches_path
       else
-        "expenses"
+        add_breadcrumb "Dashboard", expenses_path
       end
     end
 end

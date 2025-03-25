@@ -1,15 +1,6 @@
-<%# 
-  Usage example:
-  <%= render 'shared/breadcrumb', items: [
-    { title: 'Home', path: root_path },
-    { title: 'Expenses', path: expenses_path },
-    { title: 'Expense #123', path: expense_path(@expense) },
-    { title: 'Edit', path: nil } # Last item with nil path becomes current
-  ] %> 
-
-<nav class="flex">
+<nav class="flex" aria-label="Breadcrumb">
   <ol class="inline-flex items-center space-x-1 md:space-x-2">
-    <% items.each_with_index do |item, index| %>
+    <% breadcrumbs.each_with_index do |breadcrumb, index| %>
       <li class="<%= index.zero? ? 'inline-flex items-center' : '' %>">
         <div class="flex items-center">
           <% unless index.zero? %>
@@ -18,13 +9,13 @@
             </svg>
           <% end %>
 
-          <% if item[:path].present? %>
-            <%= link_to item[:title], 
-                item[:path], 
+          <% if breadcrumb.link? %>
+            <%= link_to breadcrumb.name, 
+                breadcrumb.path, 
                 class: "text-white/50 hover:text-light-positive #{'inline-flex items-center' if index.zero?}" %>
           <% else %>
             <span class="text-white" aria-current="page">
-              <%= item[:title] %>
+              <%= breadcrumb.name %>
             </span>
           <% end %>
         </div>
