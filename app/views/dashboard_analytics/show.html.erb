@@ -40,6 +40,7 @@
     <%= column_chart chart_path_for(params[:filter_type], params[:chart_type]),
         thousands: ",",
         colors: ["#CD4FF7"],
+        precision: 2,
         height: "100%",
         library: {
           scales: {
