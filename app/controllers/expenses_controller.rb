@@ -2,9 +2,10 @@ class ExpensesController < ApplicationController
   before_action :set_expense, only: %i[ show edit update destroy ]
   before_action :set_total_spendings, only: %i[ index show ]
   before_action :set_breadcrumb_path, only: %i[ show edit ]
+  before_action :set_source, except: %i[ index ]
 
   def index
-    @pagy, @expenses = pagy(current_user_expenses.includes(:categories).order(created_at: sort_direction))
+    @pagy, @expenses = pagy(current_user_expenses.includes(:categories).order(created_at: sort_direction), items: 10)
     @total_income = current_user_expenses.total_income
   end
 
@@ -17,7 +18,7 @@ class ExpensesController < ApplicationController
   end
 
   def edit
-    add_breadcrumb @expense.description.truncate(20), expense_path(@expense, source: params[:source])
+    add_breadcrumb @expense.description.truncate(20), expense_path(@expense, source: @source)
     add_breadcrumb "Edit", nil
   end
 
@@ -25,8 +26,8 @@ class ExpensesController < ApplicationController
     @expense = current_user_expenses.build(expense_params.except(:category_names))
 
     if @expense.save
-      attach_categories
-      redirect_to expenses_path, notice: "Expense created successfully"
+      @expense.attach_category_names(expense_params[:category_names])
+      redirect_to expenses_path(source: @source), notice: "Expense created successfully"
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,8 +35,8 @@ class ExpensesController < ApplicationController
 
   def update
     if @expense.update(expense_params.except(:category_names))
-      attach_categories
-      redirect_to expense_path(@expense), notice: "Expense updated successfully"
+      @expense.attach_category_names(expense_params[:category_names])
+      redirect_to expense_path(source: @source), notice: "Expense updated successfully"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -43,7 +44,11 @@ class ExpensesController < ApplicationController
 
   def destroy
     @expense.destroy!
-    redirect_to expenses_path, notice: "Expense deleted successfully"
+    if @source.present?
+      redirect_to searches_path, notice: "Expense deleted successfully"
+    else
+      redirect_to expenses_path, notice: "Expense deleted successfully"
+    end
   end
 
   private
@@ -53,6 +58,10 @@ class ExpensesController < ApplicationController
 
     def set_total_spendings
       @total_spendings = current_user_expenses.total_spendings
+    end
+
+    def set_source
+      @source = params.dig(:source)
     end
 
     def current_user_expenses
@@ -72,16 +81,6 @@ class ExpensesController < ApplicationController
         :income,
         category_names: []
       )
-    end
-
-    def attach_categories
-      return if expense_params[:category_names].blank?
-
-      categories = expense_params[:category_names].map do |name|
-        Category.find_or_create_by!(name: name.strip)
-      end
-
-      @expense.categories = categories
     end
 
     def set_breadcrumb_path

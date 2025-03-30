@@ -9,4 +9,12 @@ class Expense < ApplicationRecord
   validates :amount, presence: true
   validates :date, presence: true
   validates :expense_type, presence: true
+
+  def attach_category_names(names)
+    return if names.blank?
+
+    self.categories = names.map do |name|
+      Category.find_or_create_by!(name: name.strip)
+    end
+  end
 end
