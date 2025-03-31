@@ -44,7 +44,7 @@
           </tr>
         </thead>
         <tbody>
-          <%= render "expense", expenses: @expenses %>
+          <%= render "expense", expenses: @expenses, search_params: request.query_parameters %>
         </tbody>
       </table>
     </div>

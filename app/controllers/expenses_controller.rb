@@ -88,7 +88,7 @@ class ExpensesController < ApplicationController
       case params.dig(:source)
       when "search"
         add_breadcrumb "Dashboard", expenses_path
-        add_breadcrumb "Search Expenses", searches_path
+        add_breadcrumb "Search Expenses", searches_path(request.query_parameters.except(:source))
       else
         add_breadcrumb "Dashboard", expenses_path
       end
