@@ -32,7 +32,9 @@
   </head>
 
   <body class="bg-bg text-white font-poppins overflow-x-hidden">
-    <%= render "shared/alert" %>
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "shared/alert" %>
+    <% end %>
 
     <div id="container" class="flex flex-col max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
       <header id="header" class="mb-6">

@@ -1,0 +1,14 @@
+<table class="w-full" id="expenses_list">
+  <thead>
+    <tr class="text-left border-b border-positive/20">
+      <th class="pb-3 text-light-positive">Select</th>
+      <th class="pb-3 text-light-positive">Description</th>
+      <th class="pb-3 text-light-positive">Amount</th>
+      <th class="pb-3 text-light-positive">Category</th>
+      <th class="pb-3 text-light-positive">Date</th>
+    </tr>
+  </thead>
+  <tbody class="text-white max-h-[500px] overflow-y-auto">
+    <%= render partial: "categories/expense", collection: expenses %>
+  </tbody>
+</table>
