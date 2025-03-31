@@ -79,6 +79,7 @@ class ExpensesController < ApplicationController
         :date,
         :expense_type,
         :income,
+        :excluded,
         category_names: []
       )
     end

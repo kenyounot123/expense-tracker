@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @categories = Category.where("LOWER(name) LIKE LOWER(?)", "%#{params[:q]}%") if params[:q].present?
@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    
+
     respond_to do |format|
       if @category.save
         flash[:notice] = "Category created successfully"
@@ -33,7 +33,7 @@ class CategoriesController < ApplicationController
 
   def edit
   end
-  
+
   def show
   end
 
