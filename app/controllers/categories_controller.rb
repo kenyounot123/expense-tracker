@@ -2,10 +2,14 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @categories = Category.where("LOWER(name) LIKE LOWER(?)", "%#{params[:q]}%") if params[:q].present?
+    if params[:q].present?
+      @categories = Category.where("LOWER(name) LIKE LOWER(?)", "%#{params[:q]}%")
+    else
+      @categories = Category.all
+    end
+
     @expenses = Current.user.expenses.includes(:categories).order(date: :desc)
 
-    @categories = Category.all if params[:q].blank?
     respond_to do |format|
       format.json { render json: @categories.map { |category| { value: category.name, text: category.name } } }
       format.html { render :index }
