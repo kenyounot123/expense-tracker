@@ -14,8 +14,20 @@
   </div>
 
   <%= form_with url: registrations_path, class: "bg-dark rounded-lg shadow-lg p-8 w-full max-w-md mx-auto" do |form| %>
+
     <h1 class="text-3xl md:text-4xl font-bold text-center mb-8 text-white">Create an Account</h1>
-    
+  
+    <% if @user.errors.any? %>
+      <div class="bg-red-500 text-white rounded-lg p-4 mb-4">
+        <h2 class="text-lg font-bold">Error</h2>
+        <ul class="list-disc pl-5">
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
     <div class="mb-6">
       <%= form.label :email_address, "Email Address", class: "text-positive font-semibold block mb-2" %>
       <%= form.email_field :email_address, 
