@@ -1,5 +1,5 @@
 <%= form_with model: @expense, data: { controller: "toggle-income" }, class: "bg-dark rounded-lg p-6 flex flex-col shadow-lg" do |form| %>
-  
+  <%= hidden_field_tag :source, @source %>
   <div class="flex flex-col md:flex-row gap-6 mb-4">
     <div class="flex-1">
       <%= form.label :amount, class: "text-positive font-medium mb-2 flex items-center" do %>
@@ -103,6 +103,24 @@
                      { class: "bg-bg text-white rounded-lg py-3 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive focus:border-transparent transition-all duration-300 appearance-none" } %>
     </div>
     <p class="text-sm text-white/60 mt-1.5">Choosing "Monthly" or "Yearly" will set up a recurring payment.</p>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :excluded, class: "text-positive font-medium mb-2 flex items-center" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+      Exclude from Totals
+    <% end %>
+    <div class="bg-bg rounded-lg py-3 px-4">
+      <label class="flex items-center cursor-pointer">
+        <%= form.check_box :excluded,
+                          class: "h-5 w-5 rounded border-positive bg-bg text-positive focus:ring-positive focus:ring-offset-0 focus:ring-offset-transparent" %>
+        <span class="ml-3 text-white text-sm">
+          Exclude this transaction from total calculations (e.g., for investments)
+        </span>
+      </label>
+    </div>
   </div>
 
   <div class="mt-6 border-t border-positive pt-6">

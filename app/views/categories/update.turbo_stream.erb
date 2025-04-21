@@ -1,0 +1,9 @@
+<%= turbo_stream.update dom_id(@category), partial: "categories/category", locals: { category: @category } %>
+<%= turbo_stream.update "modal", "" %>
+<%= turbo_stream.update "flash", partial: "shared/alert" %>
+<%= turbo_stream.update "category_selects" do %>
+  <option value="">None</option>
+  <% Category.all.each do |category| %>
+    <option value="<%= category.name %>"><%= category.name %></option>
+  <% end %>
+<% end %>

@@ -16,7 +16,7 @@ class DashboardAnalyticsController < ApplicationController
 
   private
 
-  def permitted_params
-    params.permit(:filter_type, :chart_type)
-  end
+    def permitted_params
+      params.permit(:filter_type, :chart_type)
+    end
 end

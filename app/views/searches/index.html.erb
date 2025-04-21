@@ -43,8 +43,8 @@
             </th>
           </tr>
         </thead>
-        <tbody data-controller="row-link">
-          <%= render "expense", expenses: @expenses %>
+        <tbody>
+          <%= render "expense", expenses: @expenses, search_params: request.query_parameters %>
         </tbody>
       </table>
     </div>

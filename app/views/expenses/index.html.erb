@@ -23,6 +23,7 @@
                 Log Out
               </div>
             <% end %>
+            <%= link_to "Manage Categories", categories_path, class: "block px-4 py-3 text-white rounded-lg hover:opacity-80 transition-colors duration-300" %>
           </div>
         </div>
       <% else %>
@@ -121,7 +122,10 @@
         <%= column_chart chart_path_for(params[:filter_type], params[:chart_type]),
             thousands: ",",
             colors: ["#CD4FF7"],
+            precision: 4,
             height: "100%",
+            zeros: true,
+            prefix: "$",
             library: {
               scales: {
                 x: {
