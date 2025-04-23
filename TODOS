@@ -1,2 +1,13 @@
-- Refactor filter functionality
-- Refactor params and forms for search functionality
+
+- fix ui for categories, more visually appealing
+- allow import from excel
+- add some sort of filtering for categories
+- category breakdown
+- Form validations
+- breadcrumbs for /categories
+- custom frequency ( every day or like every 3 day )
+
+Set up monitoring
+Staging env setup
+https://www.writesoftwarewell.com/rails-parameters/
+ 
