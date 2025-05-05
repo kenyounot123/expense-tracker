@@ -19,7 +19,7 @@ module Breadcrumbs
 
     def set_source
       @source = params.dig(:source)
-      if @source.nil?
+      unless @source.nil?
         determine_source
       end
     end
