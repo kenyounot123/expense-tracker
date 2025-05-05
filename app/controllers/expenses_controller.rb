@@ -1,8 +1,7 @@
 class ExpensesController < ApplicationController
+  include Breadcrumbs
   before_action :set_expense, only: %i[ show edit update destroy ]
   before_action :set_total_spendings, only: %i[ index show ]
-  before_action :set_breadcrumb_path, only: %i[ show edit ]
-  before_action :set_source, except: %i[ index ]
 
   def index
     @pagy, @expenses = pagy(current_user_expenses.includes(:categories).order(created_at: sort_direction), items: 10)
@@ -60,10 +59,6 @@ class ExpensesController < ApplicationController
       @total_spendings = current_user_expenses.total_spendings
     end
 
-    def set_source
-      @source = params.dig(:source)
-    end
-
     def current_user_expenses
       Current.user.expenses
     end
@@ -82,23 +77,5 @@ class ExpensesController < ApplicationController
         :excluded,
         category_names: []
       )
-    end
-
-    def set_breadcrumb_path
-      case params.dig(:source)
-      when "search"
-        add_breadcrumb "Dashboard", expenses_path
-        add_breadcrumb "Search Expenses", searches_path(request.query_parameters.except(:source))
-      else
-        add_breadcrumb "Dashboard", expenses_path
-      end
-    end
-
-    def set_breadcrumb_path
-      @breadcrumb_path = if request.referer&.include?("/searches")
-        "search"
-      else
-        "expenses"
-      end
     end
 end
