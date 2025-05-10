@@ -17,10 +17,10 @@ class RecurringExpenseJob < ApplicationJob
     attributes = expense.attributes.except("id", "created_at", "updated_at", "date")
     attributes["date"] = next_payment_date(expense)
 
-    category = expense.category
+    categories = expense.categories
 
     new_expense = Expense.create(attributes)
-    new_expense.category << category if new_expense.persisted?
+    new_expense.categories << categories if new_expense.persisted?
   end
 
   def today_is_next_payment_date?(expense)
