@@ -4,7 +4,7 @@ class RecurringExpenseJob < ApplicationJob
   # Finds all recurring expenses and performs the job if the next payment date is today
   # TODO: Refactor this, the job should just schedule the job not perform business logic, move business logic to model
   def perform
-    Expense.recurring.find_each do |expense|
+    Expense.from_last_month.recurring.find_each do |expense|
       create_next_expense(expense) if today_is_next_payment_date?(expense)
     end
   end

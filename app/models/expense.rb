@@ -10,6 +10,10 @@ class Expense < ApplicationRecord
   validates :date, presence: true
   validates :expense_type, presence: true
 
+  scope :from_last_month, -> {
+    where(date: 1.month.ago.beginning_of_month..1.month.ago.end_of_month)
+  }
+
   def attach_category_names(names)
     return if names.blank?
 
