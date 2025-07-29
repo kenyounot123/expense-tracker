@@ -7,7 +7,8 @@
 - breadcrumbs for /categories
 - custom frequency ( every day or like every 3 day )
 
-Set up monitoring
+- Set up monitoring
+- setup auto deploy when pushing to github
 Staging env setup
 https://www.writesoftwarewell.com/rails-parameters/
  
