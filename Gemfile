@@ -66,7 +66,7 @@ end
 gem "chartkick"
 gem "groupdate"
 # Pagination gem
-gem "pagy", "~> 9.3"
+gem "pagy", "~> 9.4"
 # Job monitoring gem
 gem "mission_control-jobs"
 # SEO
