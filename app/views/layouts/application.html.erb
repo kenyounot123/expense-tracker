@@ -39,13 +39,17 @@
         <%= yield :header %>
       </header>
 
-      <div id="breadcrumb" class="mb-6">
-        <%= yield :breadcrumb %>
-      </div>
+      <% if content_for?(:breadcrumb) %>
+        <div id="breadcrumb" class="mb-6">
+          <%= yield :breadcrumb %>
+        </div>
+      <% end %>
 
-      <div id="analytics">
-        <%= yield :analytics %>
-      </div>
+      <% if content_for?(:analytics) %>
+        <div id="analytics">
+          <%= yield :analytics %>
+        </div>
+      <% end %>
 
       <main id="main" class="flex-grow pb-8">
         <%= yield %>

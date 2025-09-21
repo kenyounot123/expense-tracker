@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   end
 
   # Categories
+  namespace :categories do
+    resources :breakdowns, only: :index
+  end
   resources :categories
   post "categories/create_from_select", to: "categories#create_from_select"
   post "categories/apply_category", to: "categories#apply_category"
