@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
       @categories = Category.all
     end
 
-    @expenses = Current.user.expenses.includes(:categories).order(date: :desc)
+    @pagy, @expenses = pagy(Current.user.expenses.includes(:categories).order(date: :desc))
 
     respond_to do |format|
       format.json { render json: @categories.map { |category| { value: category.name, text: category.name } } }
