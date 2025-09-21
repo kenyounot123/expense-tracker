@@ -1,5 +1,5 @@
 <% expenses.each_with_index do |expense, index| %>
-  <tr class="border-positive hover:bg-bg transition-colors duration-200">
+  <tr class="border-positive hover:bg-bg-landings transition-colors duration-200">
     <td class="py-2 px-4 text-positive"><%= index + 1 %></td>
     <td class="py-2 px-4">
       <div class="flex flex-col">
@@ -33,7 +33,7 @@
     </td>
     <td class="py-2 px-4 text-right">
       <div class="flex items-center justify-end gap-2">
-        <%= link_to expense_path(expense, source: "search", **search_params), 
+        <%= link_to expense_path(expense, source: "search", **search_params),
             class: "bg-indigo-600/20 hover:bg-indigo-600/40 p-2 rounded-lg transition-colors duration-200 flex items-center border border-indigo-500/30" do %>
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />

@@ -1,6 +1,4 @@
 class SearchesController < ApplicationController
-  layout "search"
-
   def index
     @pagy, @expenses = pagy(Current.user.expenses.includes(:categories).filter_by(params))
 

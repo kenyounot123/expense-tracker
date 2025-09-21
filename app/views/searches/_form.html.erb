@@ -1,9 +1,9 @@
 <%= form_with url: searches_path, method: :get, class: "bg-dark rounded-lg p-6 shadow-lg" do |form| %>
   <div class="mb-6">
     <div class="relative">
-      <%= form.search_field :query, 
-                           placeholder: "Search expenses...", 
-                           autocomplete: "off", 
+      <%= form.search_field :query,
+                           placeholder: "Search expenses...",
+                           autocomplete: "off",
                            class: "bg-bg text-white rounded-md py-3 px-4 w-full pl-10 focus:outline-none focus:ring-2 focus:ring-positive transition-all duration-300" %>
       <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -16,29 +16,29 @@
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
     <div>
       <%= form.label "expense_type", "Expense Type", class: "text-positive font-semibold block mb-2" %>
-      <%= form.select "expense_type", 
-                     options_for_select([["All Types", nil], ["One-time", "one_time"], ["Monthly", "monthly"], ["Yearly", "yearly"]], params.dig(:expense_type)), 
-                     {}, 
+      <%= form.select "expense_type",
+                     options_for_select([["All Types", nil], ["One-time", "one_time"], ["Monthly", "monthly"], ["Yearly", "yearly"]], params.dig(:expense_type)),
+                     {},
                      { class: "bg-bg text-white rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive transition-all duration-300" } %>
     </div>
 
     <div>
       <%= form.label "income", "Transaction Type", class: "text-positive font-semibold block mb-2" %>
-      <%= form.select "income", 
-                     options_for_select([["All Transactions", nil], ["Income Only", true], ["Expenses Only", false]], params.dig(:income)), 
-                     {}, 
+      <%= form.select "income",
+                     options_for_select([["All Transactions", nil], ["Income Only", true], ["Expenses Only", false]], params.dig(:income)),
+                     {},
                      { class: "bg-bg text-white rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive transition-all duration-300" } %>
     </div>
 
     <div class="md:col-span-2 lg:col-span-1">
       <%= form.label "date_range", "Date Range", class: "text-positive font-semibold block mb-2" %>
       <div class="flex items-center space-x-2">
-        <%= form.date_field "start_date", 
-                           value: params.dig(:start_date), 
+        <%= form.date_field "start_date",
+                           value: params.dig(:start_date),
                            class: "bg-bg text-white rounded-md py-2 px-4 flex-1 focus:outline-none focus:ring-2 focus:ring-positive transition-all duration-300" %>
         <span class="text-white">to</span>
-        <%= form.date_field "end_date", 
-                           value: params.dig(:end_date), 
+        <%= form.date_field "end_date",
+                           value: params.dig(:end_date),
                            class: "bg-bg text-white rounded-md py-2 px-4 flex-1 focus:outline-none focus:ring-2 focus:ring-positive transition-all duration-300" %>
       </div>
     </div>
@@ -64,7 +64,7 @@
   <div class="flex flex-wrap justify-between items-center">
     <div class="mt-4 md:mt-0 text-white/70 text-sm">
       <% if @expenses&.any? %>
-        Found <%= @expenses.size %> result<%= 's' unless @expenses.size == 1 %>
+        Found <%= pluralize(@pagy.count, "result") %>
       <% end %>
     </div>
     <div class="flex gap-3">
@@ -77,5 +77,4 @@
       <% end %>
     </div>
   </div>
-
 <% end %>
