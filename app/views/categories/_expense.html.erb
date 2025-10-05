@@ -1,11 +1,11 @@
 <tr class="border-b border-positive" id="expense_<%= expense.id %>">
   <td class="py-3">
     <%= check_box_tag "expense_ids[]",
-        expense.id, 
-        false, 
+        expense.id,
+        false,
         class: "rounded border-positive text-accent focus:ring-accent" %>
   </td>
-  <td class="py-3"><%= expense.description %></td>
+  <td class="py-3"><%= expense.description.truncate(20) %></td>
   <td class="py-3">$<%= number_with_precision(expense.amount, precision: 2) %></td>
   <td class="py-3">
     <div class="flex flex-wrap gap-1.5">

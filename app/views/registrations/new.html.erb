@@ -3,7 +3,7 @@
   Sign up
 <% end %>
 
-<div class="flex justify-center items-center min-h-screen">
+<div class="flex justify-center items-center py-24">
   <div class="absolute top-6 left-6 z-10">
     <%= link_to root_path, class: "flex items-center bg-dark border-2 border-positive rounded-full py-2 px-4 text-white hover:bg-positive transition-all duration-300 shadow-lg" do %>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 mr-2 text-white">
@@ -16,7 +16,7 @@
   <%= form_with url: registrations_path, class: "bg-dark rounded-lg shadow-lg p-8 w-full max-w-md mx-auto" do |form| %>
 
     <h1 class="text-3xl md:text-4xl font-bold text-center mb-8 text-white">Create an Account</h1>
-  
+
     <% if @user.errors.any? %>
       <div class="bg-red-500 text-white rounded-lg p-4 mb-4">
         <h2 class="text-lg font-bold">Error</h2>
@@ -27,14 +27,14 @@
         </ul>
       </div>
     <% end %>
-  
+
     <div class="mb-6">
       <%= form.label :email_address, "Email Address", class: "text-positive font-semibold block mb-2" %>
-      <%= form.email_field :email_address, 
-                          required: true, 
-                          autofocus: true, 
-                          autocomplete: "username", 
-                          placeholder: "Enter your email address", 
+      <%= form.email_field :email_address,
+                          required: true,
+                          autofocus: true,
+                          autocomplete: "username",
+                          placeholder: "Enter your email address",
                           value: params[:email_address],
                           class: "bg-bg text-white rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-positive" %>
     </div>
