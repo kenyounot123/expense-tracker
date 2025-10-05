@@ -2,8 +2,8 @@ module Breadcrumbs
   extend ActiveSupport::Concern
 
   included do
-    before_action :set_source, except: %i[ index ]
-    before_action :set_breadcrumb_path, only: %i[ show edit ]
+    before_action :set_source
+    before_action :set_breadcrumb_path
   end
 
   private
