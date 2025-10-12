@@ -23,12 +23,14 @@ Rails.application.routes.draw do
     get "income", to: "charts#income", as: :charts_income
     get "spendings", to: "charts#spendings", as: :charts_spendings
     get "profits", to: "charts#profits", as: :charts_profits
+    get "category_breakdown", to: "charts#category_breakdown", as: :charts_category_breakdown
   end
 
   # Categories
-  namespace :categories do
-    resources :breakdowns, only: :index
+  namespace :category do
+    resources :breakdowns, only: [ :index, :show ]
   end
+
   resources :categories
   post "categories/create_from_select", to: "categories#create_from_select"
   post "categories/apply_category", to: "categories#apply_category"

@@ -2,6 +2,11 @@ class ChartsController < ApplicationController
   before_action :set_user
   before_action :set_chart_type
 
+  def category_breakdown
+    category_expenses = @user.categories.map(&:to_expense).to_h
+    render json: category_expenses
+  end
+
   def income
     case @chart_type
     when "monthly"

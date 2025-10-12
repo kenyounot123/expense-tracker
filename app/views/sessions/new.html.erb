@@ -2,7 +2,7 @@
   Sign in
 <% end %>
 
-<div class="flex justify-center items-center min-h-screen">
+<div class="flex justify-center items-center py-24">
   <div class="absolute top-6 left-6 z-10">
     <%= link_to root_path, class: "flex items-center bg-dark border-2 border-positive rounded-full py-2 px-4 text-white hover:bg-positive transition-all duration-300 shadow-lg" do %>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 mr-2 text-white">
@@ -48,7 +48,7 @@
 
     <div class="border-t border-positive pt-6 mt-2">
       <p class="text-center text-white">
-        Don't have an account? 
+        Don't have an account?
         <%= link_to "Sign up", signup_path, class: "text-positive hover:underline" %>
       </p>
     </div>

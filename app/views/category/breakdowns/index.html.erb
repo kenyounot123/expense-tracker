@@ -1,0 +1,86 @@
+<% content_for :breadcrumb do %>
+  <%= render "shared/breadcrumb" %>
+<% end %>
+
+<%= content_for :analytics do %>
+  <section class="bg-dark rounded-xl p-6 mb-6 shadow-md">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-xl font-semibold">Spending by Category</h2>
+    </div>
+
+    <div class="aspect-[16/9] md:aspect-[21/9] mb-6">
+      <%= pie_chart charts_category_breakdown_path,
+          donut: true,
+          colors: ["#8B5CF6", "#EC4899", "#F59E0B", "#10B981", "#3B82F6", "#EF4444", "#6366F1", "#14B8A6", "#F97316", "#A855F7"],
+          legend: "bottom",
+          thousands: ",",
+          precision: 2,
+          prefix: "$",
+          height: "100%",
+          library: {
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'right',
+                labels: {
+                  color: '#9CA3AF',
+                  font: {
+                    family: 'Poppins',
+                    size: 13
+                  },
+                  padding: 15,
+                  boxWidth: 12,
+                  boxHeight: 12,
+                  usePointStyle: true,
+                  pointStyle: 'circle'
+                }
+              },
+              tooltip: {
+                backgroundColor: '#1e1e1e',
+                titleFont: {
+                  family: 'Poppins',
+                  size: 14
+                },
+                bodyFont: {
+                  family: 'Poppins',
+                  size: 13
+                },
+                padding: 12,
+                borderColor: '#333',
+                borderWidth: 1
+              }
+            }
+          } %>
+    </div>
+  </section>
+<% end %>
+
+<section class="bg-dark rounded-xl p-6 shadow-md">
+  <div class="mb-4">
+    <h2 class="text-xl font-semibold mb-2">Categories</h2>
+    <p class="text-gray-400 text-sm">Click on a category to view its expenses</p>
+  </div>
+
+  <% if @categories.any? %>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+      <%= render partial: "category", collection: @categories %>
+    </div>
+  <% else %>
+    <div class="p-8 text-center">
+      <div class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-400">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">No categories yet</h3>
+      <p class="text-gray-400 mb-4">Create categories to organize your expenses</p>
+      <%= link_to categories_path, class: "bg-positive text-white font-semibold py-2 px-6 rounded-lg inline-flex items-center gap-2 hover:opacity-90 transition-all duration-300" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+        </svg>
+        Manage Categories
+      <% end %>
+    </div>
+  <% end %>
+</section>

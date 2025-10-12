@@ -3,7 +3,9 @@ class Expense < ApplicationRecord
 
   EXPENSE_TYPES = %w[one_time monthly yearly].freeze
 
-  has_and_belongs_to_many :categories
+  has_many :category_expenses, dependent: :destroy
+  has_many :categories, through: :category_expenses
+
   belongs_to :user
 
   validates :amount, presence: true
