@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     get "income", to: "charts#income", as: :charts_income
     get "spendings", to: "charts#spendings", as: :charts_spendings
     get "profits", to: "charts#profits", as: :charts_profits
+    get "category_breakdown", to: "charts#category_breakdown", as: :charts_category_breakdown
   end
 
   # Categories

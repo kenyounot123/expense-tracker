@@ -10,19 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_31_005437) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_12_194256) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "expenses_count", default: 0, null: false
     t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
-  create_table "categories_expenses", id: false, force: :cascade do |t|
-    t.integer "category_id"
-    t.integer "expense_id"
-    t.index ["category_id"], name: "index_categories_expenses_on_category_id"
-    t.index ["expense_id"], name: "index_categories_expenses_on_expense_id"
+  create_table "category_expenses", force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.integer "expense_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id", "expense_id"], name: "index_category_expenses_on_category_id_and_expense_id", unique: true
+    t.index ["category_id"], name: "index_category_expenses_on_category_id"
+    t.index ["expense_id"], name: "index_category_expenses_on_expense_id"
   end
 
   create_table "expenses", force: :cascade do |t|
@@ -57,6 +61,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_31_005437) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "category_expenses", "categories"
+  add_foreign_key "category_expenses", "expenses"
   add_foreign_key "expenses", "users"
   add_foreign_key "sessions", "users"
 end
