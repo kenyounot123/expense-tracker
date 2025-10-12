@@ -1,0 +1,11 @@
+<%= turbo_frame_tag "modal" do %>
+  <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50"> 
+    <div class="relative w-full max-w-lg mx-auto">
+      <!-- Modal Content -->
+      <div class="bg-dark rounded-card p-6 shadow-card border border-positive">
+        <%= render "form", category: @category, show_delete: true %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

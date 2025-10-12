@@ -1,0 +1,151 @@
+<% content_for :breadcrumb do %>
+  <%= render "shared/breadcrumb" %>
+<% end %>
+
+<%= content_for :analytics do %>
+  <!-- Hero Stats -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+    <div class="bg-dark rounded-xl p-6 shadow-lg border border-gray-800">
+      <div class="flex items-center mb-3">
+        <div class="w-12 h-12 rounded-full bg-positive/20 flex items-center justify-center mr-4">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6 text-positive">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <div>
+          <p class="text-gray-400 text-sm font-medium">Total Spent</p>
+          <h3 class="text-2xl font-bold text-white"><%= number_to_currency(@total_spent) %></h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-dark rounded-xl p-6 shadow-lg border border-gray-800">
+      <div class="flex items-center mb-3">
+        <div class="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center mr-4">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6 text-indigo-500">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" />
+          </svg>
+        </div>
+        <div>
+          <p class="text-gray-400 text-sm font-medium">Total Expenses</p>
+          <h3 class="text-2xl font-bold text-white"><%= @category.expenses_count %></h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-dark rounded-xl p-6 shadow-lg border border-gray-800">
+      <div class="flex items-center mb-3">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center mr-4">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6 text-emerald-500">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" />
+          </svg>
+        </div>
+        <div>
+          <p class="text-gray-400 text-sm font-medium">Average per Expense</p>
+          <h3 class="text-2xl font-bold text-white"><%= number_to_currency(@average_per_expense) %></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spending Trend Chart -->
+  <section class="bg-dark rounded-xl p-6 mb-6 shadow-md">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-xl font-semibold">Spending Trend (Last 6 Months)</h2>
+    </div>
+
+    <div class="aspect-[16/9] md:aspect-[21/9]">
+      <%= column_chart @monthly_spending,
+          thousands: ",",
+          colors: ["#CD4FF7"],
+          precision: 2,
+          height: "100%",
+          zeros: true,
+          prefix: "$",
+          library: {
+            scales: {
+              x: {
+                grid: { color: '#374151', drawBorder: false, display: false },
+                border: { color: '#374151' },
+                ticks: { color: '#9CA3AF', fontFamily: "Poppins" }
+              },
+              y: {
+                grid: { color: '#374151', drawBorder: false, borderDash: [3, 3] },
+                border: { color: '#374151' },
+                ticks: { color: '#9CA3AF', fontFamily: "Poppins" }
+              }
+            },
+            maintainAspectRatio: false,
+            borderRadius: 6,
+            barPercentage: 0.6,
+            categoryPercentage: 0.7,
+            plugins: {
+              tooltip: {
+                backgroundColor: '#1e1e1e',
+                titleFont: {
+                  family: 'Poppins',
+                  size: 14
+                },
+                bodyFont: {
+                  family: 'Poppins',
+                  size: 13
+                },
+                padding: 12,
+                borderColor: '#333',
+                borderWidth: 1
+              },
+              legend: {
+                display: false
+              }
+            }
+          } %>
+    </div>
+  </section>
+<% end %>
+
+<!-- Recent Expenses List -->
+<section class="bg-dark rounded-xl p-6 shadow-md border border-gray-800">
+  <div class="flex justify-between items-center mb-6">
+    <div>
+      <div class="flex items-center gap-2 mb-2">
+        <h2 class="text-xl font-semibold text-white">Expenses in</h2>
+        <span class="inline-flex items-center px-3 py-1.5 rounded-lg text-lg font-bold text-accent">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+          </svg>
+          <%= @category.name %>
+        </span>
+      </div>
+      <p class="text-gray-400 text-sm">All transactions in this category</p>
+    </div>
+    <%= link_to expenses_path, class: "bg-positive text-white font-semibold py-2 px-4 rounded-lg inline-flex items-center gap-2 hover:opacity-90 transition-all duration-300 shadow-lg shadow-positive/20" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+      </svg>
+      Add Expense
+    <% end %>
+  </div>
+
+  <% if @expenses.any? %>
+    <div class="space-y-0 overflow-hidden rounded-lg border border-gray-800">
+      <%= render partial: "expense", collection: @expenses %>
+    </div>
+  <% else %>
+    <div class="p-8 text-center">
+      <div class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-400">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">No expenses yet</h3>
+      <p class="text-white mb-4">Start tracking expenses in this category</p>
+      <%= link_to new_expense_path(category: @category.name), class: "bg-positive text-white font-semibold py-2 px-6 rounded-lg inline-flex items-center gap-2 hover:opacity-90 transition-all duration-300" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+        </svg>
+        Add First Expense
+      <% end %>
+    </div>
+  <% end %>
+</section>

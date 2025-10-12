@@ -1,0 +1,4 @@
+<%= turbo_stream.remove dom_id(@category) %>
+<%= turbo_stream.update "modal", "" %>
+<%= turbo_stream.update "flash", partial: "shared/alert" %>
+<%= turbo_stream.replace "expenses_list", partial: "categories/expense_table", locals: { expenses: @expenses } %>
