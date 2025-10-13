@@ -4,6 +4,6 @@ class Category < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   def to_expense
-    [ name, expenses.sum(:amount).to_f.round(2) ]
+    [ name, expenses.spendings.sum(:amount).to_f.round(2) ]
   end
 end
