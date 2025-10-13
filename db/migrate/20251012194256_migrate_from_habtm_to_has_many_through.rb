@@ -26,7 +26,7 @@ class MigrateFromHabtmToHasManyThrough < ActiveRecord::Migration[8.0]
       t.belongs_to :expense, null: false
     end
 
-    add_index :categories_expenses, [:category_id, :expense_id], unique: true
+    add_index :categories_expenses, [ :category_id, :expense_id ], unique: true
 
     # Copy data back
     execute <<-SQL
