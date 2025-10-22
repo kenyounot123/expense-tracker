@@ -15,6 +15,11 @@
             <%= Current.user.email_address.split("@").first[0].upcase %>
           </div>
           <div data-dropdown-target="menu" data-action="click@window->dropdown#hide" class="absolute right-0 mt-2 w-48 bg-dark border border-gray-700 rounded-lg shadow-lg z-10 hidden">
+            <div class="block px-4 py-3 text-white border-b  border-neutral-700">
+              <div class="flex items-center">
+                <%= Current.user.email_address %>
+              </div>
+            </div>
             <%= link_to logout_path, class: "block px-4 py-3 text-white rounded-lg hover:opacity-80 transition-colors duration-300", method: :delete, data: { turbo_method: :delete } do %>
               <div class="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2 text-gray-400">
