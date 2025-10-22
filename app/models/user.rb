@@ -12,7 +12,6 @@ class User < ApplicationRecord
   validates :password, presence: true, on: :create, unless: :skip_password_validation
 
   def self.find_or_create_from_oauth(provider, uid, email, tokens = {})
-
     oauth_provider = OauthProvider.find_by(provider: provider, uid: uid)
 
     if oauth_provider

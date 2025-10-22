@@ -1,7 +1,0 @@
-fried_rice_food:
-  expense_id: fried_rice
-  category_id: food
-
-shopping_expense_groceries:
-  expense_id: shopping_expense
-  category_id: groceries
