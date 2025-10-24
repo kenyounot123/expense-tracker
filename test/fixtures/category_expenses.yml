@@ -1,17 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-fried_rice_food:
-  expense_id: 1
-  category_id: 1
-
-egg_fried_rice_food:
-  expense_id: <%= ActiveRecord::FixtureSet.identify(:egg_fried_rice_expense) %>
-  category_id: 1
-
-tv_expense_housing:
-  expense_id: <%= ActiveRecord::FixtureSet.identify(:tv_expense) %>
-  category_id: 2
-
-shopping_expense_housing:
-  expense_id: 2
-  category_id: 2
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value

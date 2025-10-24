@@ -13,10 +13,6 @@ Rails.application.routes.draw do
   resources :registrations, only: [ :new, :create ]
   get "/signup", to: "registrations#new", as: :signup
   resources :passwords, param: :token
-  namespace :auth do
-    get "/google_oauth/authorize", to: "google_oauth#authorize", as: :google_oauth_authorize
-    get "/google_oauth/callback", to: "google_oauth#callback", as: :google_oauth_callback
-  end
 
   # Expenses
   resources :expenses
