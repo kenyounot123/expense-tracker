@@ -1,15 +1,13 @@
 class AddUserReferenceToCategories < ActiveRecord::Migration[8.0]
-  disable_ddl_transaction!
-
   def up
     # Add the column without index first (skip if already exists)
     unless column_exists?(:categories, :user_id)
       add_column :categories, :user_id, :bigint, null: true
     end
 
-    # Add index concurrently (skip if already exists)
+    # Add index (skip if already exists)
     unless index_exists?(:categories, :user_id)
-      add_index :categories, :user_id, algorithm: :concurrent
+      add_index :categories, :user_id
     end
 
     # Backfill the data by assigning each category to the user from its first expense
