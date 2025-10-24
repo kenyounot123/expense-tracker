@@ -2,15 +2,19 @@ class AddUserReferenceToCategories < ActiveRecord::Migration[8.0]
   disable_ddl_transaction!
 
   def up
-    # Add the column without index first
-    add_column :categories, :user_id, :bigint, null: true
+    # Add the column without index first (skip if already exists)
+    unless column_exists?(:categories, :user_id)
+      add_column :categories, :user_id, :bigint, null: true
+    end
 
-    # Add index concurrently
-    add_index :categories, :user_id, algorithm: :concurrent
+    # Add index concurrently (skip if already exists)
+    unless index_exists?(:categories, :user_id)
+      add_index :categories, :user_id, algorithm: :concurrent
+    end
 
     # Backfill the data by assigning each category to the user from its first expense
     Category.reset_column_information
-    Category.all.find_each do |category|
+    Category.where(user_id: nil).find_each do |category|
       expense = category.expenses.first
       if expense
         category.update_column(:user_id, expense.user_id)
@@ -20,11 +24,15 @@ class AddUserReferenceToCategories < ActiveRecord::Migration[8.0]
       end
     end
 
-    # Add NOT NULL constraint
-    change_column_null :categories, :user_id, false
+    # Add NOT NULL constraint (only if column is nullable)
+    if column_exists?(:categories, :user_id) && Category.columns_hash["user_id"].null
+      change_column_null :categories, :user_id, false
+    end
 
-    # Add foreign key without validation first, then validate separately
-    add_foreign_key :categories, :users, validate: false
+    # Add foreign key without validation first, then validate separately (skip if already exists)
+    unless foreign_key_exists?(:categories, :users)
+      add_foreign_key :categories, :users, validate: false
+    end
     validate_foreign_key :categories, :users
   end
 
