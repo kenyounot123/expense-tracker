@@ -31,7 +31,6 @@ class AddUserReferenceToCategories < ActiveRecord::Migration[8.0]
     unless foreign_key_exists?(:categories, :users)
       add_foreign_key :categories, :users, validate: false
     end
-    validate_foreign_key :categories, :users
   end
 
   def down
