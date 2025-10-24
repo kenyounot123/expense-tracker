@@ -1,9 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-food:
+john_food:
   id: 1
   name: Food
+  user_id: 1
 
-housing:
+john_housing:
   id: 2
   name: Housing
+  user_id: 1
+
+bob_food:
+  id: 3
+  name: Food
+  user_id: 2
+
+bob_transportation:
+  id: 4
+  name: Transportation
+  user_id: 2

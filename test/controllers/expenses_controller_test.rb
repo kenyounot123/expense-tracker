@@ -28,7 +28,7 @@ class ExpensesControllerTest < ActionDispatch::IntegrationTest
           date: "2023-10-03",
           expense_type: "Utilities",
           income: false,
-          category_ids: [ categories(:food).id ]
+          category_ids: [ categories(:john_food).id ]
         }
       }
     end
@@ -50,7 +50,7 @@ class ExpensesControllerTest < ActionDispatch::IntegrationTest
     patch expense_url(@current_expense), params: {
       expense: {
         description: "Updated Rent",
-        category_ids: [ categories(:housing).id ]
+        category_ids: [ categories(:john_housing).id ]
       }
     }
     assert_redirected_to expense_url(@current_expense)

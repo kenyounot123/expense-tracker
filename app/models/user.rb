@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_secure_password validations: false
   has_many :sessions, dependent: :destroy
   has_many :expenses, dependent: :destroy
-  has_many :categories, -> { distinct }, through: :expenses
+  has_many :categories, dependent: :destroy
   has_many :oauth_providers, dependent: :destroy
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }

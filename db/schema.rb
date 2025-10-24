@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_22_165016) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_24_041904) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "expenses_count", default: 0, null: false
-    t.index ["name"], name: "index_categories_on_name", unique: true
+    t.integer "user_id"
+    t.index ["user_id", "name"], name: "index_categories_on_user_id_and_name", unique: true
+    t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
   create_table "category_expenses", force: :cascade do |t|
@@ -74,6 +76,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_22_165016) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "categories", "users"
   add_foreign_key "category_expenses", "categories"
   add_foreign_key "category_expenses", "expenses"
   add_foreign_key "expenses", "users"

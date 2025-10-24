@@ -3,9 +3,9 @@ class CategoriesController < ApplicationController
 
   def index
     if params[:q].present?
-      @categories = Category.where("LOWER(name) LIKE LOWER(?)", "%#{params[:q]}%")
+      @categories = Current.user.categories.where("LOWER(name) LIKE LOWER(?)", "%#{params[:q]}%")
     else
-      @categories = Category.all
+      @categories = Current.user.categories
     end
 
     @pagy, @expenses = pagy(Current.user.expenses.includes(:categories).order(date: :desc))
@@ -21,7 +21,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(category_params)
+    @category = Current.user.categories.new(category_params)
 
     respond_to do |format|
       if @category.save
@@ -62,7 +62,7 @@ class CategoriesController < ApplicationController
 
   def create_from_select
     category_name = JSON.parse(request.body.read)["addable"]
-    category = Category.create!(name: category_name)
+    category = Current.user.categories.create!(name: category_name)
 
     render json: { text: category.name, value: category.name }
   rescue ActiveRecord::RecordInvalid => e
@@ -72,8 +72,8 @@ class CategoriesController < ApplicationController
   def apply_category
     return unless params[:name].present?
 
-    @category = Category.find_by(name: params[:name])
-    @expenses = Expense.where(id: params[:expense_ids])
+    @category = Current.user.categories.find_by(name: params[:name])
+    @expenses = Current.user.expenses.where(id: params[:expense_ids])
     ActiveRecord::Base.transaction do
       @expenses.each do |expense|
         expense.categories << @category unless expense.categories.include?(@category)
@@ -89,6 +89,6 @@ class CategoriesController < ApplicationController
     end
 
     def set_category
-      @category = Category.find(params[:id])
+      @category = Current.user.categories.find(params[:id])
     end
 end
