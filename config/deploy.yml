@@ -73,11 +73,6 @@ volumes:
 # version inside the asset_path.
 asset_path: /rails/public/assets
 
-# Configure healthcheck timeout for deployments with long-running migrations
-healthcheck:
-  max_attempts: 20
-  interval: 10s
-
 # Configure the image builder.
 builder:
   arch: amd64
