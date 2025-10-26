@@ -12,7 +12,7 @@ class Category::BreakdownsController < ApplicationController
     add_breadcrumb("Category Breakdown", category_breakdowns_path)
     add_breadcrumb(@category.name.truncate(20), nil)
 
-    @expenses = @category.expenses.order(date: :desc)
+    @pagy, @expenses = pagy(@category.expenses.order(date: :desc))
     @total_spent = @category.expenses.sum(:amount)
     @average_per_expense = @expenses.any? ? @total_spent / @expenses.count : 0
 
