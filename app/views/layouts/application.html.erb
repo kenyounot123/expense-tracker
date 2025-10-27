@@ -27,6 +27,7 @@
 
     <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
     <%= javascript_importmap_tags %>
+    <%= Sentry.get_trace_propagation_meta.html_safe %>
   </head>
 
   <body class="bg-bg text-white font-poppins overflow-x-hidden">

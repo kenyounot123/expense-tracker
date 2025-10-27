@@ -72,7 +72,13 @@ gem "mission_control-jobs"
 # SEO
 gem "sitemap_generator"
 
+# CSS
 gem "tailwindcss-ruby"
 gem "tailwindcss-rails", "~> 3.3.1"
 
+# Oauth
 gem "googleauth", "~> 1.15"
+
+# App Metrics
+gem "sentry-ruby"
+gem "sentry-rails"
