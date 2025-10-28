@@ -74,7 +74,7 @@ gem "sitemap_generator"
 
 # CSS
 gem "tailwindcss-ruby"
-gem "tailwindcss-rails", "~> 3.3.1"
+gem "tailwindcss-rails", "~> 4.4.0"
 
 # Oauth
 gem "googleauth", "~> 1.15"
