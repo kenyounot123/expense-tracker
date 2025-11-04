@@ -128,12 +128,6 @@
             <%= link_to "Profits", dashboard_analytics_path(filter_type: :profits),
                 class: "block px-4 py-2 text-white hover:bg-positive",
                 data: { turbo_frame: "analytics_content" } %>
-            <%= link_to "Daily Income", dashboard_analytics_path(filter_type: :income, chart_type: :daily),
-                class: "block px-4 py-2 text-white hover:bg-positive",
-                data: { turbo_frame: "analytics_content" } %>
-            <%= link_to "Daily Expenses", dashboard_analytics_path(filter_type: :spendings, chart_type: :daily),
-                class: "block px-4 py-2 text-white hover:bg-positive rounded-b-lg",
-                data: { turbo_frame: "analytics_content" } %>
           </ul>
         </div>
       </div>

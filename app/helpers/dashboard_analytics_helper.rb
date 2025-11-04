@@ -1,6 +1,6 @@
 module DashboardAnalyticsHelper
   VALID_FILTER_TYPES = %w[income spendings profits].freeze
-  VALID_CHART_TYPES = %w[monthly daily].freeze
+  VALID_CHART_TYPES = %w[monthly].freeze
 
   def format_analytics_type(type)
     case type.to_sym

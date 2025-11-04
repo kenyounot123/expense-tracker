@@ -26,12 +26,6 @@
         <%= link_to "Profits", dashboard_analytics_path(filter_type: :profits),
             class: "block px-4 py-2 text-white hover:bg-positive #{params[:filter_type].to_s == 'profits' ? 'opacity-50 cursor-not-allowed' : ''}",
             data: { turbo_frame: "analytics_content" } %>
-        <%= link_to "Daily Income", dashboard_analytics_path(filter_type: :income, chart_type: :daily),
-            class: "block px-4 py-2 text-white hover:bg-positive #{params[:chart_type].to_s == 'daily' && params[:filter_type].to_s == 'income' ? 'opacity-50 cursor-not-allowed' : ''}",
-            data: { turbo_frame: "analytics_content" } %>
-        <%= link_to "Daily Spendings", dashboard_analytics_path(filter_type: :spendings, chart_type: :daily),
-            class: "block px-4 py-2 text-white hover:bg-positive #{params[:chart_type].to_s == 'daily' && params[:filter_type].to_s == 'spendings' ? 'opacity-50 cursor-not-allowed' : ''}",
-            data: { turbo_frame: "analytics_content" } %>
       </ul>
     </div>
   </div>

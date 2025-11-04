@@ -11,8 +11,6 @@ class ChartsController < ApplicationController
     case @chart_type
     when "monthly"
       render json: @user.expenses.income.group_by_month(:date, format: "%B %Y").sum(:amount)
-    when "daily"
-      render json: @user.expenses.income.group_by_day(:date, format: "%b %d").sum(:amount)
     else
       render json: @user.expenses.income.group_by_month(:date, format: "%B %Y").sum(:amount)
     end
@@ -22,8 +20,6 @@ class ChartsController < ApplicationController
     case @chart_type
     when "monthly"
       render json: @user.expenses.spendings.group_by_month(:date, format: "%B %Y").sum(:amount)
-    when "daily"
-      render json: @user.expenses.spendings.group_by_day(:date, format: "%b %d").sum(:amount)
     else
       render json: @user.expenses.spendings.group_by_month(:date, format: "%B %Y").sum(:amount)
     end
