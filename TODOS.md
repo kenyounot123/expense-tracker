@@ -1,0 +1,12 @@
+- [ ] fix ui for categories, more visually appealing
+- [ ] allow import from excel
+- [ ] add some sort of filtering for categories
+- [x] category breakdown
+- [ ] Form validations
+- [x] breadcrumbs for /categories
+- [ ] custom frequency ( every day or like every 3 day )
+
+- [ ] Set up monitoring
+- [x] setup auto deploy when pushing to github
+- [ ] Staging env setup
+- [ ] refactor code using design patterns. Especially the types of charts, etc
