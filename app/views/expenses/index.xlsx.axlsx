@@ -2,8 +2,8 @@ wb = xlsx_package.workbook
 
 wb.add_worksheet(name: "Expenses") do |sheet|
   # Add header row
-  sheet.add_row ["Date", "Description", "Amount", "Type", "Categories", "Excluded"]
-  
+  sheet.add_row [ "Date", "Description", "Amount", "Type", "Categories", "Excluded" ]
+
   # Add data rows
   @expenses.each do |expense|
     sheet.add_row [
