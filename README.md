@@ -2,9 +2,12 @@
 
 TrackExp is a user-friendly expense tracking application designed to eliminate unnecessary complexity while providing essential features for managing personal finances. The application focuses on simplicity and intuitive design, making it easy for users to track their expenses without feeling overwhelmed.
 
-![alt text](image.png)
-![alt text](image-1.png)
-![alt text](image-2.png)
+<img width="1290" height="905" alt="CleanShot 2025-12-11 at 19 14 32" src="https://github.com/user-attachments/assets/b2849f61-4392-41b2-8406-98b46300cff5" />
+
+<img width="1293" height="742" alt="CleanShot 2025-12-11 at 19 15 42" src="https://github.com/user-attachments/assets/d6df4be7-15b8-464c-b794-b40709fe6c9a" />
+
+<img width="1320" height="927" alt="CleanShot 2025-12-11 at 19 15 51" src="https://github.com/user-attachments/assets/62efefbe-2841-4a06-a900-e2e64d935f97" />
+
 
 ## Features
 
