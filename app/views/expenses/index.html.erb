@@ -183,6 +183,13 @@
   <h2 class="text-xl font-semibold">Recent Transactions</h2>
 
   <div class="flex items-center gap-2 w-full sm:w-auto">
+    <%= link_to expenses_path(format: :xlsx), class: "flex-1 sm:flex-none bg-transparent border border-positive text-white py-2 px-3 sm:px-4 rounded-lg inline-flex items-center justify-center gap-2 hover:bg-dark transition-all duration-300" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+      </svg>
+      <span class="sm:inline">Export</span>
+    <% end %>
+
     <%= link_to searches_path, class: "flex-1 sm:flex-none bg-transparent border border-positive text-white py-2 px-3 sm:px-4 rounded-lg inline-flex items-center justify-center gap-2 hover:bg-dark transition-all duration-300", data: { turbo_frame: "_top" } do %>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
         <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />

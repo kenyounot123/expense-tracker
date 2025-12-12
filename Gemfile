@@ -82,3 +82,7 @@ gem "googleauth", "~> 1.15"
 # App Metrics
 gem "sentry-ruby"
 gem "sentry-rails"
+
+# Excel export
+gem "caxlsx"
+gem "caxlsx_rails"

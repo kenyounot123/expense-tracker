@@ -1,0 +1,18 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Expenses") do |sheet|
+  # Add header row
+  sheet.add_row ["Date", "Description", "Amount", "Type", "Categories", "Excluded"]
+  
+  # Add data rows
+  @expenses.each do |expense|
+    sheet.add_row [
+      expense.date.strftime("%Y-%m-%d"),
+      expense.description,
+      expense.amount,
+      expense.income ? "Income" : "Expense",
+      expense.categories.map(&:name).join(", "),
+      expense.excluded ? "Yes" : "No"
+    ]
+  end
+end

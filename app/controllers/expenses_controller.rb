@@ -6,6 +6,13 @@ class ExpensesController < ApplicationController
   def index
     @pagy, @expenses = pagy(current_user_expenses.includes(:categories).order(created_at: sort_direction), items: 10)
     @total_income = current_user_expenses.total_income
+
+    respond_to do |format|
+      format.html
+      format.xlsx do
+        @expenses = current_user_expenses.includes(:categories).order(date: :desc)
+      end
+    end
   end
 
   def show
